@@ -3,4 +3,15 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="title_white">#FEFEFF</color>
+    <color name="bg_white">#FFFFFF</color>
+
+    <color name="btn_blue">#778FFA</color>
+
+    <color name="shadow_black">#0D000000</color>
+    <color name="finish_black">#999</color>
+    <color name="title_black">#333</color>
+    <color name="container_text_black">#555</color>
+    <color name="hint_black">#B2B2B2</color>
 </resources>

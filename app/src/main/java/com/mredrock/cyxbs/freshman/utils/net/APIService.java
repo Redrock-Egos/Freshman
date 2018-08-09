@@ -1,5 +1,6 @@
 package com.mredrock.cyxbs.freshman.utils.net;
 
+import com.mredrock.cyxbs.freshman.bean.Description;
 import com.mredrock.cyxbs.freshman.bean.Entity;
 
 import io.reactivex.Observable;
@@ -19,4 +20,7 @@ public interface APIService {
      */
     @GET("data/describe/getamount")
     Observable<Entity> getEntityName(@Query("index") String index);
+
+    @GET("data/get/describe")
+    Observable<Description> getDescriptions(@Query("index") String index);
 }

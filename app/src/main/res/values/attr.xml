@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="JCardView">
+        <attr name="leftRadius" format="dimension" />
+        <attr name="topRadius" format="dimension" />
+        <attr name="rightRadius" format="dimension" />
+        <attr name="bottomRadius" format="dimension" />
+        <attr name="radius" format="dimension" />
+        <attr name="hideLeftShadow" format="boolean" />
+        <attr name="hideTopShadow" format="boolean" />
+        <attr name="hideRightShadow" format="boolean" />
+        <attr name="hideBottomShadow" format="boolean" />
+        <attr name="backgroundColor" format="color" />
+        <attr name="shadowColor" format="color" />
+        <attr name="shadowRadius" format="dimension" />
+    </declare-styleable>
+</resources>
