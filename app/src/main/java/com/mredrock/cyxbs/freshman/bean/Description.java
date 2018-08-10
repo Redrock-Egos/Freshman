@@ -35,6 +35,15 @@ public class Description {
         private String property;
         private boolean isCheck;
         private boolean isDelete;
+        private boolean isOpen;
+
+        public boolean isOpen() {
+            return isOpen;
+        }
+
+        public void setOpen(boolean open) {
+            isOpen = open;
+        }
 
         public void setCheck(boolean isCheck){
             this.isCheck = isCheck;

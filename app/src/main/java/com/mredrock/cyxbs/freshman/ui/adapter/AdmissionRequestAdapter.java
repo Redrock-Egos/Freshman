@@ -5,16 +5,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.bean.Description;
+import com.mredrock.cyxbs.freshman.contract.AdmissionRequestContract;
+import com.mredrock.cyxbs.freshman.presenter.AdmissionRequestPresenter;
 import com.mredrock.cyxbs.freshman.ui.activity.App;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
  * 只是因为懒。。就没有把Adapter和ViewHolder解耦了
+ * 也是因为懒，不想写动画了
  */
 
 public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionRequestAdapter.AdmissionRequestViewHolder> {
@@ -24,7 +29,7 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
     private OnDeleteDataListener mListener;
     private int deleteNum = 0;
 
-    public AdmissionRequestAdapter(List<Description.DescribeBean> mDataList,OnDeleteDataListener mListener){
+    public AdmissionRequestAdapter(List<Description.DescribeBean> mDataList, OnDeleteDataListener mListener){
         this.mDataList = mDataList;
         isEdit = false;
         this.mListener = mListener;
@@ -58,12 +63,15 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
     }
 
     public void deleteDatas(){
-        for (int i = 0; i < mDataList.size(); i++) {
-            if (mDataList.get(i).isDelete())
+//      删除时候从大到小，不然会删不干净...
+        for (int i = mDataList.size() - 1; i > 0; i--) {
+            if (mDataList.get(i).isDelete()){
                 mDataList.remove(i);
+                notifyItemRemoved(i);
+            }
         }
-        notifyDataSetChanged();
     }
+
 
     class AdmissionRequestViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
@@ -72,10 +80,6 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
         private ImageView delete;
         private TextView title;
         private TextView description;
-
-        private int close = -1;
-        private int status;
-        private boolean check;
 
         AdmissionRequestViewHolder(View itemView) {
             super(itemView);
@@ -92,14 +96,25 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
         }
 
         void initData(Description.DescribeBean mData){
-            status = close;
             title.setText(mData.getName());
-            int colorId = mData.isCheck()? R.color.finish_black:R.color.title_black;
+            int colorId = mData.isCheck()? R.color.freshmen_finish_black:R.color.freshmen_title_black;
+            int drawableIdCheck = mData.isCheck()? R.drawable.freshman_check_pressed:R.drawable.freshman_check_normal;
+            int drawableIdDelete = mData.isDelete()? R.drawable.freshman_check_delete_pressed:R.drawable.freshman_check_delete_normal;
             title.setTextColor(App.getContext().getResources().getColor(colorId));
-            description.setVisibility(View.GONE);
-            description.setText(mData.getContent());
+            item.setImageDrawable(App.getContext().getResources().getDrawable(drawableIdCheck));
+            delete.setImageDrawable(App.getContext().getResources().getDrawable(drawableIdDelete));
+            if (mData.isOpen()){
+                description.setVisibility(View.VISIBLE);
+                description.setText(mData.getContent());
+                more.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_icon_see_simple));
+            } else {
+                description.setVisibility(View.GONE);
+                more.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_icon_see_more));
+            }
+            if (mData.getProperty().equals("用户自定义")){
+                more.setVisibility(View.GONE);
+            }
             if (!isEdit){
-                check = false;
                 delete.setVisibility(View.GONE);
                 item.setVisibility(View.VISIBLE);
             } else {
@@ -110,35 +125,51 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
                     delete.setVisibility(View.VISIBLE);
                 }
             }
+        }
 
+        private void toTop(int from, int to){
+            int itemInterval = from - to;
+            for (int i = 0; i < itemInterval; i++) {
+                Collections.swap(mDataList,from,from - 1);
+                notifyItemMoved(from,from - 1);
+                from = from - 1;
+            }
+        }
+
+        private void toBottom(int from, int to){
+            int itemInterval = to - from;
+            for (int i = 0; i < itemInterval; i++) {
+                Collections.swap(mDataList,from,from+1);
+                notifyItemMoved(from,from+1);
+                from = from + 1;
+            }
         }
 
         @Override
         public void onClick(View v) {
             switch (v.getId()){
                 case R.id.iv_admission_check:
-//                todo 上浮
-                    if (!check) {
-                        check = true;
+                    if (!mDataList.get(getLayoutPosition()).isCheck()) {
                         item.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_check_pressed));
-                        title.setTextColor(App.getContext().getResources().getColor(R.color.finish_black));
+                        title.setTextColor(App.getContext().getResources().getColor(R.color.freshmen_finish_black));
                         mDataList.get(getLayoutPosition()).setCheck(true);
+                        toTop(getLayoutPosition(),0);
                     } else {
-                        check = false;
                         item.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_check_normal));
-                        title.setTextColor(App.getContext().getResources().getColor(R.color.title_black));
+                        title.setTextColor(App.getContext().getResources().getColor(R.color.freshmen_title_black));
                         mDataList.get(getLayoutPosition()).setCheck(false);
+                        toBottom(getLayoutPosition(),getItemCount() - 1);
                     }
                     break;
                 case R.id.iv_admission_more:
-                    if (status == close){
+                    if (!mDataList.get(getLayoutPosition()).isOpen()){
                         more.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_icon_see_simple));
-                        description.setVisibility(View.VISIBLE);
-                        status = -2;
+                        notifyItemChanged(getLayoutPosition(),0);
+                        mDataList.get(getLayoutPosition()).setOpen(true);
                     } else {
                         more.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_icon_see_more));
-                        description.setVisibility(View.GONE);
-                        status = close;
+                        notifyItemChanged(getLayoutPosition(),0);
+                        mDataList.get(getLayoutPosition()).setOpen(false);
                     }
                     break;
                 case R.id.iv_admission_delete:

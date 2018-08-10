@@ -7,10 +7,10 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp"
-    app:backgroundColor="@color/bg_white"
+    app:backgroundColor="@color/freshman_bg_white"
     android:layout_marginTop="5dp"
     app:radius="5dp"
-    app:shadowColor="@color/shadow_black"
+    app:shadowColor="@color/freshmen_shadow_black"
     app:shadowRadius="5dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/iv_admission_check"
             android:layout_marginLeft="15dp"
-            android:textColor="@color/title_black"
+            android:textColor="@color/freshmen_title_black"
             android:layout_toEndOf="@id/iv_admission_check"
             android:layout_marginStart="15dp"
             tools:ignore="RelativeOverlap" />

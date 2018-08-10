@@ -13,9 +13,10 @@ public class AdmissionRequestContract {
 
     public interface IAdmissionRequestView extends BaseContract.ISomethingView{
         void showError();
-        void setRv(AdmissionRequestAdapter mAdapter, LinearLayoutManager manager);
+        void setRv(AdmissionRequestAdapter mAdapter);
         void setNum(String info);
         void addData();
         void returnButton();
+        void scrollToPos(int pos);
     }
 }

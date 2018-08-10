@@ -14,7 +14,6 @@ import com.mredrock.cyxbs.freshman.ui.widget.ARHintDialog;
 public class AdmissionRequestPresenter extends BasePresenter<AdmissionRequestContract.IAdmissionRequestView> {
     private AdmissionRequestContract.IAdmissionRequestModel mModel;
     private AdmissionRequestAdapter mAdapter;
-    private LinearLayoutManager manager;
 
     public AdmissionRequestPresenter(AdmissionRequestContract.IAdmissionRequestModel mModel ){
         this.mModel = mModel;
@@ -26,7 +25,6 @@ public class AdmissionRequestPresenter extends BasePresenter<AdmissionRequestCon
     }
 
     public void addItem(String str){
-//        todo 添加后跳转到添加的位置
         if (str.equals("")){
             getView().returnButton();
         } else {
@@ -34,10 +32,11 @@ public class AdmissionRequestPresenter extends BasePresenter<AdmissionRequestCon
             temp.setName(str);
             temp.setDelete(false);
             temp.setCheck(false);
-            temp.setContent(App.getContext().getResources().getString(R.string.admission_none_description));
-            temp.setProperty("非必需");
+            temp.setContent("");
+            temp.setProperty("用户自定义");
             mAdapter.add(temp);
             getView().returnButton();
+            getView().scrollToPos(mAdapter.getItemCount() - 1);
         }
     }
 
@@ -57,13 +56,12 @@ public class AdmissionRequestPresenter extends BasePresenter<AdmissionRequestCon
             public void succeed(Object o) {
                 Description temp = (Description) o;
                 mAdapter = new AdmissionRequestAdapter(temp.getDescribe(), count -> {
-                    String total = App.getContext().getResources().getString(R.string.admission_delete);
+                    String total = App.getContext().getResources().getString(R.string.freshmen_admission_delete);
                     if (count != 0)
-                        total = App.getContext().getResources().getString(R.string.admission_delete)+"("+count+")";
+                        total = App.getContext().getResources().getString(R.string.freshmen_admission_delete)+"("+count+")";
                     getView().setNum(total);
-                } );
-                manager = new LinearLayoutManager(App.getContext());
-                getView().setRv(mAdapter,manager);
+                });
+                getView().setRv(mAdapter);
             }
 
             @Override

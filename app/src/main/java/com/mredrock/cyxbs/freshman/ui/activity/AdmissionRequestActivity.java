@@ -6,7 +6,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,6 +20,7 @@ import com.mredrock.cyxbs.freshman.mvp.contract.AdmissionRequestContract;
 import com.mredrock.cyxbs.freshman.mvp.model.AdmissionRequestModel;
 import com.mredrock.cyxbs.freshman.mvp.presenter.AdmissionRequestPresenter;
 import com.mredrock.cyxbs.freshman.ui.adapter.AdmissionRequestAdapter;
+import com.mredrock.cyxbs.freshman.utils.ScrollSpeedLinearLayoutManger;
 import com.mredrock.cyxbs.freshman.utils.ToastUtils;
 
 public class AdmissionRequestActivity extends AppCompatActivity implements AdmissionRequestContract.IAdmissionRequestView,View.OnClickListener {
@@ -76,15 +79,17 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
 
     @Override
     public void showError() {
-        ToastUtils.show(getResources().getString(R.string.error));
+        ToastUtils.show(getResources().getString(R.string.freshmen_error));
     }
 
     @Override
-    public void setRv(AdmissionRequestAdapter mAdapter,LinearLayoutManager manager) {
-        mRv.setLayoutManager(manager);
+    public void setRv(AdmissionRequestAdapter mAdapter) {
+        ScrollSpeedLinearLayoutManger manger = new ScrollSpeedLinearLayoutManger(App.getContext());
+        manger.setSpeedSlow();
+        mRv.setLayoutManager(manger);
         mRv.setAdapter(mAdapter);
-        mRv.getItemAnimator().setChangeDuration(300);
-        mRv.getItemAnimator().setMoveDuration(300);
+        mRv.getItemAnimator().setChangeDuration(200);
+        mRv.getItemAnimator().setMoveDuration(800);
     }
 
     @Override
@@ -101,8 +106,18 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
     @Override
     public void returnButton() {
         content.clearFocus();
+        InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
+        View v = getCurrentFocus();
+        if (imm != null && v != null) {
+            imm.hideSoftInputFromWindow(v.getApplicationWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }
         mFabtn.setVisibility(View.VISIBLE);
         mRl.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void scrollToPos(int pos) {
+        mRv.smoothScrollToPosition(pos);
     }
 
     @Override
@@ -117,9 +132,9 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
             case R.id.tv_admission_edit:
                 isEdit = !isEdit;
                 if(isEdit) {
-                    edit.setText(getResources().getString(R.string.admission_delete));
+                    edit.setText(getResources().getString(R.string.freshmen_admission_delete));
                 } else {
-                    edit.setText(getResources().getString(R.string.admission_edit));
+                    edit.setText(getResources().getString(R.string.freshmen_admission_edit));
                     mPresenter.editRv();
                 }
                 mPresenter.changeMode(isEdit);

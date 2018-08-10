@@ -28,6 +28,7 @@ public class AdmissionRequestModel implements AdmissionRequestContract.IAdmissio
         for (Description.DescribeBean m:description.getDescribe()) {
             m.setCheck(false);
             m.setDelete(false);
+            m.setOpen(false);
         }
         callBack.succeed(description);
     }
