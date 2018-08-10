@@ -3,6 +3,7 @@ package com.mredrock.cyxbs.freshman.utils.net;
 import com.mredrock.cyxbs.freshman.bean.Description;
 import com.mredrock.cyxbs.freshman.bean.Entity;
 import com.mredrock.cyxbs.freshman.bean.SexRatio;
+import com.mredrock.cyxbs.freshman.bean.MilitaryShow;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -41,4 +42,7 @@ public interface APIService {
 
     @GET("data/get/describe")
     Observable<Description> getDescriptions(@Query("index") String index);
+
+    @GET("data/get/junxun")
+    Observable<MilitaryShow> getMilitaryShow();
 }
