@@ -1,7 +1,7 @@
-package com.mredrock.cyxbs.freshman.presenter;
+package com.mredrock.cyxbs.freshman.mvp.presenter;
 
 
-import com.mredrock.cyxbs.freshman.contract.BaseContract;
+import com.mredrock.cyxbs.freshman.mvp.contract.BaseContract;
 
 public class BasePresenter<V extends BaseContract.ISomethingView> implements IBasePresenter<V>{
     private V view;

@@ -11,7 +11,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 
-
 import com.mredrock.cyxbs.freshman.R;
 
 /**

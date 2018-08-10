@@ -1,21 +1,15 @@
-package com.mredrock.cyxbs.freshman.presenter;
+package com.mredrock.cyxbs.freshman.mvp.presenter;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.bean.Description;
-import com.mredrock.cyxbs.freshman.contract.AdmissionRequestContract;
-import com.mredrock.cyxbs.freshman.contract.BaseContract;
-import com.mredrock.cyxbs.freshman.ui.activity.AdmissionRequestActivity;
+import com.mredrock.cyxbs.freshman.mvp.contract.AdmissionRequestContract;
+import com.mredrock.cyxbs.freshman.mvp.contract.BaseContract;
 import com.mredrock.cyxbs.freshman.ui.activity.App;
 import com.mredrock.cyxbs.freshman.ui.adapter.AdmissionRequestAdapter;
 import com.mredrock.cyxbs.freshman.ui.widget.ARHintDialog;
-import com.mredrock.cyxbs.freshman.utils.ToastUtils;
-
-import java.util.Collections;
-import java.util.List;
 
 public class AdmissionRequestPresenter extends BasePresenter<AdmissionRequestContract.IAdmissionRequestView> {
     private AdmissionRequestContract.IAdmissionRequestModel mModel;

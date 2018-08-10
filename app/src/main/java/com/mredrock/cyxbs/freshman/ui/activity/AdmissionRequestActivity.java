@@ -1,12 +1,11 @@
 package com.mredrock.cyxbs.freshman.ui.activity;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,9 +14,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mredrock.cyxbs.freshman.R;
-import com.mredrock.cyxbs.freshman.contract.AdmissionRequestContract;
-import com.mredrock.cyxbs.freshman.model.AdmissionRequestModel;
-import com.mredrock.cyxbs.freshman.presenter.AdmissionRequestPresenter;
+import com.mredrock.cyxbs.freshman.mvp.contract.AdmissionRequestContract;
+import com.mredrock.cyxbs.freshman.mvp.model.AdmissionRequestModel;
+import com.mredrock.cyxbs.freshman.mvp.presenter.AdmissionRequestPresenter;
 import com.mredrock.cyxbs.freshman.ui.adapter.AdmissionRequestAdapter;
 import com.mredrock.cyxbs.freshman.utils.ToastUtils;
 

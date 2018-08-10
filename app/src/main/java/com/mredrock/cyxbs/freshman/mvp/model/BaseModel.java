@@ -1,7 +1,7 @@
-package com.mredrock.cyxbs.freshman.model;
+package com.mredrock.cyxbs.freshman.mvp.model;
 
 
-import com.mredrock.cyxbs.freshman.contract.BaseContract;
+import com.mredrock.cyxbs.freshman.mvp.contract.BaseContract;
 
 public class BaseModel implements BaseContract.ISomethingModel {
 

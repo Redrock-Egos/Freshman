@@ -1,7 +1,6 @@
 package com.mredrock.cyxbs.freshman.utils;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.widget.Toast;
 
 import com.mredrock.cyxbs.freshman.ui.activity.App;

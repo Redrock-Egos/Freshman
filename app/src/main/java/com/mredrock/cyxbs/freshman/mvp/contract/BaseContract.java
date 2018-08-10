@@ -1,4 +1,4 @@
-package com.mredrock.cyxbs.freshman.contract;
+package com.mredrock.cyxbs.freshman.mvp.contract;
 
 import android.content.Context;
 
