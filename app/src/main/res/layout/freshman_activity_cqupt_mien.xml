@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tb_CyMien"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/freshman_bg_tb"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <ImageView
+                    android:id="@+id/freshman_CyMien_iv_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/freshman_icon_back"
+                    android:layout_marginStart="15dp"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/freshman_CyMien_tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/freshman_cqupt_mien"
+                    android:textColor="@color/title_white"
+                    android:textSize="18sp"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    />
+            </RelativeLayout>
+        </android.support.v7.widget.Toolbar>
+
+        <android.support.v7.widget.Toolbar
+            android:animateLayoutChanges="true"
+            android:id="@+id/freshman_CyMien_tl"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="15dp"
+                >
+                <Button
+                    android:id="@+id/freshman_CyMien_btn_organization"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/freshman_mien_btn"
+                    android:text="@string/freshman_mien_zuzhi"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp"
+                    android:layout_height="wrap_content" />
+                <Button
+                    android:id="@+id/freshman_CyMien_btn_campaign"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:textColor="#FFFFFF"
+                    android:text="@string/freshman_mine_huodong"
+                    android:background="@drawable/freshman_mien_btn"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </android.support.v7.widget.Toolbar>
+
+        <View
+            android:background="#F6F6F6"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"/>
+
+        <com.mredrock.cyxbs.freshman.ui.adapter.CustomVIewPager
+            android:id="@+id/freshman_CyMien_vp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </com.mredrock.cyxbs.freshman.ui.adapter.CustomVIewPager>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/freshman_CyMien_close"
+        android:text="关闭"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/freshman_CyMien_open"
+        android:text="展开"
+        android:visibility="gone"
+        android:layout_marginBottom="50dp"
+        android:layout_gravity="center|bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</FrameLayout>

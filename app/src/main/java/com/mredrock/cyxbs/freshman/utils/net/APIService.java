@@ -2,6 +2,7 @@ package com.mredrock.cyxbs.freshman.utils.net;
 
 import com.mredrock.cyxbs.freshman.bean.Description;
 import com.mredrock.cyxbs.freshman.bean.Entity;
+import com.mredrock.cyxbs.freshman.bean.MienStu;
 import com.mredrock.cyxbs.freshman.bean.SexRatio;
 import com.mredrock.cyxbs.freshman.bean.MilitaryShow;
 
@@ -45,4 +46,7 @@ public interface APIService {
 
     @GET("data/get/junxun")
     Observable<MilitaryShow> getMilitaryShow();
+
+    @GET("data/get/byindex")
+    Observable<MienStu> getMienStu(@Query("index")String index, @Query("pagenum")String pageNum, @Query("pagesize")String pageSize);
 }

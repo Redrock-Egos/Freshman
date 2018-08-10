@@ -1,10 +1,8 @@
-package com.mredrock.cyxbs.freshman.presenter;
-
-import android.util.Log;
+package com.mredrock.cyxbs.freshman.mvp.presenter;
 
 import com.mredrock.cyxbs.freshman.bean.Description;
-import com.mredrock.cyxbs.freshman.contract.BaseContract;
-import com.mredrock.cyxbs.freshman.contract.MilitaryTipsContract;
+import com.mredrock.cyxbs.freshman.mvp.contract.BaseContract;
+import com.mredrock.cyxbs.freshman.mvp.contract.MilitaryTipsContract;
 import com.mredrock.cyxbs.freshman.utils.ToastUtils;
 
 public class MilitaryTipsPresenter extends BasePresenter<MilitaryTipsContract.IMilitaryTipsView> {

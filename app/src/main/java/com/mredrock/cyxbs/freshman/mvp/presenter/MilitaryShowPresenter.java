@@ -1,12 +1,11 @@
-package com.mredrock.cyxbs.freshman.presenter;
+package com.mredrock.cyxbs.freshman.mvp.presenter;
 
 import android.support.v7.widget.LinearLayoutManager;
-import android.widget.LinearLayout;
 
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.bean.MilitaryShow;
-import com.mredrock.cyxbs.freshman.contract.BaseContract;
-import com.mredrock.cyxbs.freshman.contract.MilitaryShowContract;
+import com.mredrock.cyxbs.freshman.mvp.contract.BaseContract;
+import com.mredrock.cyxbs.freshman.mvp.contract.MilitaryShowContract;
 import com.mredrock.cyxbs.freshman.ui.adapter.MilitaryPhotoAdapter;
 import com.mredrock.cyxbs.freshman.ui.adapter.MilitaryVideoAdapter;
 import com.mredrock.cyxbs.freshman.utils.ToastUtils;

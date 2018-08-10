@@ -1,8 +1,7 @@
-package com.mredrock.cyxbs.freshman.model;
+package com.mredrock.cyxbs.freshman.mvp.model;
 
 import com.mredrock.cyxbs.freshman.bean.Description;
-import com.mredrock.cyxbs.freshman.contract.BaseContract;
-import com.mredrock.cyxbs.freshman.contract.MilitaryTipsContract;
+import com.mredrock.cyxbs.freshman.mvp.contract.MilitaryTipsContract;
 import com.mredrock.cyxbs.freshman.utils.net.Const;
 import com.mredrock.cyxbs.freshman.utils.net.HttpLoader;
 

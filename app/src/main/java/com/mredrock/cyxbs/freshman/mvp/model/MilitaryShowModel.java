@@ -1,8 +1,7 @@
-package com.mredrock.cyxbs.freshman.model;
+package com.mredrock.cyxbs.freshman.mvp.model;
 
 import com.mredrock.cyxbs.freshman.bean.MilitaryShow;
-import com.mredrock.cyxbs.freshman.contract.BaseContract;
-import com.mredrock.cyxbs.freshman.contract.MilitaryShowContract;
+import com.mredrock.cyxbs.freshman.mvp.contract.MilitaryShowContract;
 import com.mredrock.cyxbs.freshman.utils.net.HttpLoader;
 
 public class MilitaryShowModel implements MilitaryShowContract.IMilitaryShowModel {

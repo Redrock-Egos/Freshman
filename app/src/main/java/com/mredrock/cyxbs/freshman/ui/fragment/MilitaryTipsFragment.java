@@ -9,11 +9,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.mredrock.cyxbs.freshman.R;
-import com.mredrock.cyxbs.freshman.contract.MilitaryTipsContract;
+import com.mredrock.cyxbs.freshman.mvp.contract.MilitaryTipsContract;
 import com.mredrock.cyxbs.freshman.model.AdmissionRequestModel;
-import com.mredrock.cyxbs.freshman.model.MilitaryTipsModel;
+import com.mredrock.cyxbs.freshman.mvp.model.MilitaryTipsModel;
 import com.mredrock.cyxbs.freshman.presenter.AdmissionRequestPresenter;
-import com.mredrock.cyxbs.freshman.presenter.MilitaryTipsPresenter;
+import com.mredrock.cyxbs.freshman.mvp.presenter.MilitaryTipsPresenter;
 
 public class MilitaryTipsFragment extends Fragment implements MilitaryTipsContract.IMilitaryTipsView {
     private View parent;

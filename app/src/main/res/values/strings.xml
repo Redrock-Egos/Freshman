@@ -15,7 +15,12 @@
     <string name="freshmen_admission_hint_b">2.右上角的【编辑】，通过勾选进行选择性删除（未标识可删除圆圈的则为报道必需）。</string>
     <string name="freshmen_admission_hint_c">3.点击左侧【空方框】勾选该项即为完成，再次单击即可恢复。</string>
     <string name="freshmen_admission_hint_d">4.右下角【加号】图样可自定义添加新待办。</string>
+
     <string name="freshman_junxunteji">军训特辑</string>
+    <string name="freshman_cqupt_mien">重邮风采</string>
+    <string name="freshman_mien_zuzhi">学生组织</string>
+    <string name="freshman_mine_huodong">大型活动</string>
 
     <string name="freshman_strategy_reveal">数据揭秘</string>
+
 </resources>

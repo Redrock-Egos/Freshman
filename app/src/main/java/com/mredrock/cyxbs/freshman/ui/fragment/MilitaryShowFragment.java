@@ -1,6 +1,5 @@
 package com.mredrock.cyxbs.freshman.ui.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,11 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mredrock.cyxbs.freshman.R;
-import com.mredrock.cyxbs.freshman.contract.MilitaryShowContract;
-import com.mredrock.cyxbs.freshman.model.MilitaryShowModel;
-import com.mredrock.cyxbs.freshman.model.MilitaryTipsModel;
-import com.mredrock.cyxbs.freshman.presenter.MilitaryShowPresenter;
-import com.mredrock.cyxbs.freshman.presenter.MilitaryTipsPresenter;
+import com.mredrock.cyxbs.freshman.mvp.contract.MilitaryShowContract;
+import com.mredrock.cyxbs.freshman.mvp.model.MilitaryShowModel;
+import com.mredrock.cyxbs.freshman.mvp.presenter.MilitaryShowPresenter;
 
 public class MilitaryShowFragment extends Fragment implements MilitaryShowContract.IMilitaryShowView{
     private View parent;

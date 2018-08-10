@@ -1,6 +1,5 @@
-package com.mredrock.cyxbs.freshman.contract;
+package com.mredrock.cyxbs.freshman.mvp.contract;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 
 import com.mredrock.cyxbs.freshman.bean.MilitaryShow;
