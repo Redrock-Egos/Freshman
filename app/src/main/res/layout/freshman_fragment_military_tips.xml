@@ -9,9 +9,9 @@
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="10dp"
             android:layout_marginRight="10dp"
-            app:backgroundColor="@color/bg_white"
+            app:backgroundColor="@color/freshman_bg_white"
             app:radius="5dp"
-            app:shadowColor="@color/shadow_black"
+            app:shadowColor="@color/freshmen_shadow_black"
             app:shadowRadius="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

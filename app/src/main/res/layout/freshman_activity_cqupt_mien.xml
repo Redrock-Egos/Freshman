@@ -37,7 +37,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/freshman_cqupt_mien"
-                    android:textColor="@color/title_white"
+                    android:textColor="@color/freshman_title_white"
                     android:textSize="18sp"
                     android:layout_centerInParent="true"
                     android:layout_centerVertical="true"

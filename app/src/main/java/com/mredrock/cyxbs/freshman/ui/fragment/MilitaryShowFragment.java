@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.mvp.contract.MilitaryShowContract;
 import com.mredrock.cyxbs.freshman.mvp.model.MilitaryShowModel;
@@ -15,9 +16,9 @@ import com.mredrock.cyxbs.freshman.mvp.presenter.MilitaryShowPresenter;
 
 public class MilitaryShowFragment extends Fragment implements MilitaryShowContract.IMilitaryShowView{
     private View parent;
-    private RecyclerView photo_rv;
     private RecyclerView video_rv;
     private MilitaryShowPresenter presenter;
+    private ConvenientBanner banner;
 
     @Nullable
     @Override
@@ -29,8 +30,8 @@ public class MilitaryShowFragment extends Fragment implements MilitaryShowContra
     }
 
     private void findById(){
-        photo_rv = parent.findViewById(R.id.freshman_military_photo_rv);
         video_rv = parent.findViewById(R.id.freshman_military_video_rv);
+        banner = parent.findViewById(R.id.freshman_military_banner);
     }
 
     private void initMvp(){
@@ -39,10 +40,9 @@ public class MilitaryShowFragment extends Fragment implements MilitaryShowContra
         presenter.start();
     }
 
-
     @Override
-    public RecyclerView getPhotoRV() {
-        return photo_rv;
+    public ConvenientBanner getBanner() {
+        return banner;
     }
 
     @Override

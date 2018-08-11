@@ -9,8 +9,6 @@ import android.widget.TextView;
 
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.bean.Description;
-import com.mredrock.cyxbs.freshman.contract.AdmissionRequestContract;
-import com.mredrock.cyxbs.freshman.presenter.AdmissionRequestPresenter;
 import com.mredrock.cyxbs.freshman.ui.activity.App;
 
 import java.util.Collections;
