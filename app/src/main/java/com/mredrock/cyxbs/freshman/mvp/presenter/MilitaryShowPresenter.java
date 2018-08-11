@@ -42,6 +42,7 @@ public class MilitaryShowPresenter extends BasePresenter<MilitaryShowContract.IM
                         -> new MilitaryBannerHolder(),bean.getPicture())
                         .setPointViewVisible(true)
                         .startTurning(1000)
+                        // TODO: 2018/8/11 拿到视觉图了再修改圆点
                         .setPageIndicator(new int[]{R.drawable.freshman_white_point,R.drawable.freshman_gray_point})
                         .setOnItemClickListener(position
                                 -> ToastUtils.show(position+""))
