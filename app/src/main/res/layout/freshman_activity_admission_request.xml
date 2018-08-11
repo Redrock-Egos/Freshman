@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/freshman_bg_tb"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.activity.AdmissionRequestActivity">
@@ -11,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@drawable/freshman_bg_tb"
+        android:fitsSystemWindows="true"
         app:contentInsetStart="0dp"
         >
 
@@ -78,6 +82,7 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/rl_admission_add"
         app:layout_constraintTop_toBottomOf="@+id/tb_admission"
+        android:background="@color/freshman_bg_white"
         app:layout_constraintVertical_bias="0.0">
 
     </android.support.v7.widget.RecyclerView>

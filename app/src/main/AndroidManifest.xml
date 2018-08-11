@@ -16,16 +16,18 @@
 
         </activity>
         <activity android:name=".ui.activity.AdmissionRequestActivity">
-        </activity>
-        <activity android:name=".ui.activity.strategy.RevealActivity">
-
-        </activity>
-        <activity android:name=".ui.activity.MilitaryTrainingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.activity.strategy.RevealActivity">
+
+        </activity>
+        <activity android:name=".ui.activity.MilitaryTrainingActivity">
+
         </activity>
     </application>
 

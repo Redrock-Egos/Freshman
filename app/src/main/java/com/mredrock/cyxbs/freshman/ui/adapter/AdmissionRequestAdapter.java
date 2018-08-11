@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.bean.Description;
+import com.mredrock.cyxbs.freshman.mvp.contract.AdmissionRequestContract;
 import com.mredrock.cyxbs.freshman.ui.activity.App;
 
 import java.util.Collections;
@@ -69,8 +70,15 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
         }
     }
 
+    public Description getDatas(){
+        Description temp = new Description();
+        temp.setIndex("入学必备");
+        temp.setDescribe(mDataList);
+        return temp;
+    }
 
-    class AdmissionRequestViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+
+    public class AdmissionRequestViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private ImageView item;
         private ImageView more;
@@ -124,22 +132,12 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
             }
         }
 
-        private void toTop(int from, int to){
-            int itemInterval = from - to;
-            for (int i = 0; i < itemInterval; i++) {
-                Collections.swap(mDataList,from,from - 1);
-                notifyItemMoved(from,from - 1);
-                from = from - 1;
-            }
-        }
-
-        private void toBottom(int from, int to){
-            int itemInterval = to - from;
-            for (int i = 0; i < itemInterval; i++) {
-                Collections.swap(mDataList,from,from+1);
-                notifyItemMoved(from,from+1);
-                from = from + 1;
-            }
+        private void from2 (int from, int to){
+            Description.DescribeBean temp = mDataList.get(from);
+            mDataList.remove(from);
+            mDataList.add(to,temp);
+            notifyItemRemoved(from);
+            notifyItemInserted(to);
         }
 
         @Override
@@ -150,12 +148,12 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
                         item.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_check_pressed));
                         title.setTextColor(App.getContext().getResources().getColor(R.color.freshmen_finish_black));
                         mDataList.get(getLayoutPosition()).setCheck(true);
-                        toTop(getLayoutPosition(),0);
+                        from2(getLayoutPosition(),0);
                     } else {
                         item.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_check_normal));
                         title.setTextColor(App.getContext().getResources().getColor(R.color.freshmen_title_black));
                         mDataList.get(getLayoutPosition()).setCheck(false);
-                        toBottom(getLayoutPosition(),getItemCount() - 1);
+                        from2(getLayoutPosition(),getItemCount() - 1);
                     }
                     break;
                 case R.id.iv_admission_more:
