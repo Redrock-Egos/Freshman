@@ -13,17 +13,11 @@ import com.mredrock.cyxbs.freshman.utils.SPHelper;
 
 public class AdmissionRequestPresenter extends BasePresenter<AdmissionRequestContract.IAdmissionRequestView> {
     private AdmissionRequestContract.IAdmissionRequestModel mModel;
-    private AdmissionRequestAdapter mAdapter;
 
     public AdmissionRequestPresenter(AdmissionRequestContract.IAdmissionRequestModel mModel ){
         this.mModel = mModel;
 
     }
-
-    public void editRv(){
-        mAdapter.deleteDatas();
-    }
-
     public void addItem(String str){
         if (str.equals("")){
             getView().returnButton();
@@ -34,14 +28,8 @@ public class AdmissionRequestPresenter extends BasePresenter<AdmissionRequestCon
             temp.setCheck(false);
             temp.setContent("");
             temp.setProperty("用户自定义");
-            mAdapter.add(temp);
-            getView().returnButton();
-            getView().scrollToPos(mAdapter.getItemCount() - 1);
+            getView().addData(temp);
         }
-    }
-
-    public void changeMode(Boolean edit){
-        mAdapter.changeData(edit);
     }
 
     public void showDialog(Context context){
@@ -55,13 +43,7 @@ public class AdmissionRequestPresenter extends BasePresenter<AdmissionRequestCon
             @Override
             public void succeed(Object o) {
                 Description temp = (Description) o;
-                mAdapter = new AdmissionRequestAdapter(temp.getDescribe(), count -> {
-                    String total = App.getContext().getResources().getString(R.string.freshmen_admission_delete);
-                    if (count != 0)
-                        total = App.getContext().getResources().getString(R.string.freshmen_admission_delete)+"("+count+")";
-                    getView().setNum(total);
-                });
-                getView().setRv(mAdapter);
+                getView().setRv(temp);
             }
 
             @Override
@@ -73,7 +55,6 @@ public class AdmissionRequestPresenter extends BasePresenter<AdmissionRequestCon
 
     @Override
     public void detachView() {
-        SPHelper.putBean("admission","admission",mAdapter.getDatas());
         super.detachView();
     }
 }

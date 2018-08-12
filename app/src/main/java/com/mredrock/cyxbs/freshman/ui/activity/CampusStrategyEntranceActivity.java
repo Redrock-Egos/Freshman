@@ -4,10 +4,12 @@ package com.mredrock.cyxbs.freshman.ui.activity;
  只是简单的页面跳转Activity，没有使用mvp进行操作
  */
 
+import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -17,6 +19,7 @@ import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.ui.adapter.EntranceAdapter;
 import com.mredrock.cyxbs.freshman.utils.SPHelper;
 import com.mredrock.cyxbs.freshman.utils.ToastUtils;
+import com.mredrock.cyxbs.freshman.utils.net.Const;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +30,8 @@ public class CampusStrategyEntranceActivity extends AppCompatActivity implements
 
     private EntranceAdapter simpleAdapter;
     private RecyclerView mRv;
+
+    private String TAG = "CampusStrategyEntranceActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +48,9 @@ public class CampusStrategyEntranceActivity extends AppCompatActivity implements
         Data mData = SPHelper.getBean("entrance",Data.class);
         List<SimpleData> datas = new ArrayList<>();
         if (mData.getData() == null){
-            String[] names = {"学生食堂","学生寝室","周边美食","附近景点","校园环境","数据揭秘","附近银行","公交线路","快递收发"};
+            String[] names = {Const.INDEX_CANTEEN,Const.INDEX_DORMITORY,Const.INDEX_CATE,
+                    Const.INDEX_SCENIC,Const.INDEX_ENVIRONMENT,Const.INDEX_DATA,
+                    Const.INDEX_BANK,Const.INDEX_BUS,Const.INDEX_EXPRESS};
             int[] ids = {R.drawable.freshman_icon_detail,R.drawable.freshman_icon_detail,R.drawable.freshman_icon_detail,R.drawable.freshman_icon_detail
             ,R.drawable.freshman_icon_detail,R.drawable.freshman_icon_detail,R.drawable.freshman_icon_detail,R.drawable.freshman_icon_detail
                     ,R.drawable.freshman_icon_detail};

@@ -3,7 +3,7 @@ package com.mredrock.cyxbs.freshman.bean;
 import java.util.List;
 
 /*
-学校组织
+接口9
  */
 public class MienStu {
 

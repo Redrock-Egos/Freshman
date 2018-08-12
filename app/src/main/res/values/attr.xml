@@ -14,4 +14,12 @@
         <attr name="shadowColor" format="color" />
         <attr name="shadowRadius" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="CircleProcessView">
+        <attr name="circleNumber" format="integer"/>
+        <attr name="colors" format="reference"/>
+        <attr name="processes" format="reference" />
+        <attr name="animatorTime" format="integer"/>
+    </declare-styleable>
+    <!--colors和processes都通过arrays来加-->
 </resources>

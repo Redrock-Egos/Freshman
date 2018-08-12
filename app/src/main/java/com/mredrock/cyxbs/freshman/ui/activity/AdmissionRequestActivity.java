@@ -5,8 +5,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,12 +14,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+
 import com.mredrock.cyxbs.freshman.R;
 
+import com.mredrock.cyxbs.freshman.bean.Description;
 import com.mredrock.cyxbs.freshman.mvp.contract.AdmissionRequestContract;
 import com.mredrock.cyxbs.freshman.mvp.model.AdmissionRequestModel;
 import com.mredrock.cyxbs.freshman.mvp.presenter.AdmissionRequestPresenter;
 import com.mredrock.cyxbs.freshman.ui.adapter.AdmissionRequestAdapter;
+import com.mredrock.cyxbs.freshman.utils.SPHelper;
 import com.mredrock.cyxbs.freshman.utils.ScrollSpeedLinearLayoutManger;
 import com.mredrock.cyxbs.freshman.utils.StatusBarUtils;
 import com.mredrock.cyxbs.freshman.utils.ToastUtils;
@@ -29,6 +32,7 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
     private TextView edit;
     private EditText content;
     private RecyclerView mRv;
+    private AdmissionRequestAdapter mAdapter;
     private FloatingActionButton mFabtn;
     private RelativeLayout mRl;
     private AdmissionRequestPresenter mPresenter;
@@ -51,6 +55,7 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
         mRv = findViewById(R.id.rv_admission);
         mFabtn = findViewById(R.id.fabtn_admission_add);
 
+
         help.setOnClickListener(this);
         back.setOnClickListener(this);
         edit.setOnClickListener(this);
@@ -69,46 +74,37 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
     }
 
     @Override
-    protected void onDestroy() {
-        mPresenter.detachView();
-        super.onDestroy();
-    }
-
-    @Override
-    public Context getContext() {
-        return this;
-    }
-
-
-    @Override
     public void showError() {
         ToastUtils.show(getResources().getString(R.string.freshmen_error));
     }
 
     @Override
-    public void setRv(AdmissionRequestAdapter mAdapter) {
+    public void setRv(Description description) {
         ScrollSpeedLinearLayoutManger manger = new ScrollSpeedLinearLayoutManger(App.getContext());
         manger.setSpeedSlow();
+        mAdapter = new AdmissionRequestAdapter(description.getDescribe(), count -> {
+            String total = App.getContext().getResources().getString(R.string.freshmen_admission_delete);
+            if (count != 0)
+                total = App.getContext().getResources().getString(R.string.freshmen_admission_delete)+"("+count+")";
+            edit.setText(total);
+        });
         mRv.setLayoutManager(manger);
         mRv.setAdapter(mAdapter);
         mRv.getItemAnimator().setChangeDuration(200);
         mRv.getItemAnimator().setMoveDuration(800);
-
     }
 
     @Override
-    public void setNum(String info) {
-        edit.setText(info);
-    }
-
-    @Override
-    public void addData() {
+    public void prepareAddData() {
         mFabtn.setVisibility(View.GONE);
         mRl.setVisibility(View.VISIBLE);
-        content.setFocusable(true);
-        content.setFocusableInTouchMode(true);
-        content.requestFocus();
-        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+    }
+
+    @Override
+    public void addData(Description.DescribeBean temp) {
+        mAdapter.add(temp);
+        returnButton();
+        scrollToPos(mAdapter.getItemCount() - 1);
     }
 
     @Override
@@ -144,17 +140,28 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
                     edit.setText(getResources().getString(R.string.freshmen_admission_delete));
                 } else {
                     edit.setText(getResources().getString(R.string.freshmen_admission_edit));
-                    mPresenter.editRv();
+                    mAdapter.deleteDatas();
                 }
-                mPresenter.changeMode(isEdit);
+                mAdapter.changeData(isEdit);
                 break;
             case R.id.fabtn_admission_add:
-                addData();
+                prepareAddData();
                 break;
             case R.id.btn_admission_sure:
-                String count = content.getText().toString();
-                mPresenter.addItem(count);
+                mPresenter.addItem(content.getText().toString());
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        SPHelper.putBean("admission","admission",mAdapter.getDatas());
+        mPresenter.detachView();
+        super.onDestroy();
+    }
+
+    @Override
+    public Context getContext() {
+        return App.getContext();
     }
 }

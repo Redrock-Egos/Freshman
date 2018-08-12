@@ -13,9 +13,9 @@ public class AdmissionRequestContract {
 
     public interface IAdmissionRequestView extends BaseContract.ISomethingView{
         void showError();
-        void setRv(AdmissionRequestAdapter mAdapter);
-        void setNum(String info);
-        void addData();
+        void setRv(Description description);
+        void prepareAddData();
+        void addData(Description.DescribeBean temp);
         void returnButton();
         void scrollToPos(int pos);
     }

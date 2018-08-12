@@ -7,7 +7,7 @@
     <string name="freshmen_admission_edit">编辑</string>
     <string name="freshmen_admission_delete">删除</string>
     <string name="freshmen_admission_add">添加</string>
-    <string name="freshmen_admission_add_hint">请输入待办事项（不超过十四个字）</string>
+    <string name="freshmen_admission_add_hint">请输入待办事项(不超过14字)</string>
     <string name="freshmen_admission_none_description">暂无特定描述</string>
 
     <string name="freshmen_admission_hint_title">功能介绍</string>
@@ -28,5 +28,9 @@
 
     <string name="freshman_entrance_title">校园攻略</string>
     <string name="freshman_strategy_main_welcome">迎新</string>
+
+    <string name="freshman_campus_data_detail_title">数据揭秘</string>
+    <string name="freshman_campus_data_detail_sex">男女比例</string>
+    <string name="freshman_campus_data_detail_difficult">最难比例</string>
 
 </resources>

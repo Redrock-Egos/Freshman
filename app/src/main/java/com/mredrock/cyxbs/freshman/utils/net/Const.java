@@ -21,4 +21,5 @@ public class Const {
     public static final String INDEX_REQUIRED = "入学必备";
     public static final String INDEX_ORGANIZATION = "学生组织";
     public static final String INDEX_DORMITORY = "学生寝室";
+    public static final String INDEX_DATA = "数据揭秘";
 }
