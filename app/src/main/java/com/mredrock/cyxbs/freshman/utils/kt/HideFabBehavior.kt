@@ -14,7 +14,7 @@ class HideFabBehavior : FloatingActionButton.Behavior {
     constructor(c: Context, a: AttributeSet) : super(c, a)
     constructor() : super()
 
-    val listener = object :FloatingActionButton.OnVisibilityChangedListener(){
+    val listener = object : FloatingActionButton.OnVisibilityChangedListener() {
         override fun onHidden(fab: FloatingActionButton?) {
             super.onHidden(fab)
             fab?.visibility = View.INVISIBLE
@@ -24,9 +24,9 @@ class HideFabBehavior : FloatingActionButton.Behavior {
     override fun onStartNestedScroll(coordinatorLayout: CoordinatorLayout, child: FloatingActionButton, directTargetChild: View, target: View, axes: Int, type: Int) = isScrollVertical(axes)
 
     override fun onNestedScroll(coordinatorLayout: CoordinatorLayout, child: FloatingActionButton, target: View, dxConsumed: Int, dyConsumed: Int, dxUnconsumed: Int, dyUnconsumed: Int, type: Int) {
-        if (isSlipDown(dyConsumed,dyUnconsumed)) {
+        if (isSlipDown(dyConsumed, dyUnconsumed)) {
             child.show()
-        }else if (isSlipUp(dyConsumed,dyUnconsumed)) {
+        } else if (isSlipUp(dyConsumed, dyUnconsumed)) {
             // 这里不能用默认的hide函数，
             // 因为默认hide动画完成后会将visibility设为GONE，
             // 那样Behavior就不进行拦截了
