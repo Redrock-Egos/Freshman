@@ -39,13 +39,11 @@ public class MilitaryTipsFragment extends Fragment implements MilitaryTipsContra
         presenter.start();
     }
 
-    @Override
-    public TextView getNameTv() {
-        return name;
-    }
+
 
     @Override
-    public TextView getContentTv() {
-        return content;
+    public void setData(String name, String content) {
+        this.name.setText(name);
+        this.content.setText(content);
     }
 }

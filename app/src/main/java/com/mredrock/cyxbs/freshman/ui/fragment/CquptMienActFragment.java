@@ -3,15 +3,18 @@ package com.mredrock.cyxbs.freshman.ui.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.mredrock.cyxbs.freshman.R;
+import com.mredrock.cyxbs.freshman.bean.MienStu;
 import com.mredrock.cyxbs.freshman.mvp.contract.CquptMienBaseContract;
 import com.mredrock.cyxbs.freshman.mvp.model.CquptMienBaseModel;
 import com.mredrock.cyxbs.freshman.mvp.presenter.CquptMienActPresenter;
+import com.mredrock.cyxbs.freshman.ui.adapter.CquptMienActAdapter;
 
 /**
  * 重邮风采第二个页面 展示大型活动
@@ -36,8 +39,11 @@ public class CquptMienActFragment extends Fragment implements CquptMienBaseContr
         presenter.start();
     }
 
+
     @Override
-    public RecyclerView getRV() {
-        return recyclerView;
+    public void setData(MienStu bean) {
+        CquptMienActAdapter actAdapter = new CquptMienActAdapter(getView().getContext(),bean.getArray(),new int[]{R.layout.freshman_item_mien_act});
+        recyclerView.setAdapter(actAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getView().getContext()));
     }
 }

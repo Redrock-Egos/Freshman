@@ -38,20 +38,7 @@ public class MilitaryShowPresenter extends BasePresenter<MilitaryShowContract.IM
             public void succeed(Object o) {
                 MilitaryShow bean = (MilitaryShow) o;
                 // TODO: 2018/8/10 先模拟数据 之后测试
-
-                // TODO: 2018/8/11 轮播图
-                ViewPager viewPager = getView().getPhotoVP();
-                viewPager.setAdapter(new ViewPagerPhotoCardAdapter(getView().getContext(),bean.getPicture()));
-                viewPager.setOffscreenPageLimit(bean.getPicture().size());
-                viewPager.setPageMargin(MilitaryShowFragment.mscreenWidth/4);
-                viewPager.setPageTransformer(true,new CardTransformer());
-                viewPager.setCurrentItem(40000);
-
-                ViewPager viewPager1 = getView().getVideoVP();
-                viewPager1.setPageMargin(MilitaryShowFragment.mscreenWidth/3);
-                viewPager1.setAdapter(new ViewPagerVideoAdapter(getView().getContext(),bean.getVideo()));
-                viewPager1.setOffscreenPageLimit(bean.getVideo().size());
-                viewPager1.setPageTransformer(true,new CardTransformer());
+                getView().setData(bean);
             }
 
             @Override

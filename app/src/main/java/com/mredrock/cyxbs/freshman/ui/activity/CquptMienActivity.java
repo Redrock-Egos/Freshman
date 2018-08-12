@@ -53,11 +53,13 @@ public class CquptMienActivity extends AppCompatActivity implements View.OnClick
         open = findViewById(R.id.freshman_CyMien_open);
         close = findViewById(R.id.freshman_CyMien_close);
         btnToolbar = findViewById(R.id.freshman_CyMien_tl);
+        btnBack = findViewById(R.id.freshman_CyMien_iv_back);
         ognization.setOnClickListener(this);
         campaign.setOnClickListener(this);
         open.setOnClickListener(this);
         close.setOnClickListener(this);
         StatusBarUtils.setImage(this);
+        btnBack.setOnClickListener(this);
     }
 
     private void initVP(){
@@ -89,6 +91,9 @@ public class CquptMienActivity extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.freshman_CyMien_close:
                 closeTab();
+                break;
+            case R.id.freshman_CyMien_iv_back:
+                CquptMienActivity.this.finish();
                 break;
         }
     }

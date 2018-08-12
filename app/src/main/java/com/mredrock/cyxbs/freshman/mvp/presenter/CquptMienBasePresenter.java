@@ -28,7 +28,15 @@ public class CquptMienBasePresenter extends BasePresenter<CquptMienBaseContract.
             public void succeed(Object o) {
                 MienStu stu = (MienStu) o;
                 if(stu!=null){
-                    initFragment(stu);
+                    List<Fragment> fragments = new ArrayList<>();
+                    List<String> titles = new ArrayList<>();
+
+                    for (int i = 0; i < stu.getArray().size(); i++) {
+                        CquptMienStuFragment fragment = new CquptMienStuFragment(stu.getArray().get(i));
+                        fragments.add(fragment);
+                        titles.add(stu.getArray().get(i).getName());
+                    }
+                    getView().setData(fragments,titles);
                 }
             }
 
@@ -43,21 +51,6 @@ public class CquptMienBasePresenter extends BasePresenter<CquptMienBaseContract.
 
 
 
-    private void initFragment(MienStu stu){
-        List<Fragment> fragments = new ArrayList<>();
-        List<String> titles = new ArrayList<>();
-        ViewPager vp = getView().getViewPager();
-        TabLayout layout = getView().getTabLayout();
 
-        for (int i = 0; i < stu.getArray().size(); i++) {
-            CquptMienStuFragment fragment = new CquptMienStuFragment(stu.getArray().get(i));
-            fragments.add(fragment);
-            titles.add(stu.getArray().get(i).getName());
-        }
-        adapter = new MyFragmentPagerAdapter(getView().getIFragmentManager(),fragments,titles);
-        vp.setAdapter(adapter);
-        vp.setOffscreenPageLimit(vp.getChildCount());
-        layout.setupWithViewPager(vp);
-    }
 
 }

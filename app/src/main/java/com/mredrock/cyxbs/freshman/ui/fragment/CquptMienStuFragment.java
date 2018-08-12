@@ -15,7 +15,7 @@ import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.bean.MienStu;
 
 @SuppressLint("ValidFragment")
-public class CquptMienStuFragment extends Fragment {
+public class CquptMienStuFragment extends Fragment  {
 
     private MienStu.ArrayBean bean;
     private View parent;

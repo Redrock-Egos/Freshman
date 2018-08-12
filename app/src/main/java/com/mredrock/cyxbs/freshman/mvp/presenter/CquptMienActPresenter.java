@@ -25,7 +25,7 @@ public class CquptMienActPresenter extends BasePresenter<CquptMienBaseContract.I
                 public void succeed(Object o) {
                     MienStu stu = (MienStu) o;
                     if(stu!=null){
-                        initRecyclerView(stu);
+                        getView().setData(stu);
                     }
                 }
 
@@ -36,10 +36,4 @@ public class CquptMienActPresenter extends BasePresenter<CquptMienBaseContract.I
             });
     }
 
-    private void initRecyclerView(MienStu stu){
-        RecyclerView recyclerView = getView().getRV();
-        CquptMienActAdapter actAdapter = new CquptMienActAdapter(getView().getContext(),stu.getArray(),new int[]{R.layout.freshman_item_mien_act});
-        recyclerView.setAdapter(actAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getView().getContext()));
-    }
 }

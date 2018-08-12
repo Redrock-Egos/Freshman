@@ -71,6 +71,9 @@ public class MilitaryTrainingActivity extends AppCompatActivity implements View.
         toolbar = findViewById(R.id.tb_military);
         tabLayout.post(() -> TabLayoutUtil.setIndicator(tabLayout,40,40));
         StatusBarUtils.setImage(this);
+        btnBack.setOnClickListener(v -> {
+            MilitaryTrainingActivity.this.finish();
+        });
     }
 
     private void initView(){

@@ -14,10 +14,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mredrock.cyxbs.freshman.R;
+import com.mredrock.cyxbs.freshman.bean.MienStu;
 import com.mredrock.cyxbs.freshman.mvp.contract.CquptMienBaseContract;
 import com.mredrock.cyxbs.freshman.mvp.model.CquptMienBaseModel;
 import com.mredrock.cyxbs.freshman.mvp.presenter.CquptMienBasePresenter;
 import com.mredrock.cyxbs.freshman.ui.adapter.MyFragmentPagerAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 重邮风采第一个页面 嵌套viewpager展示学生组织
@@ -55,19 +59,11 @@ public class CquptMienBaseFragment extends Fragment implements CquptMienBaseCont
         presenter.start();
     }
 
-
     @Override
-    public TabLayout getTabLayout() {
-        return layout;
-    }
-
-    @Override
-    public ViewPager getViewPager() {
-        return pager;
-    }
-
-    @Override
-    public FragmentManager getIFragmentManager() {
-        return ((AppCompatActivity)context).getSupportFragmentManager();
+    public void setData(List<Fragment> list, List<String> titles) {
+        adapter = new MyFragmentPagerAdapter(((AppCompatActivity)context).getSupportFragmentManager(),list,titles);
+        pager.setAdapter(adapter);
+        pager.setOffscreenPageLimit(pager.getChildCount());
+        layout.setupWithViewPager(pager);
     }
 }

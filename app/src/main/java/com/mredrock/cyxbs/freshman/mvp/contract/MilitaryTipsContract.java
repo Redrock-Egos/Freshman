@@ -12,7 +12,6 @@ public class MilitaryTipsContract {
     }
 
     public interface IMilitaryTipsView extends BaseContract.ISomethingView{
-        TextView getNameTv();
-        TextView getContentTv();
+        void setData(String name,String content);
     }
 }

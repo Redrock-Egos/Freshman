@@ -17,10 +17,16 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 import com.mredrock.cyxbs.freshman.R;
+import com.mredrock.cyxbs.freshman.bean.MilitaryShow;
 import com.mredrock.cyxbs.freshman.mvp.contract.MilitaryShowContract;
 import com.mredrock.cyxbs.freshman.mvp.model.MilitaryShowModel;
 import com.mredrock.cyxbs.freshman.mvp.presenter.MilitaryShowPresenter;
+import com.mredrock.cyxbs.freshman.ui.adapter.ViewPagerPhotoCardAdapter;
+import com.mredrock.cyxbs.freshman.ui.adapter.ViewPagerVideoAdapter;
 import com.mredrock.cyxbs.freshman.ui.widget.JCardView;
+import com.mredrock.cyxbs.freshman.utils.banner.CardTransformer;
+
+import java.util.List;
 
 /**
  * 军训风采展示的fragment
@@ -46,7 +52,16 @@ public class MilitaryShowFragment extends Fragment implements MilitaryShowContra
     private void findById(){
         videoPager = parent.findViewById(R.id.freshman_military_show_video_vp);
         viewPager = parent.findViewById(R.id.freshman_military_show_photo_vp);
+        getWidth2use();
+    }
 
+    private void initMvp(){
+        presenter = new MilitaryShowPresenter(new MilitaryShowModel());
+        presenter.attachView(this);
+        presenter.start();
+    }
+
+    private void getWidth2use(){
         WindowManager wm = (WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics dm = new DisplayMetrics();
         if (wm != null) {
@@ -61,20 +76,18 @@ public class MilitaryShowFragment extends Fragment implements MilitaryShowContra
         videoVPwidth = layoutParams.width;
     }
 
-    private void initMvp(){
-        presenter = new MilitaryShowPresenter(new MilitaryShowModel());
-        presenter.attachView(this);
-        presenter.start();
-    }
-
     @Override
-    public ViewPager getVideoVP() {
-        return videoPager;
-    }
+    public void setData(MilitaryShow bean) {
+        videoPager.setPageMargin(MilitaryShowFragment.mscreenWidth/3);
+        videoPager.setAdapter(new ViewPagerVideoAdapter(getView().getContext(),bean.getVideo()));
+        videoPager.setOffscreenPageLimit(bean.getVideo().size());
+        videoPager.setPageTransformer(true,new CardTransformer());
 
-    @Override
-    public ViewPager getPhotoVP() {
-        return viewPager;
+        viewPager.setAdapter(new ViewPagerPhotoCardAdapter(getView().getContext(),bean.getPicture()));
+        viewPager.setOffscreenPageLimit(bean.getPicture().size());
+        viewPager.setPageMargin(MilitaryShowFragment.mscreenWidth/4);
+        viewPager.setPageTransformer(true,new CardTransformer());
+        viewPager.setCurrentItem(40000);
     }
 }
 
