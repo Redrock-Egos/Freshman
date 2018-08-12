@@ -4,8 +4,11 @@ import com.mredrock.cyxbs.freshman.bean.Description;
 import com.mredrock.cyxbs.freshman.mvp.contract.AdmissionRequestContract;
 import com.mredrock.cyxbs.freshman.utils.Level;
 import com.mredrock.cyxbs.freshman.utils.LogBuilder;
+import com.mredrock.cyxbs.freshman.utils.SPHelper;
 import com.mredrock.cyxbs.freshman.utils.net.Const;
 import com.mredrock.cyxbs.freshman.utils.net.HttpLoader;
+
+import java.util.List;
 
 public class AdmissionRequestModel implements AdmissionRequestContract.IAdmissionRequestModel {
 
@@ -14,11 +17,16 @@ public class AdmissionRequestModel implements AdmissionRequestContract.IAdmissio
     @Override
     public void loadData(LoadCallBack callBack) {
 //      先从缓存中读取，加入没有再从网络中获取
-        HttpLoader.<Description>get(
-                service -> service.getDescriptions(Const.INDEX_REQUIRED),
-                item -> setItem(item,callBack),
-                error -> error(error.toString(),callBack)
-        );
+        Description mDatas = SPHelper.getBean("admission","admission",Description.class);
+        if (mDatas == null){
+            HttpLoader.<Description>get(
+                    service -> service.getDescriptions(Const.INDEX_REQUIRED),
+                    item -> setItem(item,callBack),
+                    error -> error(error.toString(),callBack)
+            );
+        } else {
+            callBack.succeed(mDatas);
+        }
 
     }
 

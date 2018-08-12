@@ -22,8 +22,11 @@
     <string name="freshman_mine_huodong">大型活动</string>
 
     <string name="freshman_strategy_reveal">数据揭秘</string>
+    <string name="freshman_chatoline">线上交流</string>
     <string name="freshman_military_photo">军训图片</string>
     <string name="freshman_military_video">军训视频</string>
-    <string name="freshman_chatoline">线上交流</string>
+
+    <string name="freshman_entrance_title">校园攻略</string>
+    <string name="freshman_strategy_main_welcome">迎新</string>
 
 </resources>

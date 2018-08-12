@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/freshmen_admission_hint_title"
-            android:textColor="@color/freshmen_hint_black"
+            android:textColor="@color/freshmen_title_black"
             android:textSize="16sp" />
 
         <TextView

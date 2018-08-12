@@ -1,141 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/freshman_bg_tb"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.activity.AdmissionRequestActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/tb_admission"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@drawable/freshman_bg_tb"
-        app:contentInsetStart="0dp"
-        >
-
-        <RelativeLayout
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tb_admission"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/freshman_bg_tb"
+            app:contentInsetStart="0dp">
 
-            <ImageView
-                android:id="@+id/iv_admission_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="15dp"
-                android:src="@drawable/freshman_icon_back"
-                android:layout_marginStart="15dp"
-                tools:ignore="ContentDescription" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tv_admission_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/freshmen_admission_title"
-                android:textColor="@color/freshman_title_white"
-                android:textSize="18sp"
-                android:layout_centerInParent="true"
-                android:layout_centerVertical="true"
-                />
+                <ImageView
+                    android:id="@+id/iv_admission_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
+                    android:src="@drawable/freshman_icon_back"
+                    tools:ignore="ContentDescription" />
 
-            <TextView
-                android:id="@+id/tv_admission_edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/freshmen_admission_edit"
-                android:textSize="18sp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="15dp"
-                android:textColor="@color/freshman_title_white"
-                android:layout_marginEnd="15dp"
-                android:layout_alignParentEnd="true"
-                tools:ignore="RelativeOverlap" />
+                <TextView
+                    android:id="@+id/tv_admission_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/freshmen_admission_title"
+                    android:textColor="@color/freshman_title_white"
+                    android:textSize="18sp" />
 
-            <ImageView
-                android:id="@+id/iv_admission_help"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/freshman_icon_detail"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/tv_admission_title"
-                android:layout_marginLeft="12dp"
-                tools:ignore="ContentDescription" />
+                <TextView
+                    android:id="@+id/tv_admission_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
+                    android:text="@string/freshmen_admission_edit"
+                    android:textColor="@color/freshman_title_white"
+                    android:textSize="18sp"
+                    tools:ignore="RelativeOverlap" />
 
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/iv_admission_help"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="12dp"
+                    android:layout_toRightOf="@id/tv_admission_title"
+                    android:src="@drawable/freshman_icon_detail"
+                    tools:ignore="ContentDescription" />
 
+            </RelativeLayout>
 
+        </android.support.v7.widget.Toolbar>
 
-
-
-    </android.support.v7.widget.Toolbar>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_admission"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/rl_admission_add"
-        app:layout_constraintTop_toBottomOf="@+id/tb_admission"
-        app:layout_constraintVertical_bias="0.0">
-
-    </android.support.v7.widget.RecyclerView>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabtn_admission_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:src="@drawable/freshman_icon_add"
-        app:rippleColor="@color/freshman_btn_blue"
-        app:backgroundTint="@color/freshman_btn_blue"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tb_admission">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_admission"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/freshman_bg_phone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tb_admission"
+            app:layout_constraintVertical_bias="0.0">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabtn_admission_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/freshman_icon_add"
+            app:backgroundTint="@color/freshman_btn_blue"
+            app:layout_anchor="@+id/rv_admission"
+            app:layout_anchorGravity="right|bottom"
+            app:layout_behavior="com.mredrock.cyxbs.freshman.utils.kt.HideFabBehavior"
+            app:rippleColor="@color/freshman_btn_blue" />
+
+    </android.support.design.widget.CoordinatorLayout>
 
     <RelativeLayout
-        android:id="@+id/rl_admission_add"
+    android:id="@+id/rl_admission_add"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/freshman_bg_hint"
+    app:layout_constraintBottom_toBottomOf="parent">
+
+    <EditText
+        android:id="@+id/et_admission_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/freshman_bg_hint"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@id/btn_admission_sure"
+        android:background="@drawable/freshman_shape_edit_border"
+        android:hint="@string/freshmen_admission_add_hint"
+        android:inputType="text"
+        android:maxLength="14"
+        android:textColorHint="@color/freshmen_hint_black"
+        android:textSize="14sp"
+        tools:ignore="LabelFor" />
 
-        <EditText
-            android:id="@+id/et_admission_add"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_toLeftOf="@id/btn_admission_sure"
-            android:background="@drawable/freshman_shape_edit_border"
-            android:inputType="text"
-            android:hint="@string/freshmen_admission_add_hint"
-            android:textColorHint="@color/freshmen_hint_black"
-            android:textSize="14sp"
-            android:maxLength="14"
-            tools:ignore="LabelFor" />
+    <Button
+        android:id="@+id/btn_admission_sure"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="65dp"
+        android:layout_height="36dp"
+        android:layout_alignBottom="@id/et_admission_add"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/et_admission_add"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/freshman_shape_btn_blue"
+        android:paddingLeft="17dp"
+        android:paddingRight="17dp"
+        android:text="@string/freshmen_admission_add"
+        android:textColor="@color/freshman_title_white"
+        android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/btn_admission_sure"
-            android:layout_width="65dp"
-            android:layout_height="36dp"
-            android:text="@string/freshmen_admission_add"
-            android:textSize="14sp"
-            android:textColor="@color/freshman_title_white"
-            android:paddingLeft="17dp"
-            android:paddingRight="17dp"
-            android:background="@drawable/freshman_shape_btn_blue"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="15dp"
-            android:layout_alignTop="@id/et_admission_add"
-            android:layout_alignBottom="@id/et_admission_add"
-            style="?android:attr/borderlessButtonStyle"
-            />
-
-    </RelativeLayout>
-
+</RelativeLayout>
 </android.support.constraint.ConstraintLayout>
