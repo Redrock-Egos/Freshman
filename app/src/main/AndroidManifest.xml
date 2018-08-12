@@ -16,6 +16,7 @@
 
         </activity>
         <activity android:name=".ui.activity.AdmissionRequestActivity">
+
         </activity>
         <activity android:name=".ui.activity.strategy.RevealActivity">
 
@@ -26,6 +27,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ui.activity.ChatOnlineActivity">
+
         </activity>
     </application>
 

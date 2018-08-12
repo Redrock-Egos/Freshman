@@ -50,5 +50,7 @@ dependencies {
     implementation "com.android.support:cardview-v7:$support_version"
     implementation "com.android.support:recyclerview-v7:$support_version"
     implementation "com.android.support:design:$support_version"
-    implementation 'com.bigkoo:convenientbanner:2.0.5'
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
+
 }

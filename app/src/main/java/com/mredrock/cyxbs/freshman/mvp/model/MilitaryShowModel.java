@@ -18,9 +18,13 @@ public class MilitaryShowModel implements MilitaryShowContract.IMilitaryShowMode
 
     @Override
     public void setItem(MilitaryShow bean, LoadCallBack callBack) {
-        for (int i = 0; i < 10; i++) {
-            bean.getPicture().add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1533900124472&di=be1abc11c6d2ed8b9d6a640b7cb7053f&imgtype=0&src=http%3A%2F%2Fi1.hdslb.com%2Fbfs%2Fface%2Fdea862adbff072552df1f3158125c7d9abc12392.jpg");
-            bean.getVideo().add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1533900124472&di=be1abc11c6d2ed8b9d6a640b7cb7053f&imgtype=0&src=http%3A%2F%2Fi1.hdslb.com%2Fbfs%2Fface%2Fdea862adbff072552df1f3158125c7d9abc12392.jpg");
+        bean.getPicture().clear();
+        bean.getVideo().clear();
+        for (int i = 0; i < 5; i++) {
+            bean.getPicture().add("https://b-ssl.duitang.com/uploads/item/201610/11/20161011152901_jCcUP.thumb.700_0.jpeg");
+            bean.getPicture().add("https://b-ssl.duitang.com/uploads/item/201610/31/20161031081728_SiaNT.thumb.700_0.jpeg");
+            bean.getVideo().add("https://b-ssl.duitang.com/uploads/item/201610/11/20161011152901_jCcUP.thumb.700_0.jpeg");
+            bean.getVideo().add("https://b-ssl.duitang.com/uploads/item/201610/31/20161031081728_SiaNT.thumb.700_0.jpeg");
         }
         callBack.succeed(bean);
     }

@@ -1,24 +1,38 @@
 package com.mredrock.cyxbs.freshman.ui.fragment;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.LinearLayout;
 
-import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.mvp.contract.MilitaryShowContract;
 import com.mredrock.cyxbs.freshman.mvp.model.MilitaryShowModel;
 import com.mredrock.cyxbs.freshman.mvp.presenter.MilitaryShowPresenter;
+import com.mredrock.cyxbs.freshman.ui.widget.JCardView;
 
+/**
+ * 军训风采展示的fragment
+ */
 public class MilitaryShowFragment extends Fragment implements MilitaryShowContract.IMilitaryShowView{
     private View parent;
-    private RecyclerView video_rv;
+
     private MilitaryShowPresenter presenter;
-    private ConvenientBanner banner;
+    private ViewPager viewPager;
+    private ViewPager videoPager;
+    public static int mscreenWidth;
+    public static int videoVPwidth;
 
     @Nullable
     @Override
@@ -30,8 +44,21 @@ public class MilitaryShowFragment extends Fragment implements MilitaryShowContra
     }
 
     private void findById(){
-        video_rv = parent.findViewById(R.id.freshman_military_video_rv);
-        banner = parent.findViewById(R.id.freshman_military_banner);
+        videoPager = parent.findViewById(R.id.freshman_military_show_video_vp);
+        viewPager = parent.findViewById(R.id.freshman_military_show_photo_vp);
+
+        WindowManager wm = (WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics dm = new DisplayMetrics();
+        if (wm != null) {
+            wm.getDefaultDisplay().getMetrics(dm);
+        }
+        int width = dm.widthPixels;
+        float density = dm.density;
+        int screenWidth = (int) (width / density);//获取屏幕宽度
+        mscreenWidth = screenWidth;
+
+        ViewGroup.LayoutParams layoutParams = videoPager.getLayoutParams();
+        videoVPwidth = layoutParams.width;
     }
 
     private void initMvp(){
@@ -41,12 +68,13 @@ public class MilitaryShowFragment extends Fragment implements MilitaryShowContra
     }
 
     @Override
-    public ConvenientBanner getBanner() {
-        return banner;
+    public ViewPager getVideoVP() {
+        return videoPager;
     }
 
     @Override
-    public RecyclerView getVideoRV() {
-        return video_rv;
+    public ViewPager getPhotoVP() {
+        return viewPager;
     }
 }
+

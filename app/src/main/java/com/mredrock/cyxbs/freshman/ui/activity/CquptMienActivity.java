@@ -16,6 +16,7 @@ import com.mredrock.cyxbs.freshman.ui.adapter.CustomVIewPager;
 import com.mredrock.cyxbs.freshman.ui.adapter.MyFragmentPagerAdapter;
 import com.mredrock.cyxbs.freshman.ui.fragment.CquptMienActFragment;
 import com.mredrock.cyxbs.freshman.ui.fragment.CquptMienBaseFragment;
+import com.mredrock.cyxbs.freshman.utils.StatusBarUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +57,7 @@ public class CquptMienActivity extends AppCompatActivity implements View.OnClick
         campaign.setOnClickListener(this);
         open.setOnClickListener(this);
         close.setOnClickListener(this);
+        StatusBarUtils.setImage(this);
     }
 
     private void initVP(){
