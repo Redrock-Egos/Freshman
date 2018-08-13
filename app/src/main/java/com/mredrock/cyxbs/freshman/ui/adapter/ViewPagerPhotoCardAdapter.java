@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.mredrock.cyxbs.freshman.R;
+import com.mredrock.cyxbs.freshman.bean.MilitaryShow;
 import com.mredrock.cyxbs.freshman.ui.activity.PhotoViewerActivity;
 import com.mredrock.cyxbs.freshman.ui.activity.PhotoViewerActivityKt;
 
@@ -18,11 +19,13 @@ import java.util.List;
 
 public class ViewPagerPhotoCardAdapter extends PagerAdapter {
     private Context context;
-    private List<String> datas;
+    private List<MilitaryShow.PictureBean> datas;
+    private List<String> photos;
 
-    public ViewPagerPhotoCardAdapter(Context context, List<String> datas) {
+    public ViewPagerPhotoCardAdapter(Context context, List<MilitaryShow.PictureBean> datas,List<String> photos) {
         this.context = context;
         this.datas = datas;
+        this.photos = photos;
     }
 
     @Override
@@ -43,9 +46,10 @@ public class ViewPagerPhotoCardAdapter extends PagerAdapter {
         }
         View view = LayoutInflater.from(context).inflate(R.layout.freshman_item_military_photo,null);
         TextView tv = view.findViewById(R.id.freshman_military_card_number);
-        tv.setText("任务"+ (position + 1));
         RoundedImageView imageView = view.findViewById(R.id.freshman_military_card_photo);
-        Glide.with(context).load(datas.get(position)).into(imageView);
+
+        tv.setText(datas.get(position).getName());
+        Glide.with(context).load(datas.get(position).getUrl()).into(imageView);
         ViewParent parent = view.getParent();
         if(parent!=null){
             ViewGroup viewGroup = (ViewGroup) parent;
@@ -61,8 +65,9 @@ public class ViewPagerPhotoCardAdapter extends PagerAdapter {
         });
 
         int finalPosition = position;
+
         imageView.setOnClickListener(v -> {
-            PhotoViewerActivityKt.start(context,datas, finalPosition);
+            PhotoViewerActivityKt.start(context,photos, finalPosition);
         });
         container.addView(view);
 

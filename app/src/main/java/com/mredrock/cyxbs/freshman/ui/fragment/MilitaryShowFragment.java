@@ -20,6 +20,9 @@ import com.mredrock.cyxbs.freshman.ui.adapter.ViewPagerPhotoCardAdapter;
 import com.mredrock.cyxbs.freshman.ui.adapter.ViewPagerVideoAdapter;
 import com.mredrock.cyxbs.freshman.utils.banner.CardTransformer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 军训风采展示的fragment
  */
@@ -31,6 +34,7 @@ public class MilitaryShowFragment extends Fragment implements MilitaryShowContra
     private ViewPager videoPager;
     public static int mscreenWidth;
     public static int videoVPwidth;
+    public List<String> photos;
 
     @Nullable
     @Override
@@ -70,16 +74,23 @@ public class MilitaryShowFragment extends Fragment implements MilitaryShowContra
 
     @Override
     public void setData(MilitaryShow bean) {
-        videoPager.setPageMargin(MilitaryShowFragment.mscreenWidth/3);
+        photos = new ArrayList<>();
+        for (MilitaryShow.PictureBean bean1:bean.getPicture()) {
+            photos.add(bean1.getUrl());
+        }
+
+        videoPager.setPageMargin((int) (MilitaryShowFragment.mscreenWidth/2.5));
         videoPager.setAdapter(new ViewPagerVideoAdapter(getView().getContext(),bean.getVideo()));
         videoPager.setOffscreenPageLimit(bean.getVideo().size());
         videoPager.setPageTransformer(true,new CardTransformer());
 
-        viewPager.setAdapter(new ViewPagerPhotoCardAdapter(getView().getContext(),bean.getPicture()));
+        viewPager.setAdapter(new ViewPagerPhotoCardAdapter(getView().getContext(),bean.getPicture(),photos));
         viewPager.setOffscreenPageLimit(bean.getPicture().size());
         viewPager.setPageMargin(MilitaryShowFragment.mscreenWidth/4);
         viewPager.setPageTransformer(true,new CardTransformer());
         viewPager.setCurrentItem(40000);
+
+
     }
 }
 

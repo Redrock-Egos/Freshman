@@ -2,8 +2,10 @@ package com.mredrock.cyxbs.freshman.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Point;
 import android.os.Build;
+import android.support.v7.widget.Toolbar;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
@@ -11,6 +13,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+
+import com.mredrock.cyxbs.freshman.R;
 
 /**
  * Created by Hosigus on 2018/7/20.
@@ -72,5 +76,33 @@ public class DensityUtils {
             screenWidth = size.x;
         }
         return screenWidth;
+    }
+
+    private static int getStatusBarHeight(Context context){
+        int result = 0;
+        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = context.getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
+
+    /**
+     * 仅api大于等于19才能用
+     * @param toolbar
+     * @param context
+     */
+    public static void setTransparent(Toolbar toolbar,Context context){
+       if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.KITKAT){
+           TypedArray array = context.obtainStyledAttributes(new int[]{R.attr.actionBarSize});
+           //获取状态栏高度 并加上actionbarSize的高度
+           float height = array.getDimension(0,0) + DensityUtils.getStatusBarHeight(context);
+           array.recycle();
+           ViewGroup.LayoutParams layoutParams = toolbar.getLayoutParams();
+           layoutParams.height = (int) height;
+           toolbar.setLayoutParams(layoutParams);
+           //文字paddingTop为状态栏高度
+           toolbar.setPadding(0,DensityUtils.getStatusBarHeight(context),0,0);
+       }
     }
 }

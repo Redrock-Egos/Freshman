@@ -5,10 +5,10 @@ import com.mredrock.cyxbs.freshman.mvp.contract.BaseContract;
 import com.mredrock.cyxbs.freshman.mvp.contract.ChatOnlineContract;
 
 
-public class ChatOnlinePresneter extends BasePresenter<ChatOnlineContract.IChatOnlineView> {
+public class ChatOnlinePresenter extends BasePresenter<ChatOnlineContract.IChatOnlineView> {
     private ChatOnlineContract.IChatOnlineModel model;
 
-    public ChatOnlinePresneter(ChatOnlineContract.IChatOnlineModel model) {
+    public ChatOnlinePresenter(ChatOnlineContract.IChatOnlineModel model) {
         this.model = model;
     }
 

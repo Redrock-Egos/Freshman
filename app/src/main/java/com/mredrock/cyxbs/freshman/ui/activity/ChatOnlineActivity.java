@@ -1,10 +1,13 @@
 package com.mredrock.cyxbs.freshman.ui.activity;
 
+import android.content.res.TypedArray;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.ViewGroup;
 
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.ui.adapter.MyFragmentPagerAdapter;
@@ -25,6 +28,7 @@ public class ChatOnlineActivity extends AppCompatActivity {
     private List<Fragment>  fragments;
     private List<String> titles;
     private MyFragmentPagerAdapter adapter;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,7 @@ public class ChatOnlineActivity extends AppCompatActivity {
     private void find(){
         viewPager = findViewById(R.id.freshman_chatOnline_vp);
         tabLayout = findViewById(R.id.freshman_chatOnline_tl);
+        toolbar = findViewById(R.id.tb_chatOnline);
     }
 
     private void initVP(){
@@ -52,6 +57,8 @@ public class ChatOnlineActivity extends AppCompatActivity {
         viewPager.setOffscreenPageLimit(viewPager.getChildCount());
         tabLayout.setupWithViewPager(viewPager);
         TabLayoutUtil.setIndicator(tabLayout,40,40);
+        DensityUtils.setTransparent(toolbar,this);
+
     }
 
 

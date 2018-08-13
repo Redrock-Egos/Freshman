@@ -26,10 +26,6 @@
         <activity android:name=".ui.activity.ChatOnlineActivity" />
         <activity android:name=".ui.activity.campus.CampusStrategyEntranceActivity" />
         <activity android:name=".ui.activity.campus.CampusDataDetailActivity" />
-<<<<<<< HEAD
         <activity android:name=".ui.activity.PhotoViewerActivity" />
-=======
-        <activity android:name=".ui.activity.PhotoViewerActivity"/>
->>>>>>> ad3821929beb031715512689de48367e009db116
     </application>
 </manifest>
