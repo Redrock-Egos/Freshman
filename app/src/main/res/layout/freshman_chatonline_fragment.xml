@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <EditText
+        android:id="@+id/freshman_chatonline_et"
+        android:drawableLeft="@drawable/freshman_icon_detail"
+        android:drawablePadding="10dp"
+        android:lines="1"
+        android:inputType="text"
+        android:background="@drawable/freshman_chatonline_shape"
+        android:hint="@string/freshman_input_school_name"
+        android:textSize="14sp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:drawableStart="@drawable/freshman_icon_detail" />
+
+    <ListView
+        android:id="@+id/freshman_chatonline_lv"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+</LinearLayout>

@@ -22,4 +22,11 @@
         <attr name="animatorTime" format="integer"/>
     </declare-styleable>
     <!--colors和processes都通过arrays来加-->
+    
+    <declare-styleable name="RectProcessView">
+        <attr name="number" format="integer"/>
+        <attr name="processColor" format="reference"/>
+        <attr name="processNumber" format="reference"/>
+        <attr name="time" format="integer"/>
+    </declare-styleable>
 </resources>

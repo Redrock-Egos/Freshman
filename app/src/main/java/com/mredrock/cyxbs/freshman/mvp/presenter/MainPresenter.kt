@@ -11,6 +11,7 @@ import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.mvp.contract.MainContract.*
 import com.mredrock.cyxbs.freshman.mvp.model.MainModel
 import com.mredrock.cyxbs.freshman.ui.activity.AdmissionRequestActivity
+import com.mredrock.cyxbs.freshman.ui.activity.ChatOnlineActivity
 import com.mredrock.cyxbs.freshman.ui.activity.CquptMienActivity
 import com.mredrock.cyxbs.freshman.ui.activity.MilitaryTrainingActivity
 import com.mredrock.cyxbs.freshman.utils.kt.BasePresenter
@@ -131,7 +132,7 @@ class MainPresenter : BasePresenter<IMainView, IMainModel>(), IMainPresenter {
         it.startActivity(Intent(it, when (pos) {
             1 -> AdmissionRequestActivity::class
             2 -> AdmissionRequestActivity::class
-            3 -> AdmissionRequestActivity::class
+            3 -> ChatOnlineActivity::class
             4 -> AdmissionRequestActivity::class
             5 -> AdmissionRequestActivity::class
             6 -> CquptMienActivity::class

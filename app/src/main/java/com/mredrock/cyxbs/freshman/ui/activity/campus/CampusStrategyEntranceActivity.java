@@ -1,19 +1,17 @@
-package com.mredrock.cyxbs.freshman.ui.activity;
+package com.mredrock.cyxbs.freshman.ui.activity.campus;
 
 /*
  只是简单的页面跳转Activity，没有使用mvp进行操作
  */
 
-import android.graphics.Rect;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.SimpleAdapter;
+
 
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.ui.adapter.EntranceAdapter;
@@ -22,9 +20,7 @@ import com.mredrock.cyxbs.freshman.utils.ToastUtils;
 import com.mredrock.cyxbs.freshman.utils.net.Const;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class CampusStrategyEntranceActivity extends AppCompatActivity implements View.OnClickListener {
 

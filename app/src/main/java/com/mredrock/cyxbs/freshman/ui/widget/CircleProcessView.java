@@ -21,6 +21,7 @@ import com.mredrock.cyxbs.freshman.R;
 /*
  by Cynthia at 2018/8/12
  description : 环形进度条
+ todo 修正march_parent导致的绘制错误
  */
 public class CircleProcessView extends View {
 
@@ -32,8 +33,7 @@ public class CircleProcessView extends View {
     private String[] colors;
     private int time;
     private int num;
-    private float[] process = new float[4];
-    private float[] current = new float[4];
+    private float[] process;
     private RectF rectF = new RectF();
     private Rect mText = new Rect();
 
@@ -124,21 +124,20 @@ public class CircleProcessView extends View {
 
 
         for (int i = 0; i < num; i++) {
-            circlePaint.setColor(Color.parseColor(colors[i]));
-            circlePaint.setAlpha(120);
+            circlePaint.setColor(Color.parseColor("#ffffff"));
             canvas.drawCircle(x, y, centerLocation[i], circlePaint);
 
-            processPaint.setColor(Color.parseColor("#ffffff"));
-            processPaint.setAlpha(100);
+            processPaint.setColor(Color.parseColor(colors[i]));
+            processPaint.setAlpha(140);
 
-            rectF.set(x - centerLocation[i],x - centerLocation[i],x + centerLocation[i],x + centerLocation[i]);
+            rectF.set(x - centerLocation[i], x - centerLocation[i], x + centerLocation[i], x + centerLocation[i]);
 
             @SuppressLint("DefaultLocale")
             String mProcess = String.format("%.1f", process[i]);
             String text = mProcess + "%";
             textPaint.getTextBounds(text, 0, String.valueOf(text).length(), mText);
             textPaint.setColor(Color.parseColor(colors[i]));
-            canvas.drawArc(rectF, -90, current[i] * 360 / 100, false, processPaint);
+            canvas.drawArc(rectF, -90, process[i] * 360 / 100, false, processPaint);
             canvas.drawText(text, (float) x, (float) x - centerLocation[i] + dp2px(3), textPaint);
 
         }
@@ -148,17 +147,25 @@ public class CircleProcessView extends View {
         float useSize = width * 0.5f * 0.75f;
         float paddingSize = width * 0.5f * 0.25f;
         float everySize = useSize / num;
-        circlePaint.setStrokeWidth(everySize / 3 * 2);
-        processPaint.setStrokeWidth((everySize / 3 * 2) - dp2px(2));
+        float minSize = useSize / 4;
+        if (everySize > minSize) {
+            everySize = minSize;
+        }
+        circlePaint.setStrokeWidth(everySize / 3 * 2 - dp2px(2));
+        processPaint.setStrokeWidth(everySize / 3 * 2);
         centerLocation = new float[num];
         for (int i = 0; i < num; i++) {
-            centerLocation[i] = paddingSize + (i + 0.5f) * everySize;
+            if (num < 3)
+                centerLocation[i] = paddingSize + (i + 1.5f) * everySize;
+            else
+                centerLocation[i] = paddingSize + (i + 0.5f) * everySize;
         }
 
     }
 
     private void setAnim() {
         ValueAnimator animator;
+        process = new float[num];
         for (int i = 0; i < num; i++) {
             animator = ValueAnimator.ofFloat(0f, processes[i]);
             animator.setDuration(time * 1000);
@@ -166,7 +173,6 @@ public class CircleProcessView extends View {
             animator.setInterpolator(new LinearInterpolator());
             final int finalI = i;
             animator.addUpdateListener(animation -> {
-                current[finalI] = (float) animation.getAnimatedValue();
                 process[finalI] = (float) animation.getAnimatedValue();
                 invalidate();
             });

@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.ui.activity.App;
-import com.mredrock.cyxbs.freshman.ui.activity.CampusStrategyEntranceActivity;
+import com.mredrock.cyxbs.freshman.ui.activity.campus.CampusStrategyEntranceActivity;
 
 import java.util.List;
 

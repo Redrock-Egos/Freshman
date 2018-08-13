@@ -1,5 +1,6 @@
 package com.mredrock.cyxbs.freshman.utils.net;
 
+import com.mredrock.cyxbs.freshman.bean.ChatOnline;
 import com.mredrock.cyxbs.freshman.bean.Description;
 import com.mredrock.cyxbs.freshman.bean.Entity;
 import com.mredrock.cyxbs.freshman.bean.MienStu;
@@ -49,4 +50,7 @@ public interface APIService {
 
     @GET("data/get/byindex")
     Observable<MienStu> getMienStu(@Query("index")String index, @Query("pagenum")String pageNum, @Query("pagesize")String pageSize);
+
+    @GET("search/chatgroup/abstractly")
+    Observable<ChatOnline> getChatOnline(@Query("index")String index,@Query("key")String key);
 }

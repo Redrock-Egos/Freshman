@@ -1,13 +1,9 @@
-package com.mredrock.cyxbs.freshman.ui.activity;
+package com.mredrock.cyxbs.freshman.ui.activity.campus;
 
-import android.graphics.Rect;
+
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.widget.FrameLayout;
-
 
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.utils.StatusBarUtils;

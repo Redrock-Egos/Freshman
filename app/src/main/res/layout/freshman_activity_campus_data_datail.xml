@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/freshman_bg_tb"
     android:fitsSystemWindows="true"
-    tools:context=".ui.activity.CampusDataDetailActivity">
+    tools:context=".ui.activity.campus.CampusDataDetailActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/tb_data_detail"
