@@ -23,10 +23,10 @@ public class AdmissionRequestPresenter extends BasePresenter<AdmissionRequestCon
             getView().returnButton();
         } else {
             Description.DescribeBean temp = new Description.DescribeBean();
-            temp.setName(str);
-            temp.setDelete(false);
             temp.setCheck(false);
-            temp.setContent("");
+            temp.setDelete(false);
+            temp.setName(str);
+            temp.setContent("暂无对应描述");
             temp.setProperty("用户自定义");
             getView().addData(temp);
         }

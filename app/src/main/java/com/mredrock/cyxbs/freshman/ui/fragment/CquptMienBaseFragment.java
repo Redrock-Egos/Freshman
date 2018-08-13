@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -14,13 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mredrock.cyxbs.freshman.R;
-import com.mredrock.cyxbs.freshman.bean.MienStu;
 import com.mredrock.cyxbs.freshman.mvp.contract.CquptMienBaseContract;
 import com.mredrock.cyxbs.freshman.mvp.model.CquptMienBaseModel;
 import com.mredrock.cyxbs.freshman.mvp.presenter.CquptMienBasePresenter;
 import com.mredrock.cyxbs.freshman.ui.adapter.MyFragmentPagerAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

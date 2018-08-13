@@ -37,7 +37,7 @@ public class CquptMienStuFragment extends Fragment {
     private void init(){
         img = parent.findViewById(R.id.freshman_CyMien_detail_img);
         tv = parent.findViewById(R.id.freshman_CyMien_detail_desc);
-        Glide.with(getContext()).load(bean.getPicture().get(0)).into(img);
+        Glide.with(getContext()).load(bean.getPicture().get(0)).error(R.mipmap.ic_launcher).into(img);
         tv.setText(bean.getContent());
     }
 }

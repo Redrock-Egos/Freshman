@@ -9,7 +9,7 @@ public class MienStu {
 
     /**
      * index :
-     * array : [{"id":"","name":"","content":"","picture":["url1","url2","url3"]},{"id":"","name":"","content":"","picture":["url1","url2","url3"]}]
+     * array : [{"id":"","name":""," content":"","picture":["url1","url2","url3"]},{"id":"","name":"","content":"","picture":["url1","url2","url3"]}]
      */
 
     private String index;

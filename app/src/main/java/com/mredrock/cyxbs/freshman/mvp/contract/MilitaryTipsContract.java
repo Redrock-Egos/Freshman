@@ -1,7 +1,5 @@
 package com.mredrock.cyxbs.freshman.mvp.contract;
 
-import android.widget.TextView;
-
 import com.mredrock.cyxbs.freshman.bean.Description;
 
 public class MilitaryTipsContract {

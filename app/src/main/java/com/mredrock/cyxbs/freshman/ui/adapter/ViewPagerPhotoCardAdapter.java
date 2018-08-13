@@ -1,20 +1,18 @@
 package com.mredrock.cyxbs.freshman.ui.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import android.view.ViewTreeObserver;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.mredrock.cyxbs.freshman.R;
+import com.mredrock.cyxbs.freshman.ui.activity.PhotoViewerActivity;
+import com.mredrock.cyxbs.freshman.ui.activity.PhotoViewerActivityKt;
 
 import java.util.List;
 
@@ -62,6 +60,10 @@ public class ViewPagerPhotoCardAdapter extends PagerAdapter {
 
         });
 
+        int finalPosition = position;
+        imageView.setOnClickListener(v -> {
+            PhotoViewerActivityKt.start(context,datas, finalPosition);
+        });
         container.addView(view);
 
         return view;

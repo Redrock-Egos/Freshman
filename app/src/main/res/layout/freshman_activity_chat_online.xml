@@ -33,7 +33,7 @@
                 android:id="@+id/freshman_chatOnline_tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/freshman_chatoline"
+                android:text="@string/freshman_chat_online"
                 android:textColor="@color/freshman_title_white"
                 android:textSize="18sp"
                 android:layout_centerInParent="true"

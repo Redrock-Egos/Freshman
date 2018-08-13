@@ -20,6 +20,7 @@ public class MilitaryShowModel implements MilitaryShowContract.IMilitaryShowMode
     public void setItem(MilitaryShow bean, LoadCallBack callBack) {
         bean.getPicture().clear();
         bean.getVideo().clear();
+        // TODO: 2018/8/13 模拟数据 之后删掉 
         for (int i = 0; i < 5; i++) {
             bean.getPicture().add("https://b-ssl.duitang.com/uploads/item/201610/11/20161011152901_jCcUP.thumb.700_0.jpeg");
             bean.getPicture().add("https://b-ssl.duitang.com/uploads/item/201610/31/20161031081728_SiaNT.thumb.700_0.jpeg");

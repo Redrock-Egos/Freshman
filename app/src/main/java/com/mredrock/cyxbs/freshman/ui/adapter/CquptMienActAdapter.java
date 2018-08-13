@@ -33,7 +33,7 @@ public class CquptMienActAdapter<T> extends MultiLayoutBaseAdapter {
                 ImageView photo = holder.getView(R.id.freshman_CyMien_act_img);
                 TextView content = holder.getView(R.id.freshman_CyMien_act_tv);
                 // TODO: 2018/8/10 加入占位符
-                Glide.with(getContext()).load(beans.get(position).getPicture().get(0)).into(photo);
+                Glide.with(getContext()).load(beans.get(position).getPicture().get(0)).error(R.mipmap.ic_launcher).into(photo);
                 content.setText(beans.get(position).getContent());
                 break;
         }

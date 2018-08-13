@@ -1,21 +1,18 @@
 package com.mredrock.cyxbs.freshman.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.mredrock.cyxbs.freshman.R;
-import com.mredrock.cyxbs.freshman.bean.MilitaryShow;
-import com.mredrock.cyxbs.freshman.ui.fragment.MilitaryShowFragment;
 import com.mredrock.cyxbs.freshman.utils.ToastUtils;
 
 import java.util.List;
@@ -52,6 +49,12 @@ public class ViewPagerVideoAdapter extends PagerAdapter {
         });
         RoundedImageView imageView = view.findViewById(R.id.freshman_military_video_iv);
         Glide.with(context).load(datas.get(position)).into(imageView);
+        play.setOnClickListener(v -> {
+            Intent intent = new Intent();
+            intent.setAction("android.intent.action.VIEW");
+            // TODO: 2018/8/13 改接口信息 
+            context.startActivity(intent.setData(Uri.parse(datas.get(position))));
+        });
         container.addView(view);
         return view;
     }

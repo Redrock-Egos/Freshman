@@ -1,20 +1,15 @@
 package com.mredrock.cyxbs.freshman.ui.fragment;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
 
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.bean.MilitaryShow;
@@ -23,10 +18,7 @@ import com.mredrock.cyxbs.freshman.mvp.model.MilitaryShowModel;
 import com.mredrock.cyxbs.freshman.mvp.presenter.MilitaryShowPresenter;
 import com.mredrock.cyxbs.freshman.ui.adapter.ViewPagerPhotoCardAdapter;
 import com.mredrock.cyxbs.freshman.ui.adapter.ViewPagerVideoAdapter;
-import com.mredrock.cyxbs.freshman.ui.widget.JCardView;
 import com.mredrock.cyxbs.freshman.utils.banner.CardTransformer;
-
-import java.util.List;
 
 /**
  * 军训风采展示的fragment

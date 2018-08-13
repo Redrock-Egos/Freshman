@@ -35,7 +35,7 @@
                 android:id="@+id/freshman_military_tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/freshman_junxunteji"
+                android:text="@string/freshman_military_show"
                 android:textColor="@color/freshman_title_white"
                 android:textSize="18sp"
                 android:layout_centerInParent="true"

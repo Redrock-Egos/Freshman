@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v7.widget.CardView
+<com.mredrock.cyxbs.freshman.ui.widget.JCardView
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    app:cardCornerRadius="10dp"
+    app:radius="10dp"
+    app:hideTopShadow="true"
+    app:hideBottomShadow="true"
+    app:hideLeftShadow="true"
+    app:hideRightShadow="true"
     >
 
         <com.makeramen.roundedimageview.RoundedImageView
@@ -30,4 +34,4 @@
             android:textSize="14dp"
             />
 
-</android.support.v7.widget.CardView>
+</com.mredrock.cyxbs.freshman.ui.widget.JCardView>

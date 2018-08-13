@@ -10,4 +10,6 @@
         android:left="12dp"
         android:right="12dp"
         android:top="12dp"/>
+    <solid
+        android:color="@color/freshman_bg_white"/>
 </shape>
