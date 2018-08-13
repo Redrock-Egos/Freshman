@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.ui.adapter.EntranceAdapter;
 import com.mredrock.cyxbs.freshman.utils.SPHelper;
+import com.mredrock.cyxbs.freshman.utils.StatusBarUtils;
 import com.mredrock.cyxbs.freshman.utils.ToastUtils;
 import com.mredrock.cyxbs.freshman.utils.net.Const;
 
@@ -24,7 +25,6 @@ import java.util.List;
 
 public class CampusStrategyEntranceActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EntranceAdapter simpleAdapter;
     private RecyclerView mRv;
 
     private String TAG = "CampusStrategyEntranceActivity";
@@ -37,19 +37,21 @@ public class CampusStrategyEntranceActivity extends AppCompatActivity implements
         mRv = findViewById(R.id.rv_entrance);
 
         back.setOnClickListener(this);
+
+        StatusBarUtils.setImage(this);
         initData();
     }
 
     private void initData(){
         Data mData = SPHelper.getBean("entrance",Data.class);
         List<SimpleData> datas = new ArrayList<>();
-        if (mData.getData() == null){
+        if (mData == null){
             String[] names = {Const.INDEX_CANTEEN,Const.INDEX_DORMITORY,Const.INDEX_CATE,
                     Const.INDEX_SCENIC,Const.INDEX_ENVIRONMENT,Const.INDEX_DATA,
                     Const.INDEX_BANK,Const.INDEX_BUS,Const.INDEX_EXPRESS};
-            int[] ids = {R.drawable.freshman_icon_detail,R.drawable.freshman_icon_detail,R.drawable.freshman_icon_detail,R.drawable.freshman_icon_detail
-            ,R.drawable.freshman_icon_detail,R.drawable.freshman_icon_detail,R.drawable.freshman_icon_detail,R.drawable.freshman_icon_detail
-                    ,R.drawable.freshman_icon_detail};
+            int[] ids = {R.drawable.freshman_icon_canteen,R.drawable.freshman_icon_dormitory,R.drawable.freshman_icon_cate,
+                    R.drawable.freshman_icon_scenic,R.drawable.freshman_icon_environment,R.drawable.freshman_icon_data,
+                    R.drawable.freshman_icon_bank,R.drawable.freshman_icon_bus,R.drawable.freshman_icon_express};
             for (int i = 0; i < names.length; i++) {
                 SimpleData simpleData = new SimpleData();
                 simpleData.setName(names[i]);
@@ -62,8 +64,8 @@ public class CampusStrategyEntranceActivity extends AppCompatActivity implements
         } else {
             datas = mData.getData();
         }
-        simpleAdapter = new EntranceAdapter(datas, name -> {
-            ToastUtils.show("点击了"+name);
+        EntranceAdapter simpleAdapter = new EntranceAdapter(datas, name -> {
+            ToastUtils.show("点击了" + name);
             // TODO: 2018/8/11 页面跳转相关
         });
         GridLayoutManager manager = new GridLayoutManager(this,3);

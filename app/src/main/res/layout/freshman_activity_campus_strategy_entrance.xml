@@ -50,8 +50,7 @@
         android:background="@color/freshman_bg_phone"
         android:foregroundGravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tb_entrance"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/tb_entrance">
 
     </android.support.v7.widget.RecyclerView>
 </android.support.constraint.ConstraintLayout>

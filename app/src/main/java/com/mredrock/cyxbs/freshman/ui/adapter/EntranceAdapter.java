@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.ui.activity.App;
 import com.mredrock.cyxbs.freshman.ui.activity.campus.CampusStrategyEntranceActivity;
+import com.mredrock.cyxbs.freshman.utils.DensityUtils;
 
 import java.util.List;
 
@@ -31,6 +32,9 @@ public class EntranceAdapter extends RecyclerView.Adapter<EntranceAdapter.Entran
 
     @Override
     public void onBindViewHolder(EntranceViewHolder holder, int position) {
+        ViewGroup.LayoutParams p = holder.itemView.getLayoutParams();
+        p.height = DensityUtils.getScreenHeight(App.getContext())/5;
+        holder.itemView.setLayoutParams(p);
         holder.loadData(simpleDataList.get(position));
 
     }
@@ -41,14 +45,11 @@ public class EntranceAdapter extends RecyclerView.Adapter<EntranceAdapter.Entran
     }
 
     class EntranceViewHolder extends RecyclerView.ViewHolder{
-
-        private TextView name;
         private ImageView icon;
 
         EntranceViewHolder(View itemView) {
             super(itemView);
 
-            name = itemView.findViewById(R.id.tv_grid_entrance);
             icon = itemView.findViewById(R.id.iv_grid_entrance);
 
             icon.setOnClickListener(v ->
@@ -57,7 +58,6 @@ public class EntranceAdapter extends RecyclerView.Adapter<EntranceAdapter.Entran
         }
 
         private void loadData(CampusStrategyEntranceActivity.SimpleData data){
-            name.setText(data.getName());
             icon.setImageDrawable(App.getContext().getResources().getDrawable(data.getId()));
         }
     }
