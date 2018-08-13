@@ -12,10 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.CquptMienActivity"></activity>
-        <activity android:name=".ui.activity.AdmissionRequestActivity"></activity>
-        <activity android:name=".ui.activity.strategy.RevealActivity"></activity>
-        <activity android:name=".ui.activity.MilitaryTrainingActivity"></activity>
+        <activity android:name=".ui.activity.CquptMienActivity" />
+        <activity android:name=".ui.activity.AdmissionRequestActivity" />
+        <activity android:name=".ui.activity.strategy.RevealActivity" />
+        <activity android:name=".ui.activity.MilitaryTrainingActivity" />
         <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,9 +23,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.ChatOnlineActivity"></activity>
-        <activity android:name=".ui.activity.CampusStrategyEntranceActivity"></activity>
-        <activity android:name=".ui.activity.CampusDataDetailActivity"></activity>
+        <activity android:name=".ui.activity.ChatOnlineActivity" />
+        <activity android:name=".ui.activity.CampusStrategyEntranceActivity" />
+        <activity android:name=".ui.activity.CampusDataDetailActivity" />
+        <activity android:name=".ui.activity.PhotoViewerActivity"/>
     </application>
 
 </manifest>
