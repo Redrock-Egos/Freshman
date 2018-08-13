@@ -13,6 +13,7 @@ import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.ui.adapter.MyFragmentPagerAdapter;
 import com.mredrock.cyxbs.freshman.ui.fragment.MilitaryShowFragment;
 import com.mredrock.cyxbs.freshman.ui.fragment.MilitaryTipsFragment;
+import com.mredrock.cyxbs.freshman.utils.DensityUtils;
 import com.mredrock.cyxbs.freshman.utils.StatusBarUtils;
 import com.mredrock.cyxbs.freshman.utils.TabLayoutUtil;
 import com.mredrock.cyxbs.freshman.utils.ToastUtils;
@@ -52,7 +53,7 @@ public class MilitaryTrainingActivity extends AppCompatActivity implements View.
         btnBack = findViewById(R.id.freshman_military_iv_back);
         toolbar = findViewById(R.id.tb_military);
         tabLayout.post(() -> TabLayoutUtil.setIndicator(tabLayout,40,40));
-        StatusBarUtils.setImage(this);
+        DensityUtils.setTransparent(toolbar,this);
         btnBack.setOnClickListener(v -> {
             MilitaryTrainingActivity.this.finish();
         });

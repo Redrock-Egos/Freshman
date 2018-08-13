@@ -15,6 +15,7 @@ import com.mredrock.cyxbs.freshman.ui.adapter.CustomVIewPager;
 import com.mredrock.cyxbs.freshman.ui.adapter.MyFragmentPagerAdapter;
 import com.mredrock.cyxbs.freshman.ui.fragment.CquptMienActFragment;
 import com.mredrock.cyxbs.freshman.ui.fragment.CquptMienBaseFragment;
+import com.mredrock.cyxbs.freshman.utils.DensityUtils;
 import com.mredrock.cyxbs.freshman.utils.StatusBarUtils;
 
 import java.util.ArrayList;
@@ -36,6 +37,7 @@ public class CquptMienActivity extends AppCompatActivity implements View.OnClick
     private Button open;
     private Button close;
     private Toolbar btnToolbar;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +55,12 @@ public class CquptMienActivity extends AppCompatActivity implements View.OnClick
         close = findViewById(R.id.freshman_CyMien_close);
         btnToolbar = findViewById(R.id.freshman_CyMien_tl);
         btnBack = findViewById(R.id.freshman_CyMien_iv_back);
+        toolbar = findViewById(R.id.tb_CyMien);
         ognization.setOnClickListener(this);
         campaign.setOnClickListener(this);
         open.setOnClickListener(this);
         close.setOnClickListener(this);
-        StatusBarUtils.setImage(this);
+        DensityUtils.setTransparent(toolbar,this);
         btnBack.setOnClickListener(this);
     }
 

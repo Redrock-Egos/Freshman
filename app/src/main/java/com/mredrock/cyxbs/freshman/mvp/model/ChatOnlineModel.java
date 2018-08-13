@@ -10,13 +10,11 @@ public class ChatOnlineModel implements ChatOnlineContract.IChatOnlineModel {
 
     @Override
     public void setItem(ChatOnline bean, LoadCallBack callBack) {
-        Log.d("fxy", "setItem: ok:"+bean.getArray().size());
         callBack.succeed(bean);
     }
 
     @Override
     public void error(String str, LoadCallBack callBack) {
-        Log.d("fxy", "setItem: failed");
         callBack.failed(str);
     }
 

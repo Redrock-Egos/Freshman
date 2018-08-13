@@ -2,9 +2,11 @@ package com.mredrock.cyxbs.freshman.mvp.presenter;
 
 import android.support.v4.app.Fragment;
 
+import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.bean.MienStu;
 import com.mredrock.cyxbs.freshman.mvp.contract.BaseContract;
 import com.mredrock.cyxbs.freshman.mvp.contract.CquptMienBaseContract;
+import com.mredrock.cyxbs.freshman.ui.activity.App;
 import com.mredrock.cyxbs.freshman.ui.adapter.MyFragmentPagerAdapter;
 import com.mredrock.cyxbs.freshman.ui.fragment.CquptMienStuFragment;
 import com.mredrock.cyxbs.freshman.utils.ToastUtils;
@@ -40,7 +42,7 @@ public class CquptMienBasePresenter extends BasePresenter<CquptMienBaseContract.
 
             @Override
             public void failed(String msg) {
-                ToastUtils.show(msg);
+                ToastUtils.show(App.getContext().getResources().getString(R.string.freshman_error_soft));
             }
         });
 

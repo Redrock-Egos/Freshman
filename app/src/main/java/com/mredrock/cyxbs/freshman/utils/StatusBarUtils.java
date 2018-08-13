@@ -21,6 +21,7 @@ public class StatusBarUtils {
      * 当顶部是图片时，是图片显示到状态栏上
      *
      * @param activity
+     *
      */
     public static void setImage(Activity activity) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -36,4 +37,5 @@ public class StatusBarUtils {
             }
         }
     }
+
 }

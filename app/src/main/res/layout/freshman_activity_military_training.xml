@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:fitsSystemWindows="true"
     android:clipChildren="false"
     android:background="@drawable/freshman_bg_tb"
     xmlns:tools="http://schemas.android.com/tools"

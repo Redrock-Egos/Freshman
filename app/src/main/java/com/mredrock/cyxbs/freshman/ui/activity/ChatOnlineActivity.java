@@ -47,7 +47,7 @@ public class ChatOnlineActivity extends AppCompatActivity {
     private void initVP(){
         fragments = new ArrayList<>();
         titles = new ArrayList<>();
-        StatusBarUtils.setImage(this);
+        DensityUtils.setTransparent(toolbar,this);
         fragments.add(new ChatOnlineFragment(this,"学校群"));
         fragments.add(new ChatOnlineFragment(this,"老乡群"));
         titles.add("班级/学院群");
@@ -57,8 +57,6 @@ public class ChatOnlineActivity extends AppCompatActivity {
         viewPager.setOffscreenPageLimit(viewPager.getChildCount());
         tabLayout.setupWithViewPager(viewPager);
         TabLayoutUtil.setIndicator(tabLayout,40,40);
-        DensityUtils.setTransparent(toolbar,this);
-
     }
 
 

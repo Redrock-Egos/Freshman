@@ -2,6 +2,7 @@
     <string name="app_name">Freshman</string>
 
     <string name="freshmen_error">获取的过程出了些错误:(</string>
+    <string name="freshman_error_soft">移动小姐姐：获取数据出了些错误呢！</string>
 
     <string name="freshmen_admission_title">入学必备</string>
     <string name="freshmen_admission_edit">编辑</string>

@@ -9,12 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 
 
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.ui.adapter.EntranceAdapter;
+import com.mredrock.cyxbs.freshman.utils.DensityUtils;
 import com.mredrock.cyxbs.freshman.utils.SPHelper;
 import com.mredrock.cyxbs.freshman.utils.StatusBarUtils;
 import com.mredrock.cyxbs.freshman.utils.ToastUtils;
@@ -26,6 +28,7 @@ import java.util.List;
 public class CampusStrategyEntranceActivity extends AppCompatActivity implements View.OnClickListener {
 
     private RecyclerView mRv;
+    private Toolbar toolbar;
 
     private String TAG = "CampusStrategyEntranceActivity";
 
@@ -35,10 +38,11 @@ public class CampusStrategyEntranceActivity extends AppCompatActivity implements
         setContentView(R.layout.freshman_activity_campus_strategy_entrance);
         ImageView back = findViewById(R.id.iv_entrance_back);
         mRv = findViewById(R.id.rv_entrance);
+        toolbar = findViewById(R.id.tb_entrance);
 
         back.setOnClickListener(this);
 
-        StatusBarUtils.setImage(this);
+        DensityUtils.setTransparent(toolbar,this);
         initData();
     }
 

@@ -1,5 +1,6 @@
 package com.mredrock.cyxbs.freshman.ui.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +20,7 @@ public class EntranceAdapter extends RecyclerView.Adapter<EntranceAdapter.Entran
     private List<CampusStrategyEntranceActivity.SimpleData> simpleDataList;
     private ChangePageListener mListener;
 
-    public EntranceAdapter(List<CampusStrategyEntranceActivity.SimpleData> data,ChangePageListener listener){
+    public EntranceAdapter(List<CampusStrategyEntranceActivity.SimpleData> data, ChangePageListener listener){
         this.simpleDataList = data;
         this.mListener = listener;
     }

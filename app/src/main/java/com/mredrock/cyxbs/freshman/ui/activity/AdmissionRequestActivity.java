@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -19,6 +20,7 @@ import com.mredrock.cyxbs.freshman.mvp.contract.AdmissionRequestContract;
 import com.mredrock.cyxbs.freshman.mvp.model.AdmissionRequestModel;
 import com.mredrock.cyxbs.freshman.mvp.presenter.AdmissionRequestPresenter;
 import com.mredrock.cyxbs.freshman.ui.adapter.AdmissionRequestAdapter;
+import com.mredrock.cyxbs.freshman.utils.DensityUtils;
 import com.mredrock.cyxbs.freshman.utils.SPHelper;
 import com.mredrock.cyxbs.freshman.utils.ScrollSpeedLinearLayoutManger;
 import com.mredrock.cyxbs.freshman.utils.StatusBarUtils;
@@ -33,6 +35,7 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
     private FloatingActionButton mFabtn;
     private RelativeLayout mRl;
     private AdmissionRequestPresenter mPresenter;
+    private Toolbar toolbar;
 
     private boolean isEdit;
 
@@ -41,7 +44,7 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.freshman_activity_admission_request);
-        StatusBarUtils.setImage(this);
+
 
         mRl = findViewById(R.id.rl_admission_add);
         ImageView help = findViewById(R.id.iv_admission_help);
@@ -51,7 +54,9 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
         edit = findViewById(R.id.tv_admission_edit);
         mRv = findViewById(R.id.rv_admission);
         mFabtn = findViewById(R.id.fabtn_admission_add);
+        toolbar = findViewById(R.id.tb_admission);
 
+        DensityUtils.setTransparent(toolbar,this);
 
         help.setOnClickListener(this);
         back.setOnClickListener(this);
