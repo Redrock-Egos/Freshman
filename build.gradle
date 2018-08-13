@@ -3,7 +3,6 @@
 buildscript {
     ext.retrofit_version = '2.3.0'
     ext.kotlin_version = '1.2.50'
-    ext.anko_version='0.10.5'
     ext.support_version = '26.0.1'
     repositories {
         google()
@@ -21,6 +20,7 @@ buildscript {
 
 allprojects {
     repositories {
+        maven { url "https://jitpack.io" }
         google()
         jcenter()
     }
