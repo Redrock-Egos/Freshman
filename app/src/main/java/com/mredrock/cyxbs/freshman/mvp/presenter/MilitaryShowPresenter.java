@@ -1,20 +1,9 @@
 package com.mredrock.cyxbs.freshman.mvp.presenter;
 
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
-
-import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.bean.MilitaryShow;
 import com.mredrock.cyxbs.freshman.mvp.contract.BaseContract;
 import com.mredrock.cyxbs.freshman.mvp.contract.MilitaryShowContract;
-import com.mredrock.cyxbs.freshman.ui.adapter.ViewPagerPhotoCardAdapter;
-import com.mredrock.cyxbs.freshman.ui.adapter.ViewPagerVideoAdapter;
-import com.mredrock.cyxbs.freshman.ui.fragment.MilitaryShowFragment;
 import com.mredrock.cyxbs.freshman.utils.ToastUtils;
-import com.mredrock.cyxbs.freshman.utils.banner.CardTransformer;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -10,7 +10,9 @@ import java.util.List;
  * 要抽离ViewHolder 并且逻辑要在BaseAdapter的子类实现
  */
 
-public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseHolder> {
+public abstract class
+
+BaseAdapter<T> extends RecyclerView.Adapter<BaseHolder> {
     Context context;
     List<T> data;
     int[] layoutIds;

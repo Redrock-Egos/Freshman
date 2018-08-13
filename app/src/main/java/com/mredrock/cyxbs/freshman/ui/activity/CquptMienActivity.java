@@ -1,11 +1,10 @@
 package com.mredrock.cyxbs.freshman.ui.activity;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
@@ -123,7 +122,6 @@ public class CquptMienActivity extends AppCompatActivity implements View.OnClick
 
     private void showBtn(){
         close.setVisibility(View.VISIBLE);
-        open.setVisibility(View.VISIBLE );
     }
 
 }

@@ -17,7 +17,6 @@
         <activity android:name=".ui.activity.strategy.RevealActivity" />
         <activity android:name=".ui.activity.MilitaryTrainingActivity" />
         <activity android:name=".ui.activity.MainActivity">
-        </activity>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,9 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.ChatOnlineActivity" />
-        <activity android:name=".ui.activity.CampusStrategyEntranceActivity" />
-        <activity android:name=".ui.activity.CampusDataDetailActivity" />
-        <activity android:name=".ui.activity.PhotoViewerActivity"/>
+        <activity android:name=".ui.activity.campus.CampusStrategyEntranceActivity" />
+        <activity android:name=".ui.activity.campus.CampusDataDetailActivity" />
+        <activity android:name=".ui.activity.PhotoViewerActivity" />
     </application>
-
 </manifest>

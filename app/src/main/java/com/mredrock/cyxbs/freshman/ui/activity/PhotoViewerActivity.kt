@@ -2,6 +2,7 @@ package com.mredrock.cyxbs.freshman.ui.activity
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.view.PagerAdapter
@@ -13,10 +14,11 @@ import android.view.WindowManager
 import com.bumptech.glide.Glide
 import com.github.chrisbanes.photoview.PhotoView
 
-fun start(context: Context, photoList: List<String>) {
+fun start(context: Context, photoList: List<String>, pos: Int = 0) {
     context.startActivity(
             Intent(context, PhotoViewerActivity::class.java).apply {
                 putExtra("photos", photoList.toTypedArray())
+                putExtra("position", pos)
             })
 }
 
@@ -51,10 +53,13 @@ class PhotoViewerActivity : AppCompatActivity() {
                     return PhotoView(container.context).apply pv@ {
                         g.load(list[position]).into(this@pv)
                         container.addView(this@pv)
+                        setOnClickListener { finish() }
                     }
                 }
 
             }
+            currentItem = intent.extras.getInt("position")
+            setBackgroundColor(Color.parseColor("#000000"))
         }
     }
 }
