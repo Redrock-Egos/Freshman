@@ -1,19 +1,17 @@
 package com.mredrock.cyxbs.freshman.ui.activity;
 
-import android.content.res.TypedArray;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.ui.adapter.MyFragmentPagerAdapter;
 import com.mredrock.cyxbs.freshman.ui.fragment.ChatOnlineFragment;
 import com.mredrock.cyxbs.freshman.utils.DensityUtils;
-import com.mredrock.cyxbs.freshman.utils.StatusBarUtils;
 import com.mredrock.cyxbs.freshman.utils.TabLayoutUtil;
 
 import java.util.ArrayList;
@@ -29,6 +27,7 @@ public class ChatOnlineActivity extends AppCompatActivity {
     private List<String> titles;
     private MyFragmentPagerAdapter adapter;
     private Toolbar toolbar;
+    private ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +41,10 @@ public class ChatOnlineActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.freshman_chatOnline_vp);
         tabLayout = findViewById(R.id.freshman_chatOnline_tl);
         toolbar = findViewById(R.id.tb_chatOnline);
+        back = findViewById(R.id.freshman_chatOnline_iv_back);
+        back.setOnClickListener(v -> {
+            finish();
+        });
     }
 
     private void initVP(){

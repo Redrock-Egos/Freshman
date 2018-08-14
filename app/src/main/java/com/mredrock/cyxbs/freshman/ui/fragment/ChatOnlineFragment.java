@@ -2,7 +2,6 @@ package com.mredrock.cyxbs.freshman.ui.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,17 +10,12 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
-import android.widget.ArrayAdapter;
+import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.bean.ChatOnline;
@@ -29,6 +23,7 @@ import com.mredrock.cyxbs.freshman.mvp.contract.ChatOnlineContract;
 import com.mredrock.cyxbs.freshman.mvp.model.ChatOnlineModel;
 import com.mredrock.cyxbs.freshman.mvp.presenter.ChatOnlinePresenter;
 import com.mredrock.cyxbs.freshman.ui.adapter.ChatOnlineAdapter;
+import com.mredrock.cyxbs.freshman.ui.widget.JCardView;
 import com.mredrock.cyxbs.freshman.utils.DensityUtils;
 import com.mredrock.cyxbs.freshman.utils.ToastUtils;
 
@@ -41,7 +36,6 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
     private String kind;
     private View parent;
     private String key;
-    private String preKey;
 
     private EditText editText;
     private RecyclerView recyclerView;
@@ -49,7 +43,9 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
     private ChatOnlinePresenter presenter;
     private List<ChatOnline.ArrayBean> datas;
     private ChatOnlineAdapter adapter;
-    private LinearLayout ll;
+    private ImageView sreach_img;
+    private JCardView jCardView;
+    private ImageView view;
 
     public ChatOnlineFragment(Context context, String kind) {
         this.context = context;
@@ -74,7 +70,9 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
     private void init(){
         editText = parent.findViewById(R.id.freshman_chatonline_et);
         recyclerView = parent.findViewById(R.id.freshman_chatonline_rv);
-        ll = parent.findViewById(R.id.freshman_chatonline_parent);
+        sreach_img = parent.findViewById(R.id.freshman_chat_search);
+        jCardView = parent.findViewById(R.id.freshman_chatonline_jc);
+        view = parent.findViewById(R.id.freshman_chatonline_v);
         datas = new ArrayList<>();
     }
     private void setET(){
@@ -82,24 +80,22 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         screenHeight = DensityUtils.getScreenHeight(getContext());
-        ViewGroup.LayoutParams lp = editText.getLayoutParams();
-        lp.height = screenHeight/15;
-        editText.setLayoutParams(lp);
-        Drawable drawable = editText.getCompoundDrawables()[0];
-        if(drawable!=null){
-            drawable.setBounds(0,0,30,30);
-            editText.setCompoundDrawables(drawable,editText.getCompoundDrawables()[1],editText.getCompoundDrawables()[2], editText.getCompoundDrawables()[3]);
-        }
-        if(kind.equals("学校群")){
-            editText.setHint("请输入学院名称/班级代号");
-        }else{
-            editText.setHint("请输入地区");
-        }
+
+        ViewGroup.LayoutParams lp = jCardView.getLayoutParams();
+        lp.height = screenHeight/9;
+        jCardView.setLayoutParams(lp);
+
+
+        ViewGroup.LayoutParams lp1 = sreach_img.getLayoutParams();
+        lp1.height = screenHeight/30;
+        sreach_img.setLayoutParams(lp1);
+
+        recyclerView.setPadding(0,screenHeight/12,0,0);
 
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                preKey = s.toString();
+
             }
 
             @Override
@@ -117,6 +113,31 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
 
             }
         });
+
+        editText.setOnFocusChangeListener((v, hasFocus) -> {
+            if(hasFocus){
+                sreach_img.setVisibility(View.GONE);
+                setHint();
+                getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+            }else{
+                if(datas.size()==0){
+                    sreach_img.setVisibility(View.VISIBLE);
+                }
+                hideHint();
+            }
+        });
+    }
+
+    private void setHint(){
+        if(kind.equals("老乡群")){
+            editText.setHint("请输入地区");
+        }else{
+            editText.setHint("请输入学院");
+        }
+    }
+
+    private void hideHint(){
+        editText.setHint("");
     }
 
 

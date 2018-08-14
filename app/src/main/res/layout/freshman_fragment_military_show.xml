@@ -9,14 +9,14 @@
     android:layout_height="match_parent">
 
     <com.mredrock.cyxbs.freshman.ui.widget.JCardView
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         app:hideLeftShadow="true"
         app:hideRightShadow="true"
-        app:hideBottomShadow="true"
-        app:hideTopShadow="true"
         android:clipChildren="false"
         android:clipToPadding="false"
+        android:layout_marginTop="5dp"
+        app:shadowColor="#DADADA"
+        app:shadowRadius="10dp"
         app:radius="0dp"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -55,15 +55,16 @@
 
     <com.mredrock.cyxbs.freshman.ui.widget.JCardView
         android:id="@+id/freshman_military_show_video_parent2"
+        app:shadowColor="#DADADA"
         android:layout_width="match_parent"
-        android:layout_marginBottom="22dp"
+        android:layout_marginBottom="12dp"
+        app:radius="0dp"
+        app:shadowRadius="5dp"
         app:hideLeftShadow="true"
         app:hideRightShadow="true"
-        app:hideBottomShadow="true"
-        app:hideTopShadow="true"
         android:clipChildren="false"
         android:clipToPadding="false"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_height="0dp"
         android:layout_weight="1">
 
@@ -94,8 +95,8 @@
                 android:clipToPadding="false"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="40dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="8"
                 android:clipChildren="false">
 

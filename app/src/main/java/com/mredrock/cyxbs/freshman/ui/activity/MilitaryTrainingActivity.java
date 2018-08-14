@@ -14,7 +14,6 @@ import com.mredrock.cyxbs.freshman.ui.adapter.MyFragmentPagerAdapter;
 import com.mredrock.cyxbs.freshman.ui.fragment.MilitaryShowFragment;
 import com.mredrock.cyxbs.freshman.ui.fragment.MilitaryTipsFragment;
 import com.mredrock.cyxbs.freshman.utils.DensityUtils;
-import com.mredrock.cyxbs.freshman.utils.StatusBarUtils;
 import com.mredrock.cyxbs.freshman.utils.TabLayoutUtil;
 import com.mredrock.cyxbs.freshman.utils.ToastUtils;
 

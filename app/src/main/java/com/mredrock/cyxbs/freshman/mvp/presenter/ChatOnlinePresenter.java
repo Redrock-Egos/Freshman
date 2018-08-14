@@ -1,11 +1,8 @@
 package com.mredrock.cyxbs.freshman.mvp.presenter;
 
-import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.bean.ChatOnline;
 import com.mredrock.cyxbs.freshman.mvp.contract.BaseContract;
 import com.mredrock.cyxbs.freshman.mvp.contract.ChatOnlineContract;
-import com.mredrock.cyxbs.freshman.ui.activity.App;
-import com.mredrock.cyxbs.freshman.utils.ToastUtils;
 
 
 public class ChatOnlinePresenter extends BasePresenter<ChatOnlineContract.IChatOnlineView> {

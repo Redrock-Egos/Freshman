@@ -16,7 +16,6 @@ import com.mredrock.cyxbs.freshman.ui.adapter.MyFragmentPagerAdapter;
 import com.mredrock.cyxbs.freshman.ui.fragment.CquptMienActFragment;
 import com.mredrock.cyxbs.freshman.ui.fragment.CquptMienBaseFragment;
 import com.mredrock.cyxbs.freshman.utils.DensityUtils;
-import com.mredrock.cyxbs.freshman.utils.StatusBarUtils;
 
 import java.util.ArrayList;
 import java.util.List;
