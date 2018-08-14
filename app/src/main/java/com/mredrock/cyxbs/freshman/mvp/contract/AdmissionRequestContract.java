@@ -1,9 +1,8 @@
 package com.mredrock.cyxbs.freshman.mvp.contract;
 
-import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 
 import com.mredrock.cyxbs.freshman.bean.Description;
-import com.mredrock.cyxbs.freshman.ui.adapter.AdmissionRequestAdapter;
 
 public class AdmissionRequestContract {
     public interface IAdmissionRequestModel extends BaseContract.ISomethingModel{
@@ -13,6 +12,7 @@ public class AdmissionRequestContract {
 
     public interface IAdmissionRequestView extends BaseContract.ISomethingView{
         void showError();
+        void initWindow(View.OnClickListener listener);
         void setRv(Description description);
         void prepareAddData();
         void addData(Description.DescribeBean temp);

@@ -5,7 +5,7 @@ package com.mredrock.cyxbs.freshman.utils.net;
  */
 public class Const {
     // todo change temp url .baseUrl("https://wx.idsbllp.cn/welcome2018/")
-    static final String BASE_URL = "http://118.24.175.82/welcome2018/";
+    static final String BASE_URL = "http://118.24.175.82/";
 
     public static final String INDEX_CANTEEN = "学生食堂";
     public static final String INDEX_CATE = "周边美食";

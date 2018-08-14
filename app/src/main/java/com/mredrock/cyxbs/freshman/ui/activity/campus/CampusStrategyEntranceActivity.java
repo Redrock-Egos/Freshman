@@ -5,6 +5,7 @@ package com.mredrock.cyxbs.freshman.ui.activity.campus;
  */
 
 
+import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -53,6 +54,7 @@ public class CampusStrategyEntranceActivity extends AppCompatActivity implements
             String[] names = {Const.INDEX_CANTEEN,Const.INDEX_DORMITORY,Const.INDEX_CATE,
                     Const.INDEX_SCENIC,Const.INDEX_ENVIRONMENT,Const.INDEX_DATA,
                     Const.INDEX_BANK,Const.INDEX_BUS,Const.INDEX_EXPRESS};
+            @IdRes
             int[] ids = {R.drawable.freshman_icon_canteen,R.drawable.freshman_icon_dormitory,R.drawable.freshman_icon_cate,
                     R.drawable.freshman_icon_scenic,R.drawable.freshman_icon_environment,R.drawable.freshman_icon_data,
                     R.drawable.freshman_icon_bank,R.drawable.freshman_icon_bus,R.drawable.freshman_icon_express};
@@ -115,7 +117,7 @@ public class CampusStrategyEntranceActivity extends AppCompatActivity implements
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(@IdRes int id) {
             this.id = id;
         }
     }

@@ -1,16 +1,24 @@
 package com.mredrock.cyxbs.freshman.ui.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -23,7 +31,6 @@ import com.mredrock.cyxbs.freshman.ui.adapter.AdmissionRequestAdapter;
 import com.mredrock.cyxbs.freshman.utils.DensityUtils;
 import com.mredrock.cyxbs.freshman.utils.SPHelper;
 import com.mredrock.cyxbs.freshman.utils.ScrollSpeedLinearLayoutManger;
-import com.mredrock.cyxbs.freshman.utils.StatusBarUtils;
 import com.mredrock.cyxbs.freshman.utils.ToastUtils;
 
 public class AdmissionRequestActivity extends AppCompatActivity implements AdmissionRequestContract.IAdmissionRequestView, View.OnClickListener {
@@ -33,9 +40,8 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
     private RecyclerView mRv;
     private AdmissionRequestAdapter mAdapter;
     private FloatingActionButton mFabtn;
-    private RelativeLayout mRl;
+    private PopupWindow mWindow;
     private AdmissionRequestPresenter mPresenter;
-    private Toolbar toolbar;
 
     private boolean isEdit;
 
@@ -44,25 +50,20 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.freshman_activity_admission_request);
+        Toolbar mbar = findViewById(R.id.tb_admission);
+        DensityUtils.setTransparent(mbar,this);
 
-
-        mRl = findViewById(R.id.rl_admission_add);
         ImageView help = findViewById(R.id.iv_admission_help);
         ImageView back = findViewById(R.id.iv_admission_back);
-        Button add = findViewById(R.id.btn_admission_sure);
-        content = findViewById(R.id.et_admission_add);
-        edit = findViewById(R.id.tv_admission_edit);
+
         mRv = findViewById(R.id.rv_admission);
         mFabtn = findViewById(R.id.fabtn_admission_add);
-        toolbar = findViewById(R.id.tb_admission);
-
-        DensityUtils.setTransparent(toolbar,this);
+        edit = findViewById(R.id.tv_admission_edit);
 
         help.setOnClickListener(this);
         back.setOnClickListener(this);
-        edit.setOnClickListener(this);
         mFabtn.setOnClickListener(this);
-        add.setOnClickListener(this);
+        edit.setOnClickListener(this);
 
         initMVP();
     }
@@ -72,12 +73,27 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
         mPresenter = new AdmissionRequestPresenter(new AdmissionRequestModel());
         mPresenter.attachView(this);
         mPresenter.start();
-        mRl.setVisibility(View.GONE);
     }
 
     @Override
     public void showError() {
-        ToastUtils.show(getResources().getString(R.string.freshmen_error));
+        ToastUtils.show(getResources().getString(R.string.freshman_error_soft));
+    }
+
+    @Override
+    public void initWindow(View.OnClickListener listener) {
+        View root = findViewById(R.id.cl_admission);
+        @SuppressLint("InflateParams")
+        View view = LayoutInflater.from(App.getContext()).inflate(R.layout.freshman_popup_admission, null);
+        Button add = view.findViewById(R.id.btn_admission_sure);
+        add.setOnClickListener(listener);
+        content = view.findViewById(R.id.et_admission_add);
+        mWindow = new PopupWindow(view, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        mWindow.setOutsideTouchable(true);
+        mWindow.setFocusable(true);
+        mWindow.setBackgroundDrawable(new ColorDrawable());
+        mWindow.setOnDismissListener(this::returnButton);
+        mWindow.showAtLocation(root,Gravity.BOTTOM,0,0);
     }
 
     @Override
@@ -99,7 +115,7 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
     @Override
     public void prepareAddData() {
         mFabtn.setVisibility(View.GONE);
-        mRl.setVisibility(View.VISIBLE);
+        initWindow(this);
     }
 
     @Override
@@ -119,7 +135,8 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
             imm.hideSoftInputFromWindow(v.getApplicationWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         }
         mFabtn.setVisibility(View.VISIBLE);
-        mRl.setVisibility(View.GONE);
+        if (mWindow.isShowing())
+            mWindow.dismiss();
     }
 
     @Override
@@ -157,7 +174,8 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
 
     @Override
     protected void onDestroy() {
-        SPHelper.putBean("admission","admission",mAdapter.getDatas());
+        if (mAdapter != null)
+            SPHelper.putBean("admission","admission",mAdapter.getDatas());
         mPresenter.detachView();
         super.onDestroy();
     }
