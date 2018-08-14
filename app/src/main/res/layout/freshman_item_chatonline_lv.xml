@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:textSize="14sp"
-    android:paddingTop="17dp"
-    android:paddingLeft="17dp"
-    android:paddingRight="17dp"
-    android:paddingBottom="17dp"
-    android:layout_marginTop="5dp"
-    android:layout_marginBottom="5dp"
-    android:layout_gravity="center"
-    android:background="@drawable/freshman_chat_online_tv"
+<FrameLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:background="@drawable/freshman_chat_online_tv"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <TextView
+        android:id="@+id/freshman_chatonline_textView"
+        android:textSize="14sp"
+        android:gravity="center|left"
+        android:text="我是文字"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</TextView>
+    </TextView>
+</FrameLayout>

@@ -11,7 +11,7 @@ public class MilitaryTipsModel implements MilitaryTipsContract.IMilitaryTipsMode
     public void loadData(LoadCallBack callBack) {
         // TODO: 2018/8/10 这里先用新生必备的测试
         HttpLoader.<Description>get(
-                service -> service.getDescriptions(Const.INDEX_REQUIRED),
+                service -> service.getDescriptions(Const.INDEX_MILITARY_TRAINING),
                 item -> setItem(item,callBack),
                 error -> error(error.toString(),callBack)
         );

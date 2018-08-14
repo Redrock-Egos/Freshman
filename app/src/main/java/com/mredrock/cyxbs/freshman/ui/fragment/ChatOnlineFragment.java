@@ -6,6 +6,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -26,7 +28,9 @@ import com.mredrock.cyxbs.freshman.bean.ChatOnline;
 import com.mredrock.cyxbs.freshman.mvp.contract.ChatOnlineContract;
 import com.mredrock.cyxbs.freshman.mvp.model.ChatOnlineModel;
 import com.mredrock.cyxbs.freshman.mvp.presenter.ChatOnlinePresenter;
+import com.mredrock.cyxbs.freshman.ui.adapter.ChatOnlineAdapter;
 import com.mredrock.cyxbs.freshman.utils.DensityUtils;
+import com.mredrock.cyxbs.freshman.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,13 +41,14 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
     private String kind;
     private View parent;
     private String key;
+    private String preKey;
 
     private EditText editText;
-    private ListView listView;
+    private RecyclerView recyclerView;
     private int screenHeight;
     private ChatOnlinePresenter presenter;
-    private List<String> datas;
-    private ArrayAdapter<String> adapter;
+    private List<ChatOnline.ArrayBean> datas;
+    private ChatOnlineAdapter adapter;
     private LinearLayout ll;
 
     public ChatOnlineFragment(Context context, String kind) {
@@ -68,15 +73,14 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
 
     private void init(){
         editText = parent.findViewById(R.id.freshman_chatonline_et);
-        listView = parent.findViewById(R.id.freshman_chatonline_lv);
+        recyclerView = parent.findViewById(R.id.freshman_chatonline_rv);
         ll = parent.findViewById(R.id.freshman_chatonline_parent);
         datas = new ArrayList<>();
     }
-    @SuppressLint("ClickableViewAccessibility")
     private void setET(){
-        adapter = new ArrayAdapter<String>(getContext(),R.layout.freshman_item_chatonline_lv,datas);
-        listView.setAdapter(adapter);
-        listView.setDividerHeight(0);
+        adapter = new ChatOnlineAdapter(getContext(),datas,new int[]{R.layout.freshman_item_chatonline_lv});
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         screenHeight = DensityUtils.getScreenHeight(getContext());
         ViewGroup.LayoutParams lp = editText.getLayoutParams();
         lp.height = screenHeight/15;
@@ -95,12 +99,17 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+                preKey = s.toString();
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    key = s.toString();
+                Log.d("fxy", "onTextChanged: 文字改变");
+                key = s.toString();
+                presenter.search(kind,key);
+                if(s.length()==0){
+                    adapter.clearData();
+                }
             }
 
             @Override
@@ -108,32 +117,17 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
 
             }
         });
-        editText.setOnKeyListener((v, keyCode, event) -> {
-            if(keyCode == KeyEvent.KEYCODE_DEL){
-                datas.clear();
-                adapter.notifyDataSetChanged();
-            }
-            if(keyCode == KeyEvent.KEYCODE_ENTER){
-                presenter.search(kind,key);
-            }
-            return false;
-        });
     }
 
 
     @Override
     public void setData(ChatOnline bean) {
-        datas.clear();
-        for (int i = 0; i < bean.getArray().size(); i++) {
-            datas.add(bean.getArray().get(i).getName());
+        if(bean.getArray().size()>0){
+            adapter.refreshData(bean);
+            adapter.notifyDataSetChanged();
+        }else{
+            ToastUtils.show("开发小哥：没有搜索到对应数据噢！");
         }
-        for (int i = 0; i < adapter.getCount(); i++) {
-            ViewGroup.LayoutParams lp1 = listView.getChildAt(i).getLayoutParams();
-            lp1.height = screenHeight/15;
-            listView.getChildAt(i).setLayoutParams(lp1);
-        }
-
-        adapter.notifyDataSetChanged();
     }
 
 

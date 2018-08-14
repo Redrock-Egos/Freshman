@@ -20,8 +20,6 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:paddingRight="10dp"
-        android:imeOptions="actionSearch"
-        android:singleLine="true"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -29,13 +27,13 @@
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/freshman_icon_detail" />
 
-    <ListView
-        android:id="@+id/freshman_chatonline_lv"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/freshman_chatonline_rv"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </ListView>
+    </android.support.v7.widget.RecyclerView>
 </LinearLayout>

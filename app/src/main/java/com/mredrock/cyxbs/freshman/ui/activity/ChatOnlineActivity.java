@@ -50,7 +50,7 @@ public class ChatOnlineActivity extends AppCompatActivity {
         DensityUtils.setTransparent(toolbar,this);
         fragments.add(new ChatOnlineFragment(this,"学校群"));
         fragments.add(new ChatOnlineFragment(this,"老乡群"));
-        titles.add("班级/学院群");
+        titles.add("学院群");
         titles.add("老乡群");
         adapter = new MyFragmentPagerAdapter(getSupportFragmentManager(),fragments,titles);
         viewPager.setAdapter(adapter);

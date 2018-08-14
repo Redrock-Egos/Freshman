@@ -24,7 +24,7 @@ public class ChatOnlinePresenter extends BasePresenter<ChatOnlineContract.IChatO
 
             @Override
             public void failed(String msg) {
-                ToastUtils.show(App.getContext().getResources().getString(R.string.freshman_error_soft));
+
             }
         });
     }
