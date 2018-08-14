@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_centerVertical="true"
-                android:text="@string/freshman_entrance_title"
+                android:text="@string/freshman_strategy"
                 android:textColor="@color/freshman_title_white"
                 android:textSize="18sp" />
 

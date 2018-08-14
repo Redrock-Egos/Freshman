@@ -8,6 +8,7 @@ public class Const {
     static final String BASE_URL = "http://118.24.175.82/";
 
     public static final String INDEX_CANTEEN = "学生食堂";
+    public static final String INDEX_DORMITORY = "学生寝室";
     public static final String INDEX_CATE = "周边美食";
     public static final String INDEX_SCENIC = "附近景点";
     public static final String INDEX_ENVIRONMENT = "校园环境";
@@ -20,6 +21,13 @@ public class Const {
     public static final String INDEX_WORDS = "我想对你说";
     public static final String INDEX_REQUIRED = "入学必备";
     public static final String INDEX_ORGANIZATION = "学生组织";
-    public static final String INDEX_DORMITORY = "学生寝室";
-    public static final String INDEX_DATA = "数据揭秘";
+    public static final String INDEX_REVEAL = "数据揭秘";
+
+    public static final int STRATEGY_PAGE_SIZE = 1000;
+    public static final int STRATEGY_PAGE_NUM = 1;
+
+    public static final String DORMITORY_NAME_1 = "知行苑";
+    public static final String DORMITORY_NAME_2 = "宁静苑";
+    public static final String DORMITORY_NAME_3 = "兴业苑";
+    public static final String DORMITORY_NAME_4 = "明理苑";
 }

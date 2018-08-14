@@ -11,23 +11,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
         android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/tb_main"
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/freshman_bg_tb"
-            app:contentInsetStart="0dp">
-
+            android:background="@drawable/freshman_bg_tb">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/freshman_strategy_main_welcome"
+                android:text="@string/freshman_main_welcome"
                 android:textColor="@color/freshman_title_white"
-                android:textSize="18dp" />
+                android:textSize="@dimen/dp_toolbar_text_size" />
         </android.support.v7.widget.Toolbar>
 
         <android.support.constraint.ConstraintLayout

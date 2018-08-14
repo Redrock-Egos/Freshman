@@ -1,5 +1,8 @@
 package com.mredrock.cyxbs.freshman.utils;
 
+import com.mredrock.cyxbs.freshman.utils.kt.Level;
+import com.mredrock.cyxbs.freshman.utils.kt.LogBuilder;
+
 /**
  * 全局Log工具类
  * 你可以直接调用静态方法进行日志输出。

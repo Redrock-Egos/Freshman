@@ -19,17 +19,17 @@ public class SPHelper {
 
     @Nullable
     public static <T> T getBean(String spName,String keyName,Class<T> clazz) {
-        return SpKt.getBean(keyName, clazz, spName);
+        return SpKt.getBeanFromSP(keyName, clazz, spName);
     }
     @Nullable
     public static <T> T getBean(String keyName,Class<T> clazz) {
-        return SpKt.getBean(keyName, clazz);
+        return SpKt.getBeanFromSP(keyName, clazz);
     }
 
-    public static <T> void putBean(String spName, String keyName, T bean) { SpKt.putBean(keyName, bean, spName); }
+    public static <T> void putBean(String spName, String keyName, T bean) { SpKt.putBeanToSP(keyName, bean, spName); }
 
     public static <T> void putBean(String keyName, T bean) {
-        SpKt.putBean(keyName, bean);
+        SpKt.putBeanToSP(keyName, bean);
     }
 
 }

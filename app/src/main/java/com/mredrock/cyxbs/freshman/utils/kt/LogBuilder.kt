@@ -1,4 +1,4 @@
-package com.mredrock.cyxbs.freshman.utils
+package com.mredrock.cyxbs.freshman.utils.kt
 
 import android.util.Log
 

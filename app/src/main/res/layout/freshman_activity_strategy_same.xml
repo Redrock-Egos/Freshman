@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.strategy.SameStrategyActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/freshman_bg_tb"
+        app:navigationIcon="@drawable/freshman_icon_back"
+        app:contentInsetStart="0dp">
+        <TextView
+            android:id="@+id/tb_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            tools:text="@string/freshman_strategy_cate"
+            android:textColor="@color/freshman_title_white"
+            android:textSize="@dimen/dp_toolbar_text_size" />
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/best_cate_ever"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:drawableLeft="@drawable/freshman_ic_good"
+        android:drawableStart="@drawable/freshman_ic_good"
+        android:background="#fff"
+        android:padding="@dimen/dp_16"
+        android:drawablePadding="@dimen/dp_8"
+        android:textColor="@color/freshman_strategy_describe"
+        android:visibility="gone"
+        android:text="@string/freshman_top5_cate" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/best_cate_ever">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_strategy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/freshman_strategy_background"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</RelativeLayout>

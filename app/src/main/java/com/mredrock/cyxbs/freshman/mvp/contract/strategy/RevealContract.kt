@@ -1,7 +1,6 @@
 package com.mredrock.cyxbs.freshman.mvp.contract.strategy
 
 import android.content.Context
-import com.mredrock.cyxbs.freshman.bean.SexRatio
 import com.mredrock.cyxbs.freshman.mvp.presenter.IBasePresenter
 
 class RevealContract {
@@ -11,11 +10,10 @@ class RevealContract {
 
     interface IRevealModel {
         fun getAcademyName(success: (List<String>) -> Unit, fail: (Throwable) -> Unit = { throw it })
-        fun getSexRatio(name: String,success: (SexRatio) -> Unit, fail: (Throwable) -> Unit = { throw it })
     }
 
     interface IRevealPresenter : IBasePresenter<IRevealView> {
-        fun onViewCreate()
-        fun onShowDetail(pos: Int, context: Context)
+        fun onRefresh()
+        fun onShowDetail(name: String, context: Context)
     }
 }

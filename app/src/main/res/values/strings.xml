@@ -17,17 +17,20 @@
     <string name="freshmen_admission_hint_c">3.点击左侧【空方框】勾选该项即为完成，再次单击即可恢复。</string>
     <string name="freshmen_admission_hint_d">4.右下角【加号】图样可自定义添加新待办。</string>
 
+    <string name="freshman_strategy">校园攻略</string>
     <string name="freshman_strategy_reveal">数据揭秘</string>
+    <string name="freshman_strategy_cate">周边美食</string>
+
+    <string name="freshman_chatoline">线上交流</string>
     <string name="freshman_military_photo">军训图片</string>
     <string name="freshman_military_video">军训视频</string>
 
-    <string name="freshman_entrance_title">校园攻略</string>
-    <string name="freshman_strategy_main_welcome">迎新</string>
+    <string name="freshman_main_welcome">迎新</string>
 
-    <string name="freshman_campus_data_detail_title">数据揭秘</string>
     <string name="freshman_campus_data_detail_sex">男女比例</string>
     <string name="freshman_campus_data_detail_difficult">最难比例</string>
     <string name="freshman_input_school_name">搜索</string>
+    <string name="freshman_top5_cate">最受好评的TOP5家美食</string>
     <string name="freshman_chat_online">线上交流</string>
     <string name="freshman_military_show">军训特辑</string>
     <string name="freshman_cy_mien">重邮风采</string>

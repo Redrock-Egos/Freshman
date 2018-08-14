@@ -8,12 +8,10 @@ import android.graphics.Point;
 import android.os.Build;
 import android.support.v7.widget.Toolbar;
 import android.view.Display;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
 
 import com.mredrock.cyxbs.freshman.R;
 
@@ -24,22 +22,6 @@ public class DensityUtils {
 
     private static int screenWidth = 0;
     private static int screenHeight = 0;
-
-    public static void translucentStatusBar(Window window) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        }
-    }
-
-
-    public static void setStatusBarColor(Window window, int colorAgb) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(colorAgb);
-        } else {
-            translucentStatusBar(window);
-        }
-    }
 
     public static float dp2px(Context context, float dpValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
@@ -93,7 +75,7 @@ public class DensityUtils {
      * @param toolbar
      * @param activity
      */
-    public static void setTransparent(Toolbar toolbar,Activity activity){
+    public static void setTransparent(Toolbar toolbar, Activity activity){
        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.KITKAT){
            setSBTransparent(activity);
            TypedArray array = activity.obtainStyledAttributes(new int[]{R.attr.actionBarSize});

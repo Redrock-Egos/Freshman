@@ -16,11 +16,10 @@ import android.widget.ImageView;
 
 
 import com.mredrock.cyxbs.freshman.R;
+import com.mredrock.cyxbs.freshman.ui.activity.strategy.SameStrategyActivityKt;
 import com.mredrock.cyxbs.freshman.ui.adapter.EntranceAdapter;
 import com.mredrock.cyxbs.freshman.utils.DensityUtils;
 import com.mredrock.cyxbs.freshman.utils.SPHelper;
-import com.mredrock.cyxbs.freshman.utils.StatusBarUtils;
-import com.mredrock.cyxbs.freshman.utils.ToastUtils;
 import com.mredrock.cyxbs.freshman.utils.net.Const;
 
 import java.util.ArrayList;
@@ -52,7 +51,7 @@ public class CampusStrategyEntranceActivity extends AppCompatActivity implements
         List<SimpleData> datas = new ArrayList<>();
         if (mData == null){
             String[] names = {Const.INDEX_CANTEEN,Const.INDEX_DORMITORY,Const.INDEX_CATE,
-                    Const.INDEX_SCENIC,Const.INDEX_ENVIRONMENT,Const.INDEX_DATA,
+                    Const.INDEX_SCENIC,Const.INDEX_ENVIRONMENT,Const.INDEX_REVEAL,
                     Const.INDEX_BANK,Const.INDEX_BUS,Const.INDEX_EXPRESS};
             @IdRes
             int[] ids = {R.drawable.freshman_icon_canteen,R.drawable.freshman_icon_dormitory,R.drawable.freshman_icon_cate,
@@ -71,8 +70,7 @@ public class CampusStrategyEntranceActivity extends AppCompatActivity implements
             datas = mData.getData();
         }
         EntranceAdapter simpleAdapter = new EntranceAdapter(datas, name -> {
-            ToastUtils.show("点击了" + name);
-            // TODO: 2018/8/11 页面跳转相关
+            SameStrategyActivityKt.createStrategyActivity(CampusStrategyEntranceActivity.this, name);
         });
         GridLayoutManager manager = new GridLayoutManager(this,3);
         mRv.setLayoutManager(manager);

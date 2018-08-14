@@ -125,6 +125,7 @@ class MainActivity : BaseActivity<MainContract.IMainView, MainContract.IMainPres
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.freshman_activity_main)
+        DensityUtils.setTransparent(toolbar,this)
         persenter.onContentViewSet()
     }
     override fun onResume() {
