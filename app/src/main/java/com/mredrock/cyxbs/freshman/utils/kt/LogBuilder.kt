@@ -21,31 +21,31 @@ enum class Level {
 class LogBuilder(private val tag: String, var level: Level) {
 
     fun v(msg: String) {
-        if (level >= Level.VERBOSE) {
+        if (level <= Level.VERBOSE) {
             Log.v(tag, msg)
         }
     }
 
     fun d(msg: String) {
-        if (level >= Level.DEBUG) {
+        if (level <= Level.DEBUG) {
             Log.d(tag, msg)
         }
     }
 
     fun i(msg: String) {
-        if (level >= Level.INFO) {
+        if (level <= Level.INFO) {
             Log.i(tag, msg)
         }
     }
 
     fun w(msg: String) {
-        if (level >= Level.WARN) {
+        if (level <= Level.WARN) {
             Log.w(tag, msg)
         }
     }
 
     fun e(msg: String) {
-        if (level >= Level.ERROR) {
+        if (level <= Level.ERROR) {
             Log.e(tag, msg)
         }
     }

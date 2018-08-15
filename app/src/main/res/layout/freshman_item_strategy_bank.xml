@@ -28,20 +28,24 @@
             android:adjustViewBounds="true"
             app:riv_corner_radius="@dimen/dp_6"/>
 
-        <TextView
+        <android.support.v7.widget.AppCompatTextView
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:maxLines="2"
+            app:autoSizeTextType="uniform"
             android:layout_toRightOf="@+id/iv_img"
             android:layout_toEndOf="@+id/iv_img"
             android:textColor="@color/freshman_strategy_describe2"
             android:textSize="@dimen/sp_14"
             tools:text="15栋菜鸟驿站" />
 
-        <TextView
+        <android.support.v7.widget.AppCompatTextView
             android:id="@+id/tv_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:maxLines="2"
+            app:autoSizeTextType="uniform"
             android:textColor="@color/freshman_strategy_describe2_light"
             android:layout_marginTop="@dimen/dp_12"
             android:layout_toRightOf="@+id/iv_img"

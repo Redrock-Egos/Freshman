@@ -5,8 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:hideBottomShadow="true"
-    app:shadowRadius="@dimen/dp_16">
+    app:shadowRadius="@dimen/dp_12">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -59,6 +58,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="@dimen/dp_18"
+            android:visibility="gone"
             android:textColor="@color/freshman_strategy_describe_money"
             tools:text="￥54（人）"/>
 

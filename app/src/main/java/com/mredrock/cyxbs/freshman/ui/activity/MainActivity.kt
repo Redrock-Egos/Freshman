@@ -126,6 +126,7 @@ class MainActivity : BaseActivity<MainContract.IMainView, MainContract.IMainPres
         super.onCreate(savedInstanceState)
         setContentView(R.layout.freshman_activity_main)
         DensityUtils.setTransparent(toolbar,this)
+        toolbar.setNavigationOnClickListener { finish() }
         persenter.onContentViewSet()
     }
     override fun onResume() {

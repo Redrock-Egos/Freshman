@@ -75,6 +75,12 @@ public class JCardView extends FrameLayout {
         RectShadowDrawable backgroundDrawable = new RectShadowDrawable(radius, backgroundColor, shadowColor,
                 shadowRadius, 0, 0, hideShadow, this);
         ViewCompat.setBackground(this, backgroundDrawable);
+
+        for (int i = 0, size = getChildCount(); i < size; i++) {
+            View v = getChildAt(i);
+            v.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+        }
+
     }
 
     @Override
