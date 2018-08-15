@@ -17,6 +17,7 @@ import com.mredrock.cyxbs.freshman.mvp.contract.CquptMienBaseContract;
 import com.mredrock.cyxbs.freshman.mvp.model.CquptMienBaseModel;
 import com.mredrock.cyxbs.freshman.mvp.presenter.CquptMienBasePresenter;
 import com.mredrock.cyxbs.freshman.ui.adapter.MyFragmentPagerAdapter;
+import com.mredrock.cyxbs.freshman.utils.DensityUtils;
 
 import java.util.List;
 
@@ -62,5 +63,9 @@ public class CquptMienBaseFragment extends Fragment implements CquptMienBaseCont
         pager.setAdapter(adapter);
         pager.setOffscreenPageLimit(pager.getChildCount());
         layout.setupWithViewPager(pager);
+
+        ViewGroup.LayoutParams layoutParams = layout.getLayoutParams();
+        layoutParams.height = DensityUtils.getScreenHeight(getActivity())/16;
+        layout.setLayoutParams(layoutParams);
     }
 }

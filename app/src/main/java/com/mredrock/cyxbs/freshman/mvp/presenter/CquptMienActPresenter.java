@@ -22,6 +22,9 @@ public class CquptMienActPresenter extends BasePresenter<CquptMienBaseContract.I
                 public void succeed(Object o) {
                     MienStu stu = (MienStu) o;
                     if(stu!=null){
+                        for (int i = 0; i < stu.getArray().size(); i++) {
+                            stu.getArray().get(i).getPicture().set(0,"https://b-ssl.duitang.com/uploads/item/201505/31/20150531104214_5nATZ.thumb.1400_0.jpeg");
+                        }
                         getView().setData(stu);
                     }
                 }

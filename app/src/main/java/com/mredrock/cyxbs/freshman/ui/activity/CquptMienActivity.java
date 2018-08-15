@@ -1,10 +1,12 @@
 package com.mredrock.cyxbs.freshman.ui.activity;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
@@ -16,6 +18,7 @@ import com.mredrock.cyxbs.freshman.ui.adapter.MyFragmentPagerAdapter;
 import com.mredrock.cyxbs.freshman.ui.fragment.CquptMienActFragment;
 import com.mredrock.cyxbs.freshman.ui.fragment.CquptMienBaseFragment;
 import com.mredrock.cyxbs.freshman.utils.DensityUtils;
+import com.mredrock.cyxbs.freshman.utils.TabLayoutUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,11 +34,7 @@ public class CquptMienActivity extends AppCompatActivity implements View.OnClick
     private CustomVIewPager viewPager;
     private List<Fragment> fragments;
     private List<String> titles;
-    private Button ognization;
-    private Button campaign;
-    private Button open;
-    private Button close;
-    private Toolbar btnToolbar;
+    private TabLayout tabLayout;
     private Toolbar toolbar;
 
     @Override
@@ -48,17 +47,9 @@ public class CquptMienActivity extends AppCompatActivity implements View.OnClick
 
     private void findById(){
         viewPager = findViewById(R.id.freshman_CyMien_vp);
-        ognization = findViewById(R.id.freshman_CyMien_btn_organization);
-        campaign = findViewById(R.id.freshman_CyMien_btn_campaign);
-        open = findViewById(R.id.freshman_CyMien_open);
-        close = findViewById(R.id.freshman_CyMien_close);
-        btnToolbar = findViewById(R.id.freshman_CyMien_tl);
         btnBack = findViewById(R.id.freshman_CyMien_iv_back);
+        tabLayout = findViewById(R.id.freshman_CyMien_tl);
         toolbar = findViewById(R.id.tb_CyMien);
-        ognization.setOnClickListener(this);
-        campaign.setOnClickListener(this);
-        open.setOnClickListener(this);
-        close.setOnClickListener(this);
         DensityUtils.setTransparent(toolbar,this);
         btnBack.setOnClickListener(this);
     }
@@ -74,56 +65,20 @@ public class CquptMienActivity extends AppCompatActivity implements View.OnClick
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(viewPager.getChildCount());
         viewPager.setScanScroll(false);//设置不能滑动
+        tabLayout.setupWithViewPager(viewPager);
+        TabLayoutUtil.setIndicator(tabLayout,50,50);
+
+        ViewGroup.LayoutParams layoutParams = tabLayout.getLayoutParams();
+        layoutParams.height = DensityUtils.getScreenHeight(this)/16;
+        tabLayout.setLayoutParams(layoutParams);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.freshman_CyMien_btn_organization:
-                viewPager.setCurrentItem(0);
-                showBtn();
-                break;
-            case R.id.freshman_CyMien_btn_campaign:
-                viewPager.setCurrentItem(1);
-                hideBtn();
-                break;
-            case R.id.freshman_CyMien_open:
-                openTab();
-                break;
-            case R.id.freshman_CyMien_close:
-                closeTab();
-                break;
             case R.id.freshman_CyMien_iv_back:
-                CquptMienActivity.this.finish();
+                finish();
                 break;
         }
     }
-
-    private void openTab(){
-        TranslateAnimation mShowAction = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 1.0f,
-                Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
-                0.0f, Animation.RELATIVE_TO_SELF, 0.0f);
-        mShowAction.setDuration(500);
-
-        btnToolbar.setVisibility(View.VISIBLE);
-        btnToolbar.startAnimation(mShowAction);
-        open.setVisibility(View.GONE);
-        close.setVisibility(View.VISIBLE);
-    }
-
-    private void closeTab(){
-        btnToolbar.setVisibility(View.GONE);
-        open.setVisibility(View.VISIBLE);
-        close.setVisibility(View.GONE);
-    }
-
-    private void hideBtn(){
-        close.setVisibility(View.GONE);
-        open.setVisibility(View.GONE);
-    }
-
-    private void showBtn(){
-        close.setVisibility(View.VISIBLE);
-    }
-
 }

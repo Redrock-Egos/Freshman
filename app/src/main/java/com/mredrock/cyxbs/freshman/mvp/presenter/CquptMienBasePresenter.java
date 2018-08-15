@@ -32,6 +32,7 @@ public class CquptMienBasePresenter extends BasePresenter<CquptMienBaseContract.
                     List<String> titles = new ArrayList<>();
 
                     for (int i = 0; i < stu.getArray().size(); i++) {
+                        stu.getArray().get(i).getPicture().set(0,"http://f4.topitme.com/4/c3/a4/11254861942a7a4c34o.jpg");
                         CquptMienStuFragment fragment = new CquptMienStuFragment(stu.getArray().get(i));
                         fragments.add(fragment);
                         titles.add(stu.getArray().get(i).getName());

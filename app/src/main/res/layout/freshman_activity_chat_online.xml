@@ -49,6 +49,7 @@
         android:layout_height="match_parent">
         <android.support.design.widget.TabLayout
             android:id="@+id/freshman_chatOnline_tl"
+            app:tabSelectedTextColor="#8BA2EB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

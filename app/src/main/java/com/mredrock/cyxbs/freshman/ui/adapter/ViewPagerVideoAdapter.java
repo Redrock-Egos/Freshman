@@ -47,7 +47,11 @@ public class ViewPagerVideoAdapter extends PagerAdapter {
 
 
         tv.setText(datas.get(position).getName());
-        Glide.with(context).load(datas.get(position).getVideo_pic().getUrl()).into(imageView);
+        Glide.with(context)
+                .load(datas.get(position).getVideo_pic().getUrl())
+                .thumbnail(0.2f)
+                .placeholder(R.drawable.freshman_preload_img)
+                .into(imageView);
         play.setOnClickListener(v -> {
             Intent intent = new Intent();
             intent.setAction("android.intent.action.VIEW");

@@ -55,7 +55,7 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        parent = inflater.inflate(R.layout.freshman_chatonline_fragment,container,false);
+        parent = inflater.inflate(R.layout.freshman_fragment_chatonline,container,false);
         initP();
         init();
         setET();
@@ -100,7 +100,6 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                Log.d("fxy", "onTextChanged: 文字改变");
                 key = s.toString();
                 presenter.search(kind,key);
                 if(s.length()==0){

@@ -49,7 +49,11 @@ public class ViewPagerPhotoCardAdapter extends PagerAdapter {
         RoundedImageView imageView = view.findViewById(R.id.freshman_military_card_photo);
 
         tv.setText(datas.get(position).getName());
-        Glide.with(context).load(datas.get(position).getUrl()).into(imageView);
+        Glide.with(context)
+                .load(datas.get(position).getUrl())
+                .thumbnail(0.2f)
+                .placeholder(R.drawable.freshman_preload_img)
+                .into(imageView);
         ViewParent parent = view.getParent();
         if(parent!=null){
             ViewGroup viewGroup = (ViewGroup) parent;
