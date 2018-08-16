@@ -59,6 +59,7 @@ public class ViewPagerPhotoCardAdapter extends PagerAdapter {
                 .load(Const.IMG_BASE_URL+datas.get(position).getUrl())
                 .asBitmap()
                 .centerCrop()
+                .thumbnail(0.1f)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(new BitmapImageViewTarget(imageView){
                     @Override
@@ -93,11 +94,6 @@ public class ViewPagerPhotoCardAdapter extends PagerAdapter {
             PhotoViewerActivityKt.start(context,photos, finalPosition);
         });
         container.addView(view);
-
-//        ViewGroup.LayoutParams params = container.getChildAt(position).getLayoutParams();
-//        params.height = DensityUtils.getScreenHeight(context)/5;
-//        params.width = (int) (DensityUtils.getScreenWidth(context)*0.84);
-//        container.getChildAt(position).setLayoutParams(params);
 
         return view;
     }

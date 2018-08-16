@@ -18,7 +18,7 @@ public class MilitaryTipsModel implements MilitaryTipsContract.IMilitaryTipsMode
                     error -> error(error.toString(),callBack)
             );
         }else{
-            callBack.succeed(description);
+           setItem(description,callBack);
         }
     }
 
@@ -29,8 +29,8 @@ public class MilitaryTipsModel implements MilitaryTipsContract.IMilitaryTipsMode
             bean.setCheck(false);
             bean.setDelete(false);
         }
-        SPHelper.putBean(Const.INDEX_MILITARY_TRAINING,description);
         callBack.succeed(description);
+        SPHelper.putBean(Const.INDEX_MILITARY_TRAINING,description);
     }
 
     @Override

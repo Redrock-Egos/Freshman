@@ -28,7 +28,7 @@ public class MilitaryShow {
         /**
          * name : 2016重庆邮电大学军训视频2
          * url : https://v.qq.com/x/page/r07539i9p1d.html?
-         * video_pic : {"name":"UUID142","url":"url142"}
+         * video_pic : {"name":"UUID131","url":"/picture/38f98e9a9e8d498ea522252f67382236.png"}
          */
 
         private String name;
@@ -61,8 +61,8 @@ public class MilitaryShow {
 
         public static class VideoPicBean {
             /**
-             * name : UUID142
-             * url : url142
+             * name : UUID131
+             * url : /picture/38f98e9a9e8d498ea522252f67382236.png
              */
 
             private String name;
@@ -88,8 +88,8 @@ public class MilitaryShow {
 
     public static class PictureBean {
         /**
-         * name : UUID1
-         * url : url1
+         * name : 汇报表演
+         * url : /picture/5243d251d89247da847257cffe14f818.jpg
          */
 
         private String name;

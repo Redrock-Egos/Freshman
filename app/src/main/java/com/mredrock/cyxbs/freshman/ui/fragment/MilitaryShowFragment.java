@@ -22,6 +22,7 @@ import com.mredrock.cyxbs.freshman.utils.banner.CardTransformer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * 军训风采展示的fragment
@@ -85,18 +86,25 @@ public class MilitaryShowFragment extends Fragment implements MilitaryShowContra
             photos.add(bean1.getUrl());
         }
 
-        videoPager.setAdapter(new ViewPagerVideoAdapter(getView().getContext(),bean.getVideo()));
+        videoPager.setAdapter(new ViewPagerVideoAdapter(getContext(),bean.getVideo()));
         videoPager.setOffscreenPageLimit(bean.getVideo().size());
         videoPager.setPageMargin( (DensityUtils.getScreenWidth(getActivity())/8));
         videoPager.setPageTransformer(true,new CardTransformer());
 
-        viewPager.setAdapter(new ViewPagerPhotoCardAdapter(getView().getContext(),bean.getPicture(),photos));
+        viewPager.setAdapter(new ViewPagerPhotoCardAdapter(getContext(),bean.getPicture(),photos));
         viewPager.setPageMargin(DensityUtils.getScreenWidth(getActivity())/10);
-        viewPager.setOffscreenPageLimit(bean.getPicture().size());
+        viewPager.setOffscreenPageLimit(2);
         viewPager.setPageTransformer(true,new CardTransformer());
-        viewPager.setCurrentItem(40000);
+
+        viewPager.setCurrentItem(bean.getPicture().size()*1000);
 
 
+    }
+
+    @Override
+    public void onDestroyView() {
+        presenter.detachView();
+        super.onDestroyView();
     }
 }
 

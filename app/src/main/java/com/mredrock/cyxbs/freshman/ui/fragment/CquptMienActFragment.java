@@ -31,8 +31,8 @@ public class CquptMienActFragment extends Fragment implements CquptMienBaseContr
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         parent = inflater.inflate(R.layout.freshman_fragment_cqupt_mien_act,container,false);
-        initMvp();
         recyclerView = parent.findViewById(R.id.freshman_CyMien_act_rv);
+        initMvp();
         return parent;
     }
 
@@ -53,9 +53,15 @@ public class CquptMienActFragment extends Fragment implements CquptMienBaseContr
            }
            isCat = true;
        }
-
         CquptAdapter cquptAdapter = new CquptAdapter(bean.getArray());
         recyclerView.setAdapter(cquptAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getView().getContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
+
+    @Override
+    public void onDestroyView() {
+        presenter.detachView();
+        super.onDestroyView();
+    }
+
 }

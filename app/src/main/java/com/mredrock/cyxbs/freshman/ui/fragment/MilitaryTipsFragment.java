@@ -53,4 +53,10 @@ public class MilitaryTipsFragment extends Fragment implements MilitaryTipsContra
         name1.setText(data.getDescribe().get(2).getContent());
         content1.setText(data.getDescribe().get(3).getContent());
     }
+
+    @Override
+    public void onDestroyView() {
+        presenter.detachView();
+        super.onDestroyView();
+    }
 }

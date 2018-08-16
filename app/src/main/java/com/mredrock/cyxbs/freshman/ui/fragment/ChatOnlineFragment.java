@@ -125,7 +125,7 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
                 if (imm != null) {
                     imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
                 }
-            }else{
+            }else if(key.length()==0&&!hasFocus){
                 if(datas.size()==0){
                     sreach_img.setVisibility(View.VISIBLE);
                 }
@@ -159,5 +159,11 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
 
     public EditText getEditText() {
         return editText;
+    }
+
+    @Override
+    public void onDestroyView() {
+        presenter.detachView();
+        super.onDestroyView();
     }
 }

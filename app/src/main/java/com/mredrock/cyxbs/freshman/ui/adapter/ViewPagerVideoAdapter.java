@@ -53,6 +53,7 @@ public class ViewPagerVideoAdapter extends PagerAdapter {
         Glide.with(context)
                 .load(Const.IMG_BASE_URL+datas.get(position).getVideo_pic().getUrl())
                 .asBitmap()
+                .placeholder(R.drawable.freshman_preload_img)
                 .thumbnail(0.1f)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(new BitmapImageViewTarget(imageView){

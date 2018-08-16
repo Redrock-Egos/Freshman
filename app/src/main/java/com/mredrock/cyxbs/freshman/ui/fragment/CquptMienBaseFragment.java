@@ -68,4 +68,10 @@ public class CquptMienBaseFragment extends Fragment implements CquptMienBaseCont
         layoutParams.height = DensityUtils.getScreenHeight(getActivity())/16;
         layout.setLayoutParams(layoutParams);
     }
+
+    @Override
+    public void onDestroyView() {
+        presenter.detachView();
+        super.onDestroyView();
+    }
 }
