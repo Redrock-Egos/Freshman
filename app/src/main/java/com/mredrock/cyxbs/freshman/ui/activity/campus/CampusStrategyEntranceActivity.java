@@ -5,21 +5,19 @@ package com.mredrock.cyxbs.freshman.ui.activity.campus;
  */
 
 
+import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 
-
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.ui.activity.strategy.SameStrategyActivityKt;
 import com.mredrock.cyxbs.freshman.ui.adapter.EntranceAdapter;
 import com.mredrock.cyxbs.freshman.utils.DensityUtils;
-import com.mredrock.cyxbs.freshman.utils.SPHelper;
 import com.mredrock.cyxbs.freshman.utils.net.Const;
 
 import java.util.ArrayList;

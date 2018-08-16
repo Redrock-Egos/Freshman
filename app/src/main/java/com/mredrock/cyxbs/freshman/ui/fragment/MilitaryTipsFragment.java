@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.mredrock.cyxbs.freshman.R;
+import com.mredrock.cyxbs.freshman.bean.Description;
 import com.mredrock.cyxbs.freshman.mvp.contract.MilitaryTipsContract;
 import com.mredrock.cyxbs.freshman.mvp.model.MilitaryTipsModel;
 import com.mredrock.cyxbs.freshman.mvp.presenter.MilitaryTipsPresenter;
@@ -17,6 +18,8 @@ public class MilitaryTipsFragment extends Fragment implements MilitaryTipsContra
     private View parent;
     private TextView name;
     private TextView content;
+    private TextView name1;
+    private TextView content1;
     private MilitaryTipsPresenter presenter;
 
     @Nullable
@@ -31,6 +34,8 @@ public class MilitaryTipsFragment extends Fragment implements MilitaryTipsContra
     private void findById(){
         name = parent.findViewById(R.id.freshman_military_tips_name);
         content = parent.findViewById(R.id.freshman_military_tips_content);
+        name1 = parent.findViewById(R.id.freshman_military_tips_name1);
+        content1 = parent.findViewById(R.id.freshman_military_tips_content1);
     }
 
     private void initMvp(){
@@ -42,8 +47,10 @@ public class MilitaryTipsFragment extends Fragment implements MilitaryTipsContra
 
 
     @Override
-    public void setData(String name, String content) {
-        this.name.setText(name);
-        this.content.setText(content);
+    public void setData(Description data) {
+        name.setText(data.getDescribe().get(0).getContent());
+        content.setText(data.getDescribe().get(1).getContent());
+        name1.setText(data.getDescribe().get(2).getContent());
+        content1.setText(data.getDescribe().get(3).getContent());
     }
 }

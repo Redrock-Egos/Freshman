@@ -1,7 +1,5 @@
 package com.mredrock.cyxbs.freshman.mvp.model;
 
-import android.util.Log;
-
 import com.mredrock.cyxbs.freshman.bean.ChatOnline;
 import com.mredrock.cyxbs.freshman.mvp.contract.ChatOnlineContract;
 import com.mredrock.cyxbs.freshman.utils.net.HttpLoader;

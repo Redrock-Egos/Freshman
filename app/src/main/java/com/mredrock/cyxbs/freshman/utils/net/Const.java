@@ -7,6 +7,9 @@ public class Const {
     // todo change temp url .baseUrl("https://wx.idsbllp.cn/welcome2018/")
     static final String BASE_URL = "http://47.106.33.112:8080/welcome2018/";
 
+    public static final String PHOTO_BASE_URL = "http://47.106.33.112:8080/welcome2018";
+
+
     public static final String INDEX_CANTEEN = "学生食堂";
     public static final String INDEX_DORMITORY = "学生寝室";
     public static final String INDEX_CATE = "周边美食";

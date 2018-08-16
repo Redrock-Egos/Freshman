@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.mredrock.cyxbs.freshman.R;
+import com.mredrock.cyxbs.freshman.ui.adapter.CustomVIewPager;
 import com.mredrock.cyxbs.freshman.ui.adapter.MyFragmentPagerAdapter;
 import com.mredrock.cyxbs.freshman.ui.fragment.MilitaryShowFragment;
 import com.mredrock.cyxbs.freshman.ui.fragment.MilitaryTipsFragment;

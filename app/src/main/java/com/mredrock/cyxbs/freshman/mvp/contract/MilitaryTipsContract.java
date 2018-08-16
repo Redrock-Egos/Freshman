@@ -10,6 +10,6 @@ public class MilitaryTipsContract {
     }
 
     public interface IMilitaryTipsView extends BaseContract.ISomethingView{
-        void setData(String name,String content);
+        void setData(Description data);
     }
 }

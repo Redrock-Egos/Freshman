@@ -28,7 +28,6 @@ public class MilitaryShowPresenter extends BasePresenter<MilitaryShowContract.IM
             @Override
             public void succeed(Object o) {
                 MilitaryShow bean = (MilitaryShow) o;
-                // TODO: 2018/8/10 先模拟数据 之后测试
                 getView().setData(bean);
             }
 

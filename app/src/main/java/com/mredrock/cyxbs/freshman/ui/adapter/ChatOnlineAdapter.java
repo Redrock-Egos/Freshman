@@ -68,7 +68,7 @@ public class ChatOnlineAdapter<T> extends MultiLayoutBaseAdapter{
         if (pinfo != null) {
             for (int i = 0; i < pinfo.size(); i++) {
                 String pn = pinfo.get(i).packageName;
-                if (pn.equalsIgnoreCase("com.tencent.qqlite") || pn.equalsIgnoreCase("com.tencent.mobileqq")) {
+                if (pn.equalsIgnoreCase("com.tencent.qqlite") || pn.equalsIgnoreCase("com.tencent.mobileqq")||pn.equalsIgnoreCase("com.tencent.tim")) {
                     return true;
                 }
             }

@@ -9,11 +9,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -113,11 +112,19 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
             }
         });
 
+        InputMethodManager imm1 = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm1 != null) {
+            imm1.toggleSoftInput( InputMethodManager.HIDE_NOT_ALWAYS,0);
+        }
+
         editText.setOnFocusChangeListener((v, hasFocus) -> {
             if(hasFocus){
                 sreach_img.setVisibility(View.GONE);
                 setHint();
-                getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+                }
             }else{
                 if(datas.size()==0){
                     sreach_img.setVisibility(View.VISIBLE);
@@ -150,5 +157,7 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
         }
     }
 
-
+    public EditText getEditText() {
+        return editText;
+    }
 }

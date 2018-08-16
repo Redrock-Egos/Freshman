@@ -7,9 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import com.mredrock.cyxbs.freshman.R;
@@ -49,6 +46,7 @@ public class CquptMienActivity extends AppCompatActivity implements View.OnClick
         viewPager = findViewById(R.id.freshman_CyMien_vp);
         btnBack = findViewById(R.id.freshman_CyMien_iv_back);
         tabLayout = findViewById(R.id.freshman_CyMien_tl);
+
         toolbar = findViewById(R.id.tb_CyMien);
         DensityUtils.setTransparent(toolbar,this);
         btnBack.setOnClickListener(this);

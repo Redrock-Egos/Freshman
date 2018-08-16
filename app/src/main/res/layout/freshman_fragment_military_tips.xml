@@ -24,20 +24,42 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
+                <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/freshman_military_tips_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="标题"
+                    app:autoSizeMaxTextSize="16sp"
+                    app:autoSizeTextType="uniform"
                     android:textColor="#020203"
                     android:textSize="18sp" />
 
-                <TextView
+                <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/freshman_military_tips_content"
                     android:text="我是内容"
                     android:layout_marginTop="10dp"
                     android:textSize="14sp"
+                    app:autoSizeMaxTextSize="14sp"
+                    app:autoSizeTextType="uniform"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/freshman_military_tips_name1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="标题"
+                    app:autoSizeMaxTextSize="16sp"
+                    app:autoSizeTextType="uniform"
                     android:textColor="#020203"
+                    android:textSize="18sp" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/freshman_military_tips_content1"
+                    android:text="我是内容"
+                    android:layout_marginTop="10dp"
+                    android:textSize="14sp"
+                    app:autoSizeMaxTextSize="14sp"
+                    app:autoSizeTextType="uniform"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>

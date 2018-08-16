@@ -2,19 +2,24 @@ package com.mredrock.cyxbs.freshman.mvp.model;
 
 import com.mredrock.cyxbs.freshman.bean.Description;
 import com.mredrock.cyxbs.freshman.mvp.contract.MilitaryTipsContract;
+import com.mredrock.cyxbs.freshman.utils.SPHelper;
 import com.mredrock.cyxbs.freshman.utils.net.Const;
 import com.mredrock.cyxbs.freshman.utils.net.HttpLoader;
 
 public class MilitaryTipsModel implements MilitaryTipsContract.IMilitaryTipsModel {
-
+    
     @Override
     public void loadData(LoadCallBack callBack) {
-        // TODO: 2018/8/10 这里先用新生必备的测试
-        HttpLoader.<Description>get(
-                service -> service.getDescriptions(Const.INDEX_MILITARY_TRAINING),
-                item -> setItem(item,callBack),
-                error -> error(error.toString(),callBack)
-        );
+        Description description = SPHelper.getBean(Const.INDEX_MILITARY_TRAINING,Description.class);
+        if(description == null){
+            HttpLoader.<Description>get(
+                    service -> service.getDescriptions(Const.INDEX_MILITARY_TRAINING),
+                    item -> setItem(item,callBack),
+                    error -> error(error.toString(),callBack)
+            );
+        }else{
+            callBack.succeed(description);
+        }
     }
 
 
@@ -24,6 +29,7 @@ public class MilitaryTipsModel implements MilitaryTipsContract.IMilitaryTipsMode
             bean.setCheck(false);
             bean.setDelete(false);
         }
+        SPHelper.putBean(Const.INDEX_MILITARY_TRAINING,description);
         callBack.succeed(description);
     }
 

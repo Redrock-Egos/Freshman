@@ -21,7 +21,6 @@ import com.mredrock.cyxbs.freshman.ui.adapter.MyFragmentPagerAdapter;
 import com.mredrock.cyxbs.freshman.ui.fragment.DataDetailSexFragment;
 import com.mredrock.cyxbs.freshman.ui.fragment.DataDetailSubjectFragment;
 import com.mredrock.cyxbs.freshman.utils.DensityUtils;
-import com.mredrock.cyxbs.freshman.utils.SPHelper;
 import com.mredrock.cyxbs.freshman.utils.TabLayoutUtil;
 import com.mredrock.cyxbs.freshman.utils.ToastUtils;
 
@@ -104,5 +103,11 @@ public class CampusDataDetailActivity extends AppCompatActivity implements DataD
     @Override
     public Context getContext() {
         return this;
+    }
+
+    @Override
+    protected void onDestroy() {
+        mPresenter.detachView();
+        super.onDestroy();
     }
 }

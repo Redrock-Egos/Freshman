@@ -21,7 +21,7 @@ import com.mredrock.cyxbs.freshman.utils.DensityUtils
 import com.mredrock.cyxbs.freshman.utils.LogUtils
 import kotlinx.android.synthetic.main.freshman_item_strategy.view.*
 
-class StrategyAdapter(private val list: List<StrategyData.DetailData>) : RecyclerView.Adapter<StrategyAdapter.ViewHolder>() {
+open class StrategyAdapter(private val list: List<StrategyData.DetailData>) : RecyclerView.Adapter<StrategyAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder? {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.freshman_item_strategy, parent, false)
@@ -102,9 +102,9 @@ class StrategyAdapter(private val list: List<StrategyData.DetailData>) : Recycle
                 start(context, picUrls, pos)
             }
             g?.load(mData)
-                ?.thumbnail(0.1f)
-                ?.diskCacheStrategy(DiskCacheStrategy.ALL)
-                ?.into(this)
+                    ?.thumbnail(0.1f)
+                    ?.diskCacheStrategy(DiskCacheStrategy.ALL)
+                    ?.into(this)
         }
     }
 }

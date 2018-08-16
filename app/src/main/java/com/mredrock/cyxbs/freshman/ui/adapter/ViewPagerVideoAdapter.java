@@ -2,6 +2,7 @@ package com.mredrock.cyxbs.freshman.ui.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
@@ -11,10 +12,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.bean.MilitaryShow;
-import com.mredrock.cyxbs.freshman.utils.ToastUtils;
+import com.mredrock.cyxbs.freshman.utils.net.Const;
 
 import java.util.List;
 
@@ -48,10 +51,16 @@ public class ViewPagerVideoAdapter extends PagerAdapter {
 
         tv.setText(datas.get(position).getName());
         Glide.with(context)
-                .load(datas.get(position).getVideo_pic().getUrl())
-                .thumbnail(0.2f)
-                .placeholder(R.drawable.freshman_preload_img)
-                .into(imageView);
+                .load(Const.PHOTO_BASE_URL+datas.get(position).getVideo_pic().getUrl())
+                .asBitmap()
+                .thumbnail(0.1f)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(new BitmapImageViewTarget(imageView){
+                    @Override
+                    protected void setResource(Bitmap resource) {
+                        imageView.setImageBitmap(resource);
+                    }
+                });
         play.setOnClickListener(v -> {
             Intent intent = new Intent();
             intent.setAction("android.intent.action.VIEW");

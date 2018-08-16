@@ -1,11 +1,13 @@
 package com.mredrock.cyxbs.freshman.ui.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 
 import com.mredrock.cyxbs.freshman.R;
@@ -51,8 +53,10 @@ public class ChatOnlineActivity extends AppCompatActivity {
         fragments = new ArrayList<>();
         titles = new ArrayList<>();
         DensityUtils.setTransparent(toolbar,this);
-        fragments.add(new ChatOnlineFragment(this,"学校群"));
-        fragments.add(new ChatOnlineFragment(this,"老乡群"));
+        ChatOnlineFragment fragment = new ChatOnlineFragment(this,"学校群");
+        ChatOnlineFragment fragment1 = new ChatOnlineFragment(this,"老乡群");
+        fragments.add(fragment);
+        fragments.add(fragment1);
         titles.add("学院群");
         titles.add("老乡群");
         adapter = new MyFragmentPagerAdapter(getSupportFragmentManager(),fragments,titles);
@@ -60,6 +64,27 @@ public class ChatOnlineActivity extends AppCompatActivity {
         viewPager.setOffscreenPageLimit(viewPager.getChildCount());
         tabLayout.setupWithViewPager(viewPager);
         TabLayoutUtil.setIndicator(tabLayout,40,40);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    imm.hideSoftInputFromWindow(fragment.getEditText().getWindowToken(), 0);
+                    imm.hideSoftInputFromWindow(fragment1.getEditText().getWindowToken(), 0);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
     }
 
 

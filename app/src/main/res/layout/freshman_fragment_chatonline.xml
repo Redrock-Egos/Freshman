@@ -17,13 +17,14 @@
             android:id="@+id/freshman_chatonline_v"
             android:layout_width="wrap_content"
             android:layout_height="1dp"/>
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/freshman_chatonline_rv"
-            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_marginTop="5dp">
 
         </android.support.v7.widget.RecyclerView>
     </LinearLayout>

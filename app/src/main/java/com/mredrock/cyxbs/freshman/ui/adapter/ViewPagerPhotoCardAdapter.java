@@ -1,6 +1,7 @@
 package com.mredrock.cyxbs.freshman.ui.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,11 +10,13 @@ import android.view.ViewParent;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.bean.MilitaryShow;
-import com.mredrock.cyxbs.freshman.ui.activity.PhotoViewerActivity;
 import com.mredrock.cyxbs.freshman.ui.activity.PhotoViewerActivityKt;
+import com.mredrock.cyxbs.freshman.utils.net.Const;
 
 import java.util.List;
 
@@ -48,12 +51,20 @@ public class ViewPagerPhotoCardAdapter extends PagerAdapter {
         TextView tv = view.findViewById(R.id.freshman_military_card_number);
         RoundedImageView imageView = view.findViewById(R.id.freshman_military_card_photo);
 
+
         tv.setText(datas.get(position).getName());
         Glide.with(context)
-                .load(datas.get(position).getUrl())
-                .thumbnail(0.2f)
-                .placeholder(R.drawable.freshman_preload_img)
-                .into(imageView);
+                .load(Const.PHOTO_BASE_URL+datas.get(position).getUrl())
+                .asBitmap()
+                .centerCrop()
+                .thumbnail(0.1f)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(new BitmapImageViewTarget(imageView){
+                    @Override
+                    protected void setResource(Bitmap resource) {
+                        imageView.setImageBitmap(resource);
+                    }
+                });
         ViewParent parent = view.getParent();
         if(parent!=null){
             ViewGroup viewGroup = (ViewGroup) parent;
@@ -65,8 +76,8 @@ public class ViewPagerPhotoCardAdapter extends PagerAdapter {
             lp.height =imageView.getHeight()/4;
             tv.setLayoutParams(lp);
             imageView.setAdjustViewBounds(true);
-
         });
+
 
         int finalPosition = position;
 
@@ -74,6 +85,11 @@ public class ViewPagerPhotoCardAdapter extends PagerAdapter {
             PhotoViewerActivityKt.start(context,photos, finalPosition);
         });
         container.addView(view);
+
+//        ViewGroup.LayoutParams params = container.getChildAt(position).getLayoutParams();
+//        params.height = DensityUtils.getScreenHeight(context)/5;
+//        params.width = (int) (DensityUtils.getScreenWidth(context)*0.84);
+//        container.getChildAt(position).setLayoutParams(params);
 
         return view;
     }

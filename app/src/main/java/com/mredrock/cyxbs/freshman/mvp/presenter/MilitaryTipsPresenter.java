@@ -20,7 +20,7 @@ public class MilitaryTipsPresenter extends BasePresenter<MilitaryTipsContract.IM
             @Override
             public void succeed(Object o) {
                 Description description = (Description)o;
-                getView().setData(description.getDescribe().get(0).getName(),description.getDescribe().get(0).getContent());
+                getView().setData(description);
             }
 
             @Override

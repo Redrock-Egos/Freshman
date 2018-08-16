@@ -14,7 +14,7 @@ import com.mredrock.cyxbs.freshman.bean.MienStu;
 import com.mredrock.cyxbs.freshman.mvp.contract.CquptMienBaseContract;
 import com.mredrock.cyxbs.freshman.mvp.model.CquptMienBaseModel;
 import com.mredrock.cyxbs.freshman.mvp.presenter.CquptMienActPresenter;
-import com.mredrock.cyxbs.freshman.ui.adapter.CquptMienActAdapter;
+import com.mredrock.cyxbs.freshman.ui.adapter.CquptAdapter;
 
 /**
  * 重邮风采第二个页面 展示大型活动
@@ -42,8 +42,8 @@ public class CquptMienActFragment extends Fragment implements CquptMienBaseContr
 
     @Override
     public void setData(MienStu bean) {
-        CquptMienActAdapter actAdapter = new CquptMienActAdapter(getView().getContext(),bean.getArray(),new int[]{R.layout.freshman_item_mien_act});
-        recyclerView.setAdapter(actAdapter);
+        CquptAdapter cquptAdapter = new CquptAdapter(bean.getArray());
+        recyclerView.setAdapter(cquptAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getView().getContext()));
     }
 }
