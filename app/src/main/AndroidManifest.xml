@@ -28,7 +28,8 @@
         <activity android:name=".ui.activity.campus.CampusDataDetailActivity" />
         <activity android:name=".ui.activity.PhotoViewerActivity" />
         <activity android:name=".ui.activity.strategy.SameStrategyActivity" />
-        <activity android:name=".ui.activity.strategy.DormitoryStrategyActivity"/>
+        <activity android:name=".ui.activity.strategy.DormitoryStrategyActivity" />
+        <activity android:name=".ui.activity.WordsActivity"></activity>
     </application>
 
 </manifest>

@@ -6,6 +6,7 @@ import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.mvp.contract.strategy.RevealContract.IRevealPresenter
 import com.mredrock.cyxbs.freshman.mvp.contract.strategy.RevealContract.IRevealView
 import com.mredrock.cyxbs.freshman.ui.adapter.RevealAdapter
+import com.mredrock.cyxbs.freshman.utils.DensityUtils
 import com.mredrock.cyxbs.freshman.utils.kt.BaseActivity
 import com.mredrock.cyxbs.freshman.utils.net.Const
 import kotlinx.android.synthetic.main.freshman_activity_strategy_same.*
@@ -21,6 +22,7 @@ class RevealActivity : BaseActivity<IRevealView, IRevealPresenter>() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.freshman_activity_strategy_same)
 
+        DensityUtils.setTransparent(toolbar, this)
         toolbar.setNavigationOnClickListener { finish() }
         tb_title.text = Const.INDEX_REVEAL
 

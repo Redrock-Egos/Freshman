@@ -1,6 +1,7 @@
 package com.mredrock.cyxbs.freshman.ui.adapter.strategy
 
 import android.content.Context
+import android.opengl.Visibility
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -17,8 +18,8 @@ import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.bean.StrategyData
 import com.mredrock.cyxbs.freshman.ui.activity.start
 import com.mredrock.cyxbs.freshman.ui.adapter.BasePagerAdapter
-import com.mredrock.cyxbs.freshman.utils.DensityUtils
-import com.mredrock.cyxbs.freshman.utils.LogUtils
+import com.mredrock.cyxbs.freshman.utils.kt.dp
+import com.mredrock.cyxbs.freshman.utils.kt.getHeight
 import kotlinx.android.synthetic.main.freshman_item_strategy.view.*
 
 open class StrategyAdapter(private val list: List<StrategyData.DetailData>) : RecyclerView.Adapter<StrategyAdapter.ViewHolder>() {
@@ -27,11 +28,9 @@ open class StrategyAdapter(private val list: List<StrategyData.DetailData>) : Re
         val v = LayoutInflater.from(parent.context).inflate(R.layout.freshman_item_strategy, parent, false)
         val context = parent.context
         if (g == null) { g = Glide.with(context) }
-        if (dp6 == 0f) { dp6 = DensityUtils.dp2px(context, 6f) }
         if (lParams == null) {
-            val dp4 = DensityUtils.dp2px(context, 4f).toInt()
-            lParams = LinearLayout.LayoutParams(dp4 * 2, dp4 * 2)
-            lParams!!.setMargins(dp4, dp4, dp4, dp4)
+            lParams = LinearLayout.LayoutParams(dp(8), dp(8))
+            lParams!!.setMargins(dp(4), dp(4), dp(4), dp(4))
         }
         if (pointWidth == 0) {
             v.apply {
@@ -46,13 +45,8 @@ open class StrategyAdapter(private val list: List<StrategyData.DetailData>) : Re
                 })
             }
         }
-        if (imagePageHeight == 0) {
-            imagePageHeight = (0.2458 * DensityUtils.getScreenHeight(context)).toInt()
-        }
-        v.apply {
-            vp_strategy.layoutParams.height = imagePageHeight
-            vp_strategy.addOnPageChangeListener(IndexPageListener(iv_index_point))
-        }
+        v.vp_strategy.layoutParams.height = getHeight(164, 667).toInt()
+
         return ViewHolder(v)
     }
 
@@ -61,25 +55,32 @@ open class StrategyAdapter(private val list: List<StrategyData.DetailData>) : Re
     override fun onBindViewHolder(holder: StrategyAdapter.ViewHolder, position: Int) = holder.v.initView(list[position], position)
 
     private var pointWidth = 0
-    private var imagePageHeight = 0
     private var g: RequestManager? = null
-    private var dp6 = 0f
     private var lParams:LinearLayout.LayoutParams?=null
 
     private fun View.initView(mData: StrategyData.DetailData, pos: Int) {
         tv_describe_name.text = mData.name
         tv_describe_detail.text = mData.content
-
-        with(ll_point) {
-            for (i in childCount until mData.picture.size) {
-                addView(ImageView(context).apply {
-                    layoutParams = lParams
-                    setImageResource(R.drawable.freshman_ic_point_gray)
-                })
-            }
+        if (!mData.property.isNullOrBlank()) {
+            tv_describe_money_per.visibility = View.VISIBLE
+            tv_describe_money_per.text = "￥${mData.property}（人）"
         }
 
+        if (mData.picture.size < 2) {
+            iv_index_point.visibility = View.GONE
+        } else {
+            with(ll_point) {
+                for (i in childCount until mData.picture.size) {
+                    addView(ImageView(context).apply {
+                        layoutParams = lParams
+                        setImageResource(R.drawable.freshman_ic_point_gray)
+                    })
+                }
+            }
+            vp_strategy.addOnPageChangeListener(IndexPageListener(iv_index_point))
+        }
         vp_strategy.adapter = ImagePageAdapter(mData.picture, pos)
+
     }
 
     class ViewHolder(val v: View) : RecyclerView.ViewHolder(v)
@@ -94,9 +95,9 @@ open class StrategyAdapter(private val list: List<StrategyData.DetailData>) : Re
 
     private inner class ImagePageAdapter(private val picUrls: List<String>, val pos: Int) : BasePagerAdapter<RoundedImageView, String>(picUrls) {
         override fun createView(context: Context) = RoundedImageView(context)
-        override fun com.makeramen.roundedimageview.RoundedImageView.initView(mData: kotlin.String) {
+        override fun RoundedImageView.initView(mData: kotlin.String) {
             adjustViewBounds = true
-            cornerRadius = dp6
+            cornerRadius = dp(6).toFloat()
             scaleType = ImageView.ScaleType.CENTER_CROP
             setOnClickListener { _ ->
                 start(context, picUrls, pos)

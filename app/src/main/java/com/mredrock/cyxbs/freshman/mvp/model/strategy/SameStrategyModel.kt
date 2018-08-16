@@ -12,5 +12,13 @@ class SameStrategyModel : SameStrategyContract.ISameStrategyModel {
                 DORMITORY_NAME_1, DORMITORY_NAME_2, DORMITORY_NAME_3, DORMITORY_NAME_4 -> this.getDormitoryData(label)
                 else -> this.getStrategyData(label, STRATEGY_PAGE_NUM, STRATEGY_PAGE_SIZE)
             }
-        }, onSuccess, onFail, "strategy")
+        }, {
+            it.details.forEach {detail ->
+                detail.picture = detail.picture.map {url ->
+                    IMG_BASE_URL + url
+                }
+
+            }
+            onSuccess(it)
+        }, onFail, "strategy")
 }
