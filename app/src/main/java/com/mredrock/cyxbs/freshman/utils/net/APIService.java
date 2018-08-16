@@ -4,9 +4,9 @@ import com.mredrock.cyxbs.freshman.bean.ChatOnline;
 import com.mredrock.cyxbs.freshman.bean.Description;
 import com.mredrock.cyxbs.freshman.bean.Entity;
 import com.mredrock.cyxbs.freshman.bean.MienStu;
+import com.mredrock.cyxbs.freshman.bean.MilitaryShow;
 import com.mredrock.cyxbs.freshman.bean.SexProportion;
 import com.mredrock.cyxbs.freshman.bean.SexRatio;
-import com.mredrock.cyxbs.freshman.bean.MilitaryShow;
 import com.mredrock.cyxbs.freshman.bean.StrategyData;
 import com.mredrock.cyxbs.freshman.bean.SubjectProportion;
 

@@ -1,12 +1,10 @@
 package com.mredrock.cyxbs.freshman.ui.adapter;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.ui.activity.App;
@@ -53,7 +51,7 @@ public class EntranceAdapter extends RecyclerView.Adapter<EntranceAdapter.Entran
 
             icon = itemView.findViewById(R.id.iv_grid_entrance);
 
-            icon.setOnClickListener(v ->
+            itemView.setOnClickListener(v ->
                 mListener.changePage(simpleDataList.get(getLayoutPosition()).getName())
             );
         }

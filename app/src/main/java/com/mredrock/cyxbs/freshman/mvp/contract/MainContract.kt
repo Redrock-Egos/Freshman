@@ -29,10 +29,6 @@ class MainContract {
     interface IMainPresenter : IBasePresenter<IMainView> {
         fun onBuildingClick(id: Int)
         /**
-         * 建筑物位置的初始化
-         */
-        fun onContentViewSet()
-        /**
          * 这里要换车
          */
         fun onResume()

@@ -5,24 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.strategy.SameStrategyActivity">
+    tools:context=".ui.activity.strategy.SameStrategyMVPActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@drawable/freshman_bg_tb"
-        app:navigationIcon="@drawable/freshman_icon_back"
-        app:contentInsetStart="0dp">
-        <TextView
-            android:id="@+id/tb_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            tools:text="@string/freshman_strategy_cate"
-            android:textColor="@color/freshman_title_white"
-            android:textSize="@dimen/dp_toolbar_text_size" />
-    </android.support.v7.widget.Toolbar>
+    <include layout="@layout/freshman_include_toolbar"
+        android:id="@+id/toolbar"/>
 
     <TextView
         android:id="@+id/best_cate_ever"

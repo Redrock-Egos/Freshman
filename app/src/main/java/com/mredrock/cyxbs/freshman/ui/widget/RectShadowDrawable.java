@@ -52,7 +52,8 @@ public class RectShadowDrawable extends Drawable {
 
         mShape = new Path();
         mView = view;
-//        mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_ATOP));
+
+        mView.setLayerType(View.LAYER_TYPE_SOFTWARE, mPaint);
     }
 
     @Override

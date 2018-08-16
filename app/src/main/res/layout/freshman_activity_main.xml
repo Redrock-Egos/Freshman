@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:scrollbars="none"
     android:background="@drawable/freshman_bg_tb"
-    tools:context=".ui.activity.MainActivity">
+    tools:context=".ui.activity.MainMVPActivity">
 
     <!--为了适配，必须单独在背景基础上固定建筑的位置，所以这里就只能多一层LL-->
     <LinearLayout
@@ -14,20 +14,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/freshman_icon_back"
-            android:background="@drawable/freshman_bg_tb">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/freshman_main_welcome"
-                android:textColor="@color/freshman_title_white"
-                android:textSize="@dimen/dp_toolbar_text_size" />
-        </android.support.v7.widget.Toolbar>
+        <include layout="@layout/freshman_include_toolbar" />
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"

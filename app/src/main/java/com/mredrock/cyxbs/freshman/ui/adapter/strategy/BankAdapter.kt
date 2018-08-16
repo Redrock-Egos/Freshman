@@ -9,12 +9,17 @@ import com.bumptech.glide.RequestManager
 import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.bean.StrategyData
 import com.mredrock.cyxbs.freshman.ui.activity.start
-import com.mredrock.cyxbs.freshman.utils.kt.dp
+import com.mredrock.cyxbs.freshman.utils.DensityUtils
 import kotlinx.android.synthetic.main.freshman_item_strategy_bank.view.*
 
 class BankAdapter(val list: List<StrategyData.DetailData>) : RecyclerView.Adapter<BankAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder? {
-        if (g == null) {
+        if (scale6 == 0f) {
+            scale6 = DensityUtils.getScreenWidth(parent.context) * 6 / 375f
+            scale18 = (scale6 * 3).toInt()
+            scale36 = (scale6 * 6).toInt()
+            scale89 = (scale6 * 89 / 6.0).toInt()
+            scale102 = (scale6 * 17).toInt()
             g = Glide.with(parent.context)
         }
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.freshman_item_strategy_bank, parent, false))
@@ -26,19 +31,24 @@ class BankAdapter(val list: List<StrategyData.DetailData>) : RecyclerView.Adapte
 
     class ViewHolder(val v:View) : RecyclerView.ViewHolder(v)
 
+    private var scale6 = 0f
+    private var scale18 = 0
+    private var scale36 = 0
+    private var scale89 = 0
+    private var scale102 = 0
     private var g: RequestManager? = null
 
     private fun View.initView(mData: StrategyData.DetailData) {
         tv_name.text = mData.name
-        tv_name.layoutParams.height = dp(18)
+        tv_name.layoutParams.height = scale18
 
         tv_detail.text = mData.content
-        tv_detail.setLineSpacing(dp(6).toFloat(), 1f)
-        tv_detail.layoutParams.height = dp(36)
+        tv_detail.setLineSpacing(scale6, 1f)
+        tv_detail.layoutParams.height = scale36
 
-        rl.layoutParams.height = dp(89)
+        rl.layoutParams.height = scale89
         iv_img.apply {
-            iv_img.layoutParams.width = dp(102)
+            iv_img.layoutParams.width = scale102
             setOnClickListener { start(context, mData.picture) }
             g?.load(mData.picture.first())?.into(this)
         }
