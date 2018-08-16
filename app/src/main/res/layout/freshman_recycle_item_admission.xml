@@ -24,8 +24,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/freshman_check_delete_normal"
-            android:clickable="true"
-            android:focusable="true"
             tools:ignore="ContentDescription" />
 
         <ImageView
@@ -53,8 +51,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/freshman_icon_see_more"
-            android:clickable="true"
-            android:focusable="true"
             android:layout_marginTop="2dp"
             android:layout_alignParentRight="true"
             tools:ignore="ContentDescription"

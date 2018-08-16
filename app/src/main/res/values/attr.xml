@@ -28,5 +28,7 @@
         <attr name="processColor" format="reference"/>
         <attr name="processNumber" format="reference"/>
         <attr name="time" format="integer"/>
+        <attr name="maxNum" format="integer"/>
+        <attr name="subjectName" format="reference"/>
     </declare-styleable>
 </resources>

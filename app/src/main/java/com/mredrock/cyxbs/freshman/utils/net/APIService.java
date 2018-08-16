@@ -4,9 +4,11 @@ import com.mredrock.cyxbs.freshman.bean.ChatOnline;
 import com.mredrock.cyxbs.freshman.bean.Description;
 import com.mredrock.cyxbs.freshman.bean.Entity;
 import com.mredrock.cyxbs.freshman.bean.MienStu;
+import com.mredrock.cyxbs.freshman.bean.SexProportion;
 import com.mredrock.cyxbs.freshman.bean.SexRatio;
 import com.mredrock.cyxbs.freshman.bean.MilitaryShow;
 import com.mredrock.cyxbs.freshman.bean.StrategyData;
+import com.mredrock.cyxbs.freshman.bean.SubjectProportion;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -79,4 +81,10 @@ public interface APIService {
 
     @GET("search/chatgroup/abstractly")
     Observable<ChatOnline> getChatOnline(@Query("index")String index,@Query("key")String key);
+
+    @GET("search/school/1")
+    Observable<SexProportion> getSexProportion(@Query("name")String name);
+
+    @GET("search/school/2")
+    Observable<SubjectProportion> getSubjectProportion(@Query("name") String name);
 }

@@ -5,7 +5,7 @@ package com.mredrock.cyxbs.freshman.utils.net;
  */
 public class Const {
     // todo change temp url .baseUrl("https://wx.idsbllp.cn/welcome2018/")
-    static final String BASE_URL = "http://118.24.175.82/";
+    static final String BASE_URL = "http://47.106.33.112:8080/welcome2018/";
 
     public static final String INDEX_CANTEEN = "学生食堂";
     public static final String INDEX_DORMITORY = "学生寝室";
@@ -22,6 +22,7 @@ public class Const {
     public static final String INDEX_REQUIRED = "入学必备";
     public static final String INDEX_ORGANIZATION = "学生组织";
     public static final String INDEX_REVEAL = "数据揭秘";
+
 
     public static final int STRATEGY_PAGE_SIZE = 1000;
     public static final int STRATEGY_PAGE_NUM = 1;

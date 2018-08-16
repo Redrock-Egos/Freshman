@@ -46,40 +46,32 @@ public class CampusStrategyEntranceActivity extends AppCompatActivity implements
         initData();
     }
 
-    private void initData(){
-        Data mData = SPHelper.getBean("entrance",Data.class);
+    private void initData() {
         List<SimpleData> datas = new ArrayList<>();
-        if (mData == null){
-            String[] names = {Const.INDEX_CANTEEN,Const.INDEX_DORMITORY,Const.INDEX_CATE,
-                    Const.INDEX_SCENIC,Const.INDEX_ENVIRONMENT,Const.INDEX_REVEAL,
-                    Const.INDEX_BANK,Const.INDEX_BUS,Const.INDEX_EXPRESS};
-            @IdRes
-            int[] ids = {R.drawable.freshman_icon_canteen,R.drawable.freshman_icon_dormitory,R.drawable.freshman_icon_cate,
-                    R.drawable.freshman_icon_scenic,R.drawable.freshman_icon_environment,R.drawable.freshman_icon_data,
-                    R.drawable.freshman_icon_bank,R.drawable.freshman_icon_bus,R.drawable.freshman_icon_express};
-            for (int i = 0; i < names.length; i++) {
-                SimpleData simpleData = new SimpleData();
-                simpleData.setName(names[i]);
-                simpleData.setId(ids[i]);
-                datas.add(simpleData);
-            }
-            Data data = new Data();
-            data.setData(datas);
-            SPHelper.putBean("entrance",data);
-        } else {
-            datas = mData.getData();
+        String[] names = {Const.INDEX_CANTEEN, Const.INDEX_DORMITORY, Const.INDEX_CATE,
+                Const.INDEX_SCENIC, Const.INDEX_ENVIRONMENT, Const.INDEX_REVEAL,
+                Const.INDEX_BANK, Const.INDEX_BUS, Const.INDEX_EXPRESS};
+        @IdRes
+        int[] ids = {R.drawable.freshman_icon_canteen, R.drawable.freshman_icon_dormitory, R.drawable.freshman_icon_cate,
+                R.drawable.freshman_icon_scenic, R.drawable.freshman_icon_environment, R.drawable.freshman_icon_data,
+                R.drawable.freshman_icon_bank, R.drawable.freshman_icon_bus, R.drawable.freshman_icon_express};
+        for (int i = 0; i < names.length; i++) {
+            SimpleData simpleData = new SimpleData();
+            simpleData.setName(names[i]);
+            simpleData.setId(ids[i]);
+            datas.add(simpleData);
         }
         EntranceAdapter simpleAdapter = new EntranceAdapter(datas, name -> {
             SameStrategyActivityKt.createStrategyActivity(CampusStrategyEntranceActivity.this, name);
         });
-        GridLayoutManager manager = new GridLayoutManager(this,3);
+        GridLayoutManager manager = new GridLayoutManager(this, 3);
         mRv.setLayoutManager(manager);
         mRv.setAdapter(simpleAdapter);
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.iv_entrance_back:
                 finish();
                 break;

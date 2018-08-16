@@ -1,6 +1,7 @@
 package com.mredrock.cyxbs.freshman.ui.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import com.mredrock.cyxbs.freshman.ui.activity.App;
 
 import java.util.List;
 
+import javax.security.auth.login.LoginException;
+
 /**
  * 只是因为懒。。就没有把Adapter和ViewHolder解耦了
  * 也是因为懒，不想写动画了
@@ -24,6 +27,8 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
     private Boolean isEdit;
     private OnDeleteDataListener mListener;
     private int deleteNum = 0;
+
+    private String TAG = "AdmissionRequestAdapter";
 
     public AdmissionRequestAdapter(List<Description.DescribeBean> mDataList, OnDeleteDataListener mListener){
         this.mDataList = mDataList;
@@ -50,6 +55,11 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
     public void changeData(Boolean isEdit){
         this.isEdit = isEdit;
         deleteNum = 0;
+        if (isEdit){
+            for (int i = 0; i < mDataList.size(); i++) {
+                mDataList.get(i).setCheck(false);
+            }
+        }
         notifyDataSetChanged();
     }
 
@@ -60,7 +70,7 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
 
     public void deleteDatas(){
 //      删除时候从大到小，不然会删不干净...
-        for (int i = mDataList.size() - 1; i > 0; i--) {
+        for (int i = mDataList.size() - 1; i >= 0; i--) {
             if (mDataList.get(i).isDelete()){
                 mDataList.remove(i);
                 notifyItemRemoved(i);
@@ -94,8 +104,35 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
             description = itemView.findViewById(R.id.tv_admission_description);
 
             item.setOnClickListener(this);
-            more.setOnClickListener(this);
-            delete.setOnClickListener(this);
+            itemView.setOnClickListener(v->{
+                Log.i(TAG,"点击了："+getLayoutPosition()+" item的名字: "+title.getText().toString()
+                +" more的描述："+more.getVisibility() + " isOpen:" + mDataList.get(getLayoutPosition()).getProperty());
+                if (isEdit){
+                    if (mDataList.get(getLayoutPosition()).isDelete()){
+                        mDataList.get(getLayoutPosition()).setDelete(false);
+                        delete.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_check_delete_normal));
+                        deleteNum = deleteNum - 1;
+                        mListener.getTotalNum(deleteNum);
+                    } else {
+                        mDataList.get(getLayoutPosition()).setDelete(true);
+                        delete.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_check_delete_pressed));
+                        deleteNum = deleteNum + 1;
+                        mListener.getTotalNum(deleteNum);
+                    }
+                } else {
+                    if (mDataList.get(getLayoutPosition()).getProperty().equals("用户自定义"))
+                        return;
+                    if (!mDataList.get(getLayoutPosition()).isOpen()){
+                        more.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_icon_see_simple));
+                        notifyItemChanged(getLayoutPosition(),0);
+                        mDataList.get(getLayoutPosition()).setOpen(true);
+                    } else {
+                        more.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_icon_see_more));
+                        notifyItemChanged(getLayoutPosition(),0);
+                        mDataList.get(getLayoutPosition()).setOpen(false);
+                    }
+                }
+            });
         }
 
         void initData(Description.DescribeBean mData){
@@ -106,6 +143,11 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
             title.setTextColor(App.getContext().getResources().getColor(colorId));
             item.setImageDrawable(App.getContext().getResources().getDrawable(drawableIdCheck));
             delete.setImageDrawable(App.getContext().getResources().getDrawable(drawableIdDelete));
+            if (mData.getProperty().equals("用户自定义")){
+                more.setVisibility(View.GONE);
+            } else if (mData.getProperty().equals("必需") || mData.getProperty().equals("非必需")){
+                more.setVisibility(View.VISIBLE);
+            }
             if (mData.isOpen()){
                 description.setVisibility(View.VISIBLE);
                 description.setText(mData.getContent());
@@ -113,9 +155,6 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
             } else {
                 description.setVisibility(View.GONE);
                 more.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_icon_see_more));
-            }
-            if (mData.getProperty().equals("用户自定义")){
-                more.setVisibility(View.GONE);
             }
             if (!isEdit){
                 delete.setVisibility(View.GONE);
@@ -154,29 +193,6 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
                         from2(getLayoutPosition(),getItemCount() - 1);
                     }
                     break;
-                case R.id.iv_admission_more:
-                    if (!mDataList.get(getLayoutPosition()).isOpen()){
-                        more.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_icon_see_simple));
-                        notifyItemChanged(getLayoutPosition(),0);
-                        mDataList.get(getLayoutPosition()).setOpen(true);
-                    } else {
-                        more.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_icon_see_more));
-                        notifyItemChanged(getLayoutPosition(),0);
-                        mDataList.get(getLayoutPosition()).setOpen(false);
-                    }
-                    break;
-                case R.id.iv_admission_delete:
-                    if (mDataList.get(getLayoutPosition()).isDelete()){
-                        mDataList.get(getLayoutPosition()).setDelete(false);
-                        delete.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_check_delete_normal));
-                        deleteNum = deleteNum - 1;
-                        mListener.getTotalNum(deleteNum);
-                    } else {
-                        mDataList.get(getLayoutPosition()).setDelete(true);
-                        delete.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_check_delete_pressed));
-                        deleteNum = deleteNum + 1;
-                        mListener.getTotalNum(deleteNum);
-                    }
             }
         }
     }

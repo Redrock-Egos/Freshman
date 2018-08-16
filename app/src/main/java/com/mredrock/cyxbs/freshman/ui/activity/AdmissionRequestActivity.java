@@ -7,9 +7,11 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -106,10 +108,10 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
                 total = App.getContext().getResources().getString(R.string.freshmen_admission_delete)+"("+count+")";
             edit.setText(total);
         });
-        mRv.setLayoutManager(manger);
+        mRv.setLayoutManager(new LinearLayoutManager(this));
         mRv.setAdapter(mAdapter);
-        mRv.getItemAnimator().setChangeDuration(200);
-        mRv.getItemAnimator().setMoveDuration(800);
+        mRv.getItemAnimator().setChangeDuration(100);
+        mRv.getItemAnimator().setMoveDuration(200);
     }
 
     @Override
@@ -183,5 +185,16 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
     @Override
     public Context getContext() {
         return App.getContext();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // 判断当前按键是返回键
+        if (keyCode == KeyEvent.KEYCODE_BACK && isEdit) {
+            isEdit = false;
+            mAdapter.changeData(false);
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

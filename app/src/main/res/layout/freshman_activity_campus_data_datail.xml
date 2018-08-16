@@ -43,7 +43,7 @@
     </android.support.v7.widget.Toolbar>
 
     <android.support.design.widget.TabLayout
-        android:id="@+id/tabLayout"
+        android:id="@+id/tl_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -52,7 +52,9 @@
         android:background="@color/freshman_bg_white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tb_data_detail">
+        app:layout_constraintTop_toBottomOf="@+id/tb_data_detail"
+        app:tabTextColor="@color/freshmen_finish_black"
+        app:tabSelectedTextColor="#54ACFF">
 
         <android.support.design.widget.TabItem
             android:layout_width="match_parent"
@@ -72,7 +74,7 @@
         android:layout_height="0dp"
         android:background="@color/freshman_bg_phone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout">
+        app:layout_constraintTop_toBottomOf="@+id/tl_data">
 
     </android.support.v4.view.ViewPager>
 
