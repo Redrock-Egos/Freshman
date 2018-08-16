@@ -6,20 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.WordsActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:navigationIcon="@drawable/freshman_icon_back"
-        android:background="@drawable/freshman_bg_tb">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/freshman_words_title"
-            android:textColor="@color/freshman_title_white"
-            android:textSize="@dimen/dp_toolbar_text_size" />
-    </android.support.v7.widget.Toolbar>
+    <include layout="@layout/freshman_include_toolbar"
+        android:id="@+id/toolbar"/>
 
     <ScrollView
         android:layout_below="@id/toolbar"

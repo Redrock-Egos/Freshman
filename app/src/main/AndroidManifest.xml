@@ -14,9 +14,9 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ui.activity.CquptMienActivity" />
         <activity android:name=".ui.activity.AdmissionRequestActivity" />
-        <activity android:name=".ui.activity.strategy.RevealActivity" />
+        <activity android:name=".ui.activity.strategy.RevealMVPActivity" />
         <activity android:name=".ui.activity.MilitaryTrainingActivity" />
-        <activity android:name=".ui.activity.MainActivity">
+        <activity android:name=".ui.activity.MainMVPActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,7 +27,7 @@
         <activity android:name=".ui.activity.campus.CampusStrategyEntranceActivity" />
         <activity android:name=".ui.activity.campus.CampusDataDetailActivity" />
         <activity android:name=".ui.activity.PhotoViewerActivity" />
-        <activity android:name=".ui.activity.strategy.SameStrategyActivity" />
+        <activity android:name=".ui.activity.strategy.SameStrategyMVPActivity" />
         <activity android:name=".ui.activity.strategy.DormitoryStrategyActivity" />
         <activity android:name=".ui.activity.WordsActivity"></activity>
     </application>

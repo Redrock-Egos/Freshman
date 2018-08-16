@@ -2,9 +2,9 @@ package com.mredrock.cyxbs.freshman.mvp.model;
 
 import com.mredrock.cyxbs.freshman.bean.Description;
 import com.mredrock.cyxbs.freshman.mvp.contract.AdmissionRequestContract;
+import com.mredrock.cyxbs.freshman.utils.SPHelper;
 import com.mredrock.cyxbs.freshman.utils.kt.Level;
 import com.mredrock.cyxbs.freshman.utils.kt.LogBuilder;
-import com.mredrock.cyxbs.freshman.utils.SPHelper;
 import com.mredrock.cyxbs.freshman.utils.net.Const;
 import com.mredrock.cyxbs.freshman.utils.net.HttpLoader;
 

@@ -1,7 +1,6 @@
 package com.mredrock.cyxbs.freshman.ui.adapter.strategy
 
 import android.content.Context
-import android.opengl.Visibility
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -16,11 +15,16 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.makeramen.roundedimageview.RoundedImageView
 import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.bean.StrategyData
+import com.mredrock.cyxbs.freshman.ui.activity.App
 import com.mredrock.cyxbs.freshman.ui.activity.start
 import com.mredrock.cyxbs.freshman.ui.adapter.BasePagerAdapter
-import com.mredrock.cyxbs.freshman.utils.kt.dp
+import com.mredrock.cyxbs.freshman.utils.DensityUtils
 import com.mredrock.cyxbs.freshman.utils.kt.getHeight
 import kotlinx.android.synthetic.main.freshman_item_strategy.view.*
+
+private val dp4 = DensityUtils.dp2px(App.getContext(), 4f).toInt()
+private val dp6 = DensityUtils.dp2px(App.getContext(), 6f)
+private val dp8 = dp4 * 2
 
 open class StrategyAdapter(private val list: List<StrategyData.DetailData>) : RecyclerView.Adapter<StrategyAdapter.ViewHolder>() {
 
@@ -29,8 +33,8 @@ open class StrategyAdapter(private val list: List<StrategyData.DetailData>) : Re
         val context = parent.context
         if (g == null) { g = Glide.with(context) }
         if (lParams == null) {
-            lParams = LinearLayout.LayoutParams(dp(8), dp(8))
-            lParams!!.setMargins(dp(4), dp(4), dp(4), dp(4))
+            lParams = LinearLayout.LayoutParams(dp8, dp8)
+            lParams!!.setMargins(dp4, dp4, dp4, dp4)
         }
         if (pointWidth == 0) {
             v.apply {
@@ -52,13 +56,13 @@ open class StrategyAdapter(private val list: List<StrategyData.DetailData>) : Re
 
     override fun getItemCount() = list.size
 
-    override fun onBindViewHolder(holder: StrategyAdapter.ViewHolder, position: Int) = holder.v.initView(list[position], position)
+    override fun onBindViewHolder(holder: StrategyAdapter.ViewHolder, position: Int) = holder.v.initView(list[position])
 
     private var pointWidth = 0
     private var g: RequestManager? = null
     private var lParams:LinearLayout.LayoutParams?=null
 
-    private fun View.initView(mData: StrategyData.DetailData, pos: Int) {
+    private fun View.initView(mData: StrategyData.DetailData) {
         tv_describe_name.text = mData.name
         tv_describe_detail.text = mData.content
         if (!mData.property.isNullOrBlank()) {
@@ -79,7 +83,7 @@ open class StrategyAdapter(private val list: List<StrategyData.DetailData>) : Re
             }
             vp_strategy.addOnPageChangeListener(IndexPageListener(iv_index_point))
         }
-        vp_strategy.adapter = ImagePageAdapter(mData.picture, pos)
+        vp_strategy.adapter = ImagePageAdapter(mData.picture)
 
     }
 
@@ -93,14 +97,14 @@ open class StrategyAdapter(private val list: List<StrategyData.DetailData>) : Re
         override fun onPageSelected(position: Int) {}
     }
 
-    private inner class ImagePageAdapter(private val picUrls: List<String>, val pos: Int) : BasePagerAdapter<RoundedImageView, String>(picUrls) {
+    private inner class ImagePageAdapter(private val picUrls: List<String>) : BasePagerAdapter<RoundedImageView, String>(picUrls) {
         override fun createView(context: Context) = RoundedImageView(context)
-        override fun RoundedImageView.initView(mData: kotlin.String) {
+        override fun RoundedImageView.initView(mData: String) {
             adjustViewBounds = true
-            cornerRadius = dp(6).toFloat()
+            cornerRadius = dp6
             scaleType = ImageView.ScaleType.CENTER_CROP
             setOnClickListener { _ ->
-                start(context, picUrls, pos)
+                start(context, picUrls, picUrls.indexOf(mData))
             }
             g?.load(mData)
                     ?.thumbnail(0.1f)

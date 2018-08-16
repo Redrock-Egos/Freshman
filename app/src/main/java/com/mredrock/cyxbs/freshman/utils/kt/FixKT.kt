@@ -1,6 +1,5 @@
 package com.mredrock.cyxbs.freshman.utils.kt
 
-import android.util.SparseArray
 import com.mredrock.cyxbs.freshman.ui.activity.App
 import com.mredrock.cyxbs.freshman.utils.DensityUtils
 import com.mredrock.cyxbs.freshman.utils.ToastUtils
@@ -25,7 +24,6 @@ fun <T> getBeanFromNet(success: (T) -> Unit, fail: (Throwable) -> Unit = { throw
 
 private val wMap = HashMap<Pair<Int, Int>, Float>()
 private val hMap = HashMap<Pair<Int, Int>, Float>()
-private val dpMap = HashMap<Int, Int>()
 
 fun getWidth(need: Int, all: Int) =
         wMap[need to all]
@@ -40,8 +38,3 @@ fun getHeight(need: Int, all: Int) =
                         * need / all.toDouble())
                         .toFloat()
                         .apply { hMap[need to all] = this }
-
-fun dp(dp: Int) =
-        dpMap[dp]
-                ?: (DensityUtils.dp2px(App.getContext(), dp.toFloat())).toInt()
-                        .apply { dpMap[dp] = this}

@@ -8,7 +8,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.FrameLayout;
 
 import com.mredrock.cyxbs.freshman.R;
@@ -35,7 +34,6 @@ public class JCardView extends FrameLayout {
 
     public JCardView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.JCardView);
         Rect radius = new Rect();
@@ -75,11 +73,6 @@ public class JCardView extends FrameLayout {
         RectShadowDrawable backgroundDrawable = new RectShadowDrawable(radius, backgroundColor, shadowColor,
                 shadowRadius, 0, 0, hideShadow, this);
         ViewCompat.setBackground(this, backgroundDrawable);
-
-        for (int i = 0, size = getChildCount(); i < size; i++) {
-            View v = getChildAt(i);
-            v.setLayerType(View.LAYER_TYPE_HARDWARE, null);
-        }
 
     }
 

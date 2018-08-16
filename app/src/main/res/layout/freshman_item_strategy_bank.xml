@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:shadowRadius="@dimen/dp_12">
+    app:shadowRadius="@dimen/dp_8">
     <RelativeLayout
         android:id="@+id/rl"
         android:layout_width="match_parent"
@@ -41,16 +41,16 @@
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/tv_detail"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="2"
-            app:autoSizeTextType="uniform"
             android:textColor="@color/freshman_strategy_describe2_light"
-            android:layout_marginTop="@dimen/dp_12"
             android:layout_toRightOf="@+id/iv_img"
             android:layout_toEndOf="@+id/iv_img"
             android:layout_alignParentBottom="true"
             android:textSize="@dimen/sp_12"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="@dimen/sp_8"
+            app:autoSizeMaxTextSize="@dimen/sp_12"
             tools:text="圆通、韵达都在此处领取。快递领 取时间为9：00-20：30"/>
 
     </RelativeLayout>

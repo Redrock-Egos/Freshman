@@ -14,8 +14,6 @@ import com.mredrock.cyxbs.freshman.ui.activity.App;
 
 import java.util.List;
 
-import javax.security.auth.login.LoginException;
-
 /**
  * 只是因为懒。。就没有把Adapter和ViewHolder解耦了
  * 也是因为懒，不想写动画了

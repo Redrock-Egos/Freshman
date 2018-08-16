@@ -10,7 +10,11 @@ import com.mredrock.cyxbs.freshman.utils.kt.BasePresenter
 
 class MainPresenter : BasePresenter<IMainView, IMainModel>(), IMainPresenter {
 
-    override fun onContentViewSet() = mvpView!!.initBuilding(model.getNowStop())
+    override fun attachView(mvpView: IMainView) {
+        super.attachView(mvpView)
+        mvpView.initBuilding(model.getNowStop())
+    }
+
     override fun onResume() = mvpView!!.initCars(model.getNowStop())
 
     private var isAnimationPlaying = false

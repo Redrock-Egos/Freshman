@@ -17,8 +17,8 @@ class SameStrategyModel : SameStrategyContract.ISameStrategyModel {
                 detail.picture = detail.picture.map {url ->
                     IMG_BASE_URL + url
                 }
-
             }
+
             onSuccess(it)
         }, onFail, "strategy")
 }

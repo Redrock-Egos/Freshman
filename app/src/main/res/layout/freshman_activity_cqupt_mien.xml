@@ -1,76 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:background="#f3f3f3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
-    <LinearLayout
-        android:background="#f3f3f3"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <include layout="@layout/freshman_include_toolbar" />
+
+    <com.mredrock.cyxbs.freshman.ui.widget.JCardView
+        app:hideTopShadow="true"
+        app:hideLeftShadow="true"
+        app:hideRightShadow="true"
+        app:radius="0dp"
+        app:shadowColor="#DADADA"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/tb_CyMien"
+        android:layout_height="wrap_content">
+        <android.support.design.widget.TabLayout
+            android:id="@+id/freshman_CyMien_tl"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="#8BA2EB"
+            app:tabBackground="@drawable/freshman_tablayout_select_transparent"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/freshman_bg_tb"
-            >
+            android:layout_height="?actionBarSize"/>
+    </com.mredrock.cyxbs.freshman.ui.widget.JCardView>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                >
+    <com.mredrock.cyxbs.freshman.ui.adapter.CustomVIewPager
+        android:background="#F3F3F3"
+        android:id="@+id/freshman_CyMien_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-                <ImageView
-                    android:id="@+id/freshman_CyMien_iv_back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/freshman_icon_back"
-                    tools:ignore="ContentDescription" />
-
-                <TextView
-                    android:id="@+id/freshman_CyMien_tv_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/freshman_cy_mien"
-                    android:textColor="@color/freshman_title_white"
-                    android:textSize="18sp"
-                    android:layout_centerInParent="true"
-                    android:layout_centerVertical="true"
-                    />
-            </RelativeLayout>
-        </android.support.v7.widget.Toolbar>
-
-        <com.mredrock.cyxbs.freshman.ui.widget.JCardView
-            app:hideTopShadow="true"
-            app:hideLeftShadow="true"
-            app:hideRightShadow="true"
-            app:radius="0dp"
-            app:shadowColor="#DADADA"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <android.support.design.widget.TabLayout
-                android:id="@+id/freshman_CyMien_tl"
-                app:tabMode="fixed"
-                app:tabSelectedTextColor="#8BA2EB"
-                app:tabBackground="@drawable/freshman_tablayout_select_transparent"
-                android:layout_width="match_parent"
-                android:layout_height="?actionBarSize">
-
-            </android.support.design.widget.TabLayout>
-        </com.mredrock.cyxbs.freshman.ui.widget.JCardView>
-
-
-        <com.mredrock.cyxbs.freshman.ui.adapter.CustomVIewPager
-            android:background="#F3F3F3"
-            android:id="@+id/freshman_CyMien_vp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </com.mredrock.cyxbs.freshman.ui.adapter.CustomVIewPager>
-
-    </LinearLayout>
-</FrameLayout>
+</LinearLayout>
