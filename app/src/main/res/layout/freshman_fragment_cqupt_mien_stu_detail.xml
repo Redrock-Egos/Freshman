@@ -56,7 +56,7 @@
 
                 <ImageView
                     android:id="@+id/freshman_CyMien_detail_seeMore"
-                    android:background="@drawable/freshman_icon_see_more"
+                    android:background="@drawable/freshman_icon_report_more"
                     android:layout_gravity="center"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
