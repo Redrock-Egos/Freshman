@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.mredrock.cyxbs.freshman.mvp.contract.CquptMienBaseContract;
 import com.mredrock.cyxbs.freshman.mvp.model.CquptMienBaseModel;
 import com.mredrock.cyxbs.freshman.mvp.presenter.CquptMienActPresenter;
 import com.mredrock.cyxbs.freshman.ui.adapter.CquptAdapter;
+import com.mredrock.cyxbs.freshman.utils.net.Const;
 
 /**
  * 重邮风采第二个页面 展示大型活动
@@ -23,6 +25,7 @@ public class CquptMienActFragment extends Fragment implements CquptMienBaseContr
     private View parent;
     private RecyclerView recyclerView;
     private CquptMienActPresenter presenter;
+    private boolean isCat = false;
 
     @Nullable
     @Override
@@ -42,6 +45,15 @@ public class CquptMienActFragment extends Fragment implements CquptMienBaseContr
 
     @Override
     public void setData(MienStu bean) {
+       if(!isCat){
+           for (int i = 0; i < bean.getArray().size(); i++) {//拼接url
+               for (int j = 0; j <bean.getArray().get(i).getPicture().size(); j++) {
+                   bean.getArray().get(i).getPicture().set(j,Const.IMG_BASE_URL+bean.getArray().get(i).getPicture().get(j));
+               }
+           }
+           isCat = true;
+       }
+
         CquptAdapter cquptAdapter = new CquptAdapter(bean.getArray());
         recyclerView.setAdapter(cquptAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getView().getContext()));

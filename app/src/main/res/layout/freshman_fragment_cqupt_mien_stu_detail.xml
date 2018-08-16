@@ -27,9 +27,10 @@
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:layout_marginTop="14dp"
                     app:riv_corner_radius="6dp"
-                    android:scaleType="centerCrop"
+                    android:scaleType="fitXY"
+                    android:layout_gravity="center"
                     android:id="@+id/freshman_CyMien_detail_img"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="200dp" />
 
                 <TextView

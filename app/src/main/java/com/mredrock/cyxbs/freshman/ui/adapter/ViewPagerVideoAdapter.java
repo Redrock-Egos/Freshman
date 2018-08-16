@@ -51,7 +51,7 @@ public class ViewPagerVideoAdapter extends PagerAdapter {
 
         tv.setText(datas.get(position).getName());
         Glide.with(context)
-                .load(Const.PHOTO_BASE_URL+datas.get(position).getVideo_pic().getUrl())
+                .load(Const.IMG_BASE_URL+datas.get(position).getVideo_pic().getUrl())
                 .asBitmap()
                 .thumbnail(0.1f)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)

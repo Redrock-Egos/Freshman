@@ -1,5 +1,7 @@
 package com.mredrock.cyxbs.freshman.mvp.presenter;
 
+import android.util.Log;
+
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.bean.MienStu;
 import com.mredrock.cyxbs.freshman.mvp.contract.BaseContract;

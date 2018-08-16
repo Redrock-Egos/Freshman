@@ -48,7 +48,7 @@ public class CquptMienStuFragment extends Fragment {
         tv = parent.findViewById(R.id.freshman_CyMien_detail_desc);
         name = parent.findViewById(R.id.freshman_CyMien_detail_name);
         seeMore = parent.findViewById(R.id.freshman_CyMien_detail_seeMore);
-        Glide.with(getContext()).load(Const.PHOTO_BASE_URL+bean.getPicture().get(0))
+        Glide.with(getContext()).load(Const.IMG_BASE_URL+bean.getPicture().get(0))
                 .asBitmap()
                 .placeholder(R.drawable.freshman_preload_img)
                 .thumbnail(0.1f)
@@ -66,7 +66,7 @@ public class CquptMienStuFragment extends Fragment {
         layoutParams.height = DensityUtils.getScreenHeight(getActivity())/4;
         img.setLayoutParams(layoutParams);
 
-        seeMore.setOnClickListener(v -> {
+        tv.setOnClickListener(v -> {
             if(isSeeMore){
                 tv.setMaxLines(4);
                 seeMore.setBackgroundResource(R.drawable.freshman_icon_report_more);

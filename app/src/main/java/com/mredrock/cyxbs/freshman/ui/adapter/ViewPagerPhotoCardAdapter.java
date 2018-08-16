@@ -3,6 +3,7 @@ package com.mredrock.cyxbs.freshman.ui.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ public class ViewPagerPhotoCardAdapter extends PagerAdapter {
     private Context context;
     private List<MilitaryShow.PictureBean> datas;
     private List<String> photos;
+    private boolean isCat = false;//判断是否拼接了字符串
 
     public ViewPagerPhotoCardAdapter(Context context, List<MilitaryShow.PictureBean> datas,List<String> photos) {
         this.context = context;
@@ -54,10 +56,9 @@ public class ViewPagerPhotoCardAdapter extends PagerAdapter {
 
         tv.setText(datas.get(position).getName());
         Glide.with(context)
-                .load(Const.PHOTO_BASE_URL+datas.get(position).getUrl())
+                .load(Const.IMG_BASE_URL+datas.get(position).getUrl())
                 .asBitmap()
                 .centerCrop()
-                .thumbnail(0.1f)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(new BitmapImageViewTarget(imageView){
                     @Override
@@ -81,7 +82,14 @@ public class ViewPagerPhotoCardAdapter extends PagerAdapter {
 
         int finalPosition = position;
 
+
         imageView.setOnClickListener(v -> {
+            if(!isCat){
+                for (int i = 0; i < photos.size(); i++) {
+                    photos.set(i,Const.IMG_BASE_URL+photos.get(i));
+                }
+                isCat = true;
+            }
             PhotoViewerActivityKt.start(context,photos, finalPosition);
         });
         container.addView(view);
