@@ -57,7 +57,7 @@ class MainPresenter : BasePresenter<IMainView, IMainModel>(), IMainPresenter {
             1 -> AdmissionRequestActivity::class
             2 -> CampusStrategyEntranceActivity::class
             3 -> ChatOnlineActivity::class
-            4 -> AdmissionRequestActivity::class
+            4 -> ReportingProcessActivity::class
             5 -> WordsActivity::class
             6 -> CquptMienActivity::class
             7 -> MilitaryTrainingActivity::class

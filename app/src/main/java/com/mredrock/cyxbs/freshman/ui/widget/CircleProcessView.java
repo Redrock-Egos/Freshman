@@ -97,9 +97,9 @@ public class CircleProcessView extends View {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
-        int length = Math.min(widthSize,dp2px(200));
-        widthMeasureSpec = MeasureSpec.makeMeasureSpec(length,MeasureSpec.EXACTLY);
-        heightMeasureSpec = MeasureSpec.makeMeasureSpec((int) (length*1.25f),MeasureSpec.EXACTLY);
+        int length = widthSize / 4 * 3;
+        widthMeasureSpec = MeasureSpec.makeMeasureSpec(length, MeasureSpec.EXACTLY);
+        heightMeasureSpec = MeasureSpec.makeMeasureSpec((int) (length * 1.25f), MeasureSpec.EXACTLY);
         setPosition(length);
         setMeasuredDimension(widthMeasureSpec, heightMeasureSpec);
     }
@@ -110,17 +110,17 @@ public class CircleProcessView extends View {
         drawDescription(canvas);
         int x = getWidth() / 2;
         for (int i = 0; i < num; i++) {
-            circlePaint.setColor(Color.parseColor(colors[i+2]));
-            circlePaint.setStrokeWidth(everySize / 3 *2);
+            circlePaint.setColor(Color.parseColor(colors[i + 2]));
+            circlePaint.setStrokeWidth(everySize / 3 * 2);
             circlePaint.setAlpha(25);
             canvas.drawCircle(x, x, centerLocation[i], circlePaint);
             circlePaint.setColor(Color.parseColor("#ffffff"));
-            circlePaint.setStrokeWidth(everySize / 3 *2 -dp2px(4));
+            circlePaint.setStrokeWidth(everySize / 3 * 2 - dp2px(4));
             circlePaint.setAlpha(100);
             canvas.drawCircle(x, x, centerLocation[i], circlePaint);
 
             processPaint.setStrokeWidth(everySize / 3 * 2);
-            processPaint.setColor(Color.parseColor(colors[i+2]));
+            processPaint.setColor(Color.parseColor(colors[i + 2]));
             processPaint.setAlpha(178);
             rectF.set(x - centerLocation[i], x - centerLocation[i], x + centerLocation[i], x + centerLocation[i]);
             canvas.drawArc(rectF, -90, process[i] * 360 / 100, false, processPaint);
@@ -131,52 +131,52 @@ public class CircleProcessView extends View {
             canvas.drawArc(rectF, -90, process[i] * 360 / 100, false, processPaint);
 
             @SuppressLint("DefaultLocale")
-            String mProcess = String.valueOf((int)process[i]);
+            String mProcess = String.valueOf((int) process[i]);
             String text = mProcess + "%";
             textPaint.setColor(Color.parseColor(colors[i]));
-            textPaint.getTextBounds(text,0, text.length(),mText);
+            textPaint.getTextBounds(text, 0, text.length(), mText);
             int h = mText.height();
-            canvas.drawText(text, (float) x *0.65f, (float) x - centerLocation[i] + h / 1.5f, textPaint);
+            canvas.drawText(text, (float) x * 0.65f, (float) x - centerLocation[i] + h / 1.5f, textPaint);
 
         }
     }
 
-    private void drawDescription(Canvas canvas){
-        int x = getWidth()/2;
-        rectF.set(x/2.8f,x+centerLocation[num - 1]+x/3,x/1.8f,x+centerLocation[num - 1]+x/2f);
+    private void drawDescription(Canvas canvas) {
+        int x = getWidth() / 2;
+        rectF.set(x / 2.8f, x + centerLocation[num - 1] + x / 3, x / 1.8f, x + centerLocation[num - 1] + x / 2f);
         rectPaint.setColor(Color.parseColor(colors[3]));
         rectPaint.setAlpha(178);
-        canvas.drawRoundRect(rectF,5,5,rectPaint);
-        rectF.set(x/2.8f+dp2px(1),x+centerLocation[num - 1]+x/3+dp2px(1),x/1.8f-dp2px(1),x+centerLocation[num - 1]+x/2f-dp2px(1));
+        canvas.drawRoundRect(rectF, 5, 5, rectPaint);
+        rectF.set(x / 2.8f + dp2px(1), x + centerLocation[num - 1] + x / 3 + dp2px(1), x / 1.8f - dp2px(1), x + centerLocation[num - 1] + x / 2f - dp2px(1));
         rectPaint.setColor(Color.parseColor(colors[1]));
         rectPaint.setAlpha(200);
-        canvas.drawRoundRect(rectF,5,5,rectPaint);
+        canvas.drawRoundRect(rectF, 5, 5, rectPaint);
 
         textPaint.setColor(Color.parseColor("#000000"));
         textPaint.setAlpha(130);
         textPaint.setTextSize(dp2px(15));
         String sex = "男";
-        textPaint.getTextBounds(sex,0, sex.length(),mText);
+        textPaint.getTextBounds(sex, 0, sex.length(), mText);
         int w = mText.width();
-        canvas.drawText(sex,x-w * 3,x+centerLocation[num - 1]+x/2f-dp2px(6),textPaint);
+        canvas.drawText(sex, x - w * 3, x + centerLocation[num - 1] + x / 2f - dp2px(6), textPaint);
 
 
-        rectF.set(x/2.8f+x*0.8f,x+centerLocation[num - 1]+x/3,x/1.8f+x*0.8f,x+centerLocation[num - 1]+x/2f);
+        rectF.set(x / 2.8f + x * 0.8f, x + centerLocation[num - 1] + x / 3, x / 1.8f + x * 0.8f, x + centerLocation[num - 1] + x / 2f);
         rectPaint.setColor(Color.parseColor(colors[2]));
         rectPaint.setAlpha(178);
-        canvas.drawRoundRect(rectF,5,5,rectPaint);
-        rectF.set(x/2.8f+x*0.8f+dp2px(1),x+centerLocation[num - 1]+x/3+dp2px(1),x/1.8f+x*0.8f-dp2px(1),x+centerLocation[num - 1]+x/2f-dp2px(1));
+        canvas.drawRoundRect(rectF, 5, 5, rectPaint);
+        rectF.set(x / 2.8f + x * 0.8f + dp2px(1), x + centerLocation[num - 1] + x / 3 + dp2px(1), x / 1.8f + x * 0.8f - dp2px(1), x + centerLocation[num - 1] + x / 2f - dp2px(1));
         rectPaint.setColor(Color.parseColor(colors[0]));
         rectPaint.setAlpha(200);
-        canvas.drawRoundRect(rectF,5,5,rectPaint);
+        canvas.drawRoundRect(rectF, 5, 5, rectPaint);
 
         textPaint.setColor(Color.parseColor("#000000"));
         textPaint.setAlpha(130);
         textPaint.setTextSize(dp2px(15));
         sex = "女";
-        textPaint.getTextBounds(sex,0, sex.length(),mText);
+        textPaint.getTextBounds(sex, 0, sex.length(), mText);
         w = mText.width();
-        canvas.drawText(sex,x-w * 3+x*0.8f,x+centerLocation[num - 1]+x/2f-dp2px(6),textPaint);
+        canvas.drawText(sex, x - w * 3 + x * 0.8f, x + centerLocation[num - 1] + x / 2f - dp2px(6), textPaint);
     }
 
     private void setPosition(int width) {
@@ -215,10 +215,11 @@ public class CircleProcessView extends View {
 
     /**
      * 设置百分比
+     *
      * @param process 两个百分比。
      */
 
-    public void setProcess(float[] process){
+    public void setProcess(float[] process) {
         this.processes = process;
         setAnim();
     }

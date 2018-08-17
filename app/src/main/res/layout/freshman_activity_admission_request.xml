@@ -64,7 +64,9 @@
                     android:layout_marginLeft="12dp"
                     android:layout_toRightOf="@id/tv_admission_title"
                     android:src="@drawable/freshman_icon_detail"
-                    tools:ignore="ContentDescription" />
+                    tools:ignore="ContentDescription"
+                    android:layout_marginStart="12dp"
+                    android:layout_toEndOf="@id/tv_admission_title" />
 
             </RelativeLayout>
 
@@ -91,7 +93,7 @@
             android:id="@+id/fabtn_admission_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="30dp"
             android:layout_marginEnd="30dp"
             android:layout_marginRight="30dp"
             android:src="@drawable/freshman_icon_add"

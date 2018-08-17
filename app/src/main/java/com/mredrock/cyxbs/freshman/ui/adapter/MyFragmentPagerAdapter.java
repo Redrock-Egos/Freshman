@@ -16,6 +16,11 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
         this.titleList = titleList;
     }
 
+    public void setData(int pos,Fragment fragment){
+        fragmentList.add(pos,fragment);
+        notifyDataSetChanged();
+    }
+
     @Override
     public Fragment getItem(int position) {
         return fragmentList.get(position);

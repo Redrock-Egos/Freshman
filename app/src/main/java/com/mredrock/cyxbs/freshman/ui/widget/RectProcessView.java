@@ -13,9 +13,12 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.support.annotation.Nullable;
+import android.text.Layout;
+import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
@@ -24,17 +27,17 @@ import com.mredrock.cyxbs.freshman.R;
 
 /*
  by Cynthia at 2018/8/13
- description : 柱形进度条自定义View,背景部分
+ description : 柱形进度条自定义View
  */
 public class RectProcessView extends View {
 
     private int num;
-    private int time;
+    private float time;
     private int max;
     private int[] processes;
     private float[] dashLocation;
     private float[] columnarLocation;
-    private float[] current;
+    private int[] current;
     private String[] colors;
     private String[] subject;
     private Paint processPaint, dashPaint;
@@ -42,6 +45,8 @@ public class RectProcessView extends View {
     private Path mPath;
     private Rect rect = new Rect();
     private RectF rectF = new RectF();
+
+    private String TAG = "RectProcessView";
 
     public RectProcessView(Context context) {
         this(context, null);
@@ -60,28 +65,27 @@ public class RectProcessView extends View {
         TypedArray typeArray = getContext().obtainStyledAttributes(attr, R.styleable.RectProcessView);
         CharSequence[] colors = typeArray.getTextArray(R.styleable.RectProcessView_processColor);
         CharSequence[] processes = typeArray.getTextArray(R.styleable.RectProcessView_processNumber);
-        time = typeArray.getInteger(R.styleable.RectProcessView_time, 2);
+        time = typeArray.getFloat(R.styleable.RectProcessView_time, 2);
         num = typeArray.getInt(R.styleable.RectProcessView_number, 3);
         max = typeArray.getInt(R.styleable.RectProcessView_maxNum, 120);
         CharSequence[] subjects = typeArray.getTextArray(R.styleable.RectProcessView_subjectName);
         typeArray.recycle();
         initData(colors, processes, subjects);
-        setAnim();
     }
 
     //    这个应该传给动态绘制的部分
     private void initData(CharSequence[] colors, CharSequence[] process, CharSequence[] subject) {
-        this.colors = new String[num*2];
+        this.colors = new String[num * 2];
         processes = new int[num];
         this.subject = new String[num];
         for (int i = 0; i < num; i++) {
             processes[i] = Integer.parseInt(String.valueOf(process[i]));
             this.subject[i] = String.valueOf(subject[i]);
         }
-        for (int i = 0; i < num*2; i++) {
+        for (int i = 0; i < num * 2; i++) {
             this.colors[i] = String.valueOf(colors[i]);
         }
-
+        setAnim();
     }
 
     @Override
@@ -142,7 +146,7 @@ public class RectProcessView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        setData(getWidth(), (int) (getHeight()/1.25f));
+        setData(getWidth(), (int) (getHeight() / 1.25f));
         drawCoordinate(canvas);
         drawRects(canvas);
     }
@@ -154,94 +158,93 @@ public class RectProcessView extends View {
             canvas.drawPath(mPath, dashPaint);
             mPath.reset();
         }
-        int num = max;
+        int maxNum = max;
         int margin = max / 6;
         textPaint.setAlpha(165);
         for (int i = 0; i < 7; i++) {
-            String t = String.valueOf(num);
+            String t = String.valueOf(maxNum);
             textPaint.getTextBounds(t, 0, t.length(), rect);
             float height = rect.height();
             float width = rect.width();
             canvas.drawText(t, columnarLocation[0] * 1.5f - width / 2, dashLocation[i] + height / 2, textPaint);
-            num = num - margin;
+            maxNum = maxNum - margin;
         }
 
         textPaint.setAlpha(220);
-        for (int i = 0; i < this.num; i++) {
+        for (int i = 0; i < num; i++) {
             textPaint.getTextBounds(subject[i], 0, subject[i].length(), rect);
             float height = rect.height();
-            String temp = null;
-            if (subject[i].length() > "大学物理A".length())
-                temp = subject[i].substring("大学物理A".length() - 1,subject[i].length() - 1);
-            canvas.drawText(subject[i].substring(0,"大学物理A".length() - 1), columnarLocation[2 *(i +1) ] - columnarLocation[0]/2, dashLocation[6] + height * 1.5f, textPaint);
-            if (temp != null)
-                canvas.drawText(temp,columnarLocation[2 *(i +1) ] - columnarLocation[0]/2, dashLocation[6] + height * 2.5f, textPaint);
+            StaticLayout layout = new StaticLayout(subject[i],textPaint, (int) columnarLocation[1], Layout.Alignment.ALIGN_CENTER,1.0f,0f,true);
+            canvas.translate(columnarLocation[2 * (i + 1)] - columnarLocation[0] / 2,dashLocation[6] + height/2);
+            layout.draw(canvas);
+            canvas.translate(-(columnarLocation[2 * (i + 1)] - columnarLocation[0] / 2),-(dashLocation[6] + height/2));
         }
-    }
-
-    private void drawRects(Canvas canvas) {
-        for (int i = 0; i < num; i++) {
-            int pro = (int) (current[i] / max * dashLocation[6]);
+        for (int i = 0; i <num; i++) {
             rectF.left = (int) columnarLocation[2 * (i + 1)];
             rectF.right = (int) columnarLocation[2 * (i + 1) + 1];
             rectF.bottom = (int) dashLocation[6];
             rectF.top = dashLocation[6] - dp2px(5);
             processPaint.setColor(Color.parseColor(colors[2 * i]));
-            canvas.drawRoundRect(rectF,0,0,processPaint);
-            int[] color = {Color.parseColor(colors[2 * i + 1]), Color.parseColor(colors[2 * i])};
-            float[] pos = {0f, 1f};
-            rectF.top = (int) (dashLocation[6] - pro);
-            LinearGradient shader = new LinearGradient(0, 0, 0, pro,
-                    color, pos, Shader.TileMode.CLAMP);
-            processPaint.setShader(shader);
-            canvas.drawRoundRect(rectF, 5, 5, processPaint);
-
-            String pe = String.valueOf((int)current[i])+"人";
-            textPaint.getTextBounds(pe,0,pe.length(),rect);
-            int h = rect.height();
-            textPaint.setColor(Color.parseColor("#ccFF5A5A"));
-            if (pe.length() < "100人".length())
-                canvas.drawText(pe,columnarLocation[2 *(i +1) ] + columnarLocation[0]/4,columnarLocation[6]-pro-h,textPaint);
-            else
-                canvas.drawText(pe,columnarLocation[2 *(i+1)],columnarLocation[6]-pro-h,textPaint);
+            canvas.drawRoundRect(rectF, 0, 0, processPaint);
         }
     }
 
-    private void setAnim() {
+    private void drawRects(Canvas canvas) {
+        for (int i = 0; i < num; i++) {
+            int pro = (int) (current[i] / (float)max * dashLocation[6]);
+            rectF.left = (int) columnarLocation[2 * (i + 1)];
+            rectF.right = (int) columnarLocation[2 * (i + 1) + 1];
+            rectF.bottom = (int) dashLocation[6];
+            rectF.top = (int) (dashLocation[6] - pro);
+            int[] color = {Color.parseColor(colors[2 * i + 1]), Color.parseColor(colors[2 * i])};
+            float[] pos = {0f, 1f};
+            LinearGradient shader = new LinearGradient(0, 0, 0, pro,
+                    color, pos, Shader.TileMode.CLAMP);
+            processPaint.setColor(Color.parseColor(colors[2 * i]));
+            processPaint.setShader(shader);
+            canvas.drawRoundRect(rectF, 5, 5, processPaint);
+
+            String pe = String.valueOf(current[i]) + "人";
+            textPaint.getTextBounds(pe, 0, pe.length(), rect);
+            int h = rect.height();
+            textPaint.setColor(Color.parseColor("#ccFF5A5A"));
+            if (pe.length() < "100人".length())
+                canvas.drawText(pe, columnarLocation[2 * (i + 1)] + columnarLocation[0] / 4, columnarLocation[6] - pro - h, textPaint);
+            else
+                canvas.drawText(pe, columnarLocation[2 * (i + 1)], columnarLocation[6] - pro - h, textPaint);
+        }
+    }
+
+    public void setAnim() {
         ValueAnimator animator;
-        current = new float[num];
+        current = new int[num];
         for (int i = 0; i < num; i++) {
             animator = ValueAnimator.ofInt(0, processes[i]);
-            animator.setDuration(time * 1000);
+            animator.setDuration((long) (time * 1000));
             animator.setRepeatCount(0);
             animator.setInterpolator(new LinearInterpolator());
             final int finalI = i;
             animator.addUpdateListener(animation -> {
                 current[finalI] = (int) animation.getAnimatedValue();
+                Log.d(TAG,finalI+" : "+ animation.getAnimatedValue()+".");
                 invalidate();
             });
             animator.start();
         }
     }
 
-    public void setSubject(String[] subject){
+    public void setSubject(String[] subject) {
         this.subject = subject;
-        invalidate();
     }
 
-    public void setProcesses(int[] processes){
+    public void setAnim(int[] processes,float time) {
         this.processes = processes;
-        setAnim();
-    }
-
-    public void setMax(int max){
-        this.max = max;
-        invalidate();
-    }
-
-    public void setTime(int time){
         this.time = time;
         setAnim();
+    }
+
+    public void setMax(int max) {
+        this.max = max;
     }
 
     private int dp2px(float dp) {

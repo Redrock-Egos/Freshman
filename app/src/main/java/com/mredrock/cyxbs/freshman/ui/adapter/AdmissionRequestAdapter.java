@@ -103,9 +103,9 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
 
             item.setOnClickListener(this);
             itemView.setOnClickListener(v->{
-                Log.i(TAG,"点击了："+getLayoutPosition()+" item的名字: "+title.getText().toString()
-                +" more的描述："+more.getVisibility() + " isOpen:" + mDataList.get(getLayoutPosition()).getProperty());
                 if (isEdit){
+                    if (mDataList.get(getLayoutPosition()).getProperty().equals("必需"))
+                        return;
                     if (mDataList.get(getLayoutPosition()).isDelete()){
                         mDataList.get(getLayoutPosition()).setDelete(false);
                         delete.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_check_delete_normal));
