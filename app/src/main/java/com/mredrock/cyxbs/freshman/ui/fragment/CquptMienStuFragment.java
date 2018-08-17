@@ -78,7 +78,7 @@ public class CquptMienStuFragment extends Fragment {
         }
         tv.setText(bean.getContent());
         name.setText(bean.getName());
-        tv.setLines(4);
+        tv.setLines(6);
 
         ViewGroup.LayoutParams layoutParams = img.getLayoutParams();
         layoutParams.height = DensityUtils.getScreenHeight(getActivity())/4;
