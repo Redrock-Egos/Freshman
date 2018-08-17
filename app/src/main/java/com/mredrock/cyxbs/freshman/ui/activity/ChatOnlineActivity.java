@@ -32,13 +32,13 @@ public class ChatOnlineActivity extends BaseActivity {
         List<Fragment> fragments = new ArrayList<>();
         List<String> titles = new ArrayList<>();
         ChatOnlineFragment fragment = new ChatOnlineFragment();
-        fragment.setInit("学院群");
+        fragment.setInit("学校群");
         ChatOnlineFragment fragment1 = new ChatOnlineFragment();
         fragment1.setInit("老乡群");
 
         fragments.add(fragment);
         fragments.add(fragment1);
-        titles.add("学院群");
+        titles.add("学校群");
         titles.add("老乡群");
         MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), fragments, titles);
         viewPager.setAdapter(adapter);
