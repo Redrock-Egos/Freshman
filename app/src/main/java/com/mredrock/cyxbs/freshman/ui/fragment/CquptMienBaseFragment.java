@@ -29,7 +29,6 @@ public class CquptMienBaseFragment extends Fragment implements CquptMienBaseCont
     private View parent;
     private CquptMienBasePresenter presenter;
     private ViewPager pager;
-    private MyFragmentPagerAdapter adapter;
     private TabLayout layout;
     private Context context;
 
@@ -59,7 +58,7 @@ public class CquptMienBaseFragment extends Fragment implements CquptMienBaseCont
 
     @Override
     public void setData(List<Fragment> list, List<String> titles) {
-        adapter = new MyFragmentPagerAdapter(((AppCompatActivity)context).getSupportFragmentManager(),list,titles);
+        MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(((AppCompatActivity) context).getSupportFragmentManager(), list, titles);
         pager.setAdapter(adapter);
         pager.setOffscreenPageLimit(pager.getChildCount());
         layout.setupWithViewPager(pager);

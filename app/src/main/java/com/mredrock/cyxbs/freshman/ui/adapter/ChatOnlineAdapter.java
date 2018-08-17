@@ -21,7 +21,7 @@ import com.mredrock.cyxbs.freshman.utils.ToastUtils;
 import java.util.List;
 
 public class ChatOnlineAdapter<T> extends MultiLayoutBaseAdapter{
-    List<ChatOnline.ArrayBean.Array1Bean> datas;
+    private List<ChatOnline.ArrayBean.Array1Bean> datas;
 
     public ChatOnlineAdapter(Context context, List<ChatOnline.ArrayBean.Array1Bean> data, int[] layoutIds) {
         super(context, data, layoutIds);

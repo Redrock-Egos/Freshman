@@ -28,7 +28,6 @@ public class CquptMienStuFragment extends Fragment {
     private View parent;
     private RoundedImageView img;
     private TextView tv;
-    private TextView name;
     private ImageView seeMore;
     private boolean isSeeMore = false;
 
@@ -48,7 +47,7 @@ public class CquptMienStuFragment extends Fragment {
     private void init(){
         img = parent.findViewById(R.id.freshman_CyMien_detail_img);
         tv = parent.findViewById(R.id.freshman_CyMien_detail_desc);
-        name = parent.findViewById(R.id.freshman_CyMien_detail_name);
+        TextView name = parent.findViewById(R.id.freshman_CyMien_detail_name);
         seeMore = parent.findViewById(R.id.freshman_CyMien_detail_seeMore);
         if(bean.getName().equals("校学生会")||//这几个图片不能使用centerCrop
                 bean.getName().equals("重庆邮电大学青年志愿者协会")||

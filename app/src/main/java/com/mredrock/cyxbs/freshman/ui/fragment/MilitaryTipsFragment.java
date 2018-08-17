@@ -48,7 +48,7 @@ public class MilitaryTipsFragment extends Fragment implements MilitaryTipsContra
 
     @Override
     public void setData(Description data) {
-        name.setText(data.getDescribe().get(0).getContent());
+        name.setText(data.getDescribe().get(0).getContent().replace(" ",""));
         content.setText(data.getDescribe().get(1).getContent());
         name1.setText(data.getDescribe().get(2).getContent());
         content1.setText(data.getDescribe().get(3).getContent());

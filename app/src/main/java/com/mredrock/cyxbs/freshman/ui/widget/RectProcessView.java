@@ -192,6 +192,7 @@ public class RectProcessView extends View {
     private void drawRects(Canvas canvas) {
         for (int i = 0; i < num; i++) {
             int pro = (int) (current[i] / (float)max * dashLocation[6]);
+            Log.d(TAG, "drawRects: "+(current[i] / (float)max));
             rectF.left = (int) columnarLocation[2 * (i + 1)];
             rectF.right = (int) columnarLocation[2 * (i + 1) + 1];
             rectF.bottom = (int) dashLocation[6];
@@ -226,7 +227,6 @@ public class RectProcessView extends View {
             final int finalI = i;
             animator.addUpdateListener(animation -> {
                 current[finalI] = (int) animation.getAnimatedValue();
-                Log.d(TAG,finalI+" : "+ animation.getAnimatedValue()+".");
                 invalidate();
             });
             animator.start();

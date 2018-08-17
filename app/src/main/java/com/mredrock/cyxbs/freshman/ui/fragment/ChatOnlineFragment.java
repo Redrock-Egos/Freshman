@@ -29,23 +29,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.IChatOnlineView{
-    private Context context;
     private String kind;
     private View parent;
     private String key="";
 
     private EditText editText;
     private RecyclerView recyclerView;
-    private int screenHeight;
     private ChatOnlinePresenter presenter;
     private List<ChatOnline.ArrayBean> datas;
     private ChatOnlineAdapter adapter;
-    private ImageView sreach_img;
+    private ImageView search_img;
     private JCardView jCardView;
-    private ImageView view;
 
-    public void setInit(Context context,String kind) {
-        this.context = context;
+    public void setInit(String kind) {
         this.kind = kind;
     }
 
@@ -68,27 +64,26 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
     private void init(){
         editText = parent.findViewById(R.id.freshman_chatonline_et);
         recyclerView = parent.findViewById(R.id.freshman_chatonline_rv);
-        sreach_img = parent.findViewById(R.id.freshman_chat_search);
+       search_img = parent.findViewById(R.id.freshman_chat_search);
         jCardView = parent.findViewById(R.id.freshman_chatonline_jc);
-        view = parent.findViewById(R.id.freshman_chatonline_v);
         datas = new ArrayList<>();
     }
     private void setET(){
         adapter = new ChatOnlineAdapter(getContext(),datas,new int[]{R.layout.freshman_item_chatonline_lv});
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        screenHeight = DensityUtils.getScreenHeight(getContext());
+        int screenHeight = DensityUtils.getScreenHeight(getContext());
 
         ViewGroup.LayoutParams lp = jCardView.getLayoutParams();
-        lp.height = screenHeight/9;
+        lp.height = screenHeight /9;
         jCardView.setLayoutParams(lp);
 
 
-        ViewGroup.LayoutParams lp1 = sreach_img.getLayoutParams();
-        lp1.height = screenHeight/30;
-        sreach_img.setLayoutParams(lp1);
+        ViewGroup.LayoutParams lp1 =search_img.getLayoutParams();
+        lp1.height = screenHeight /30;
+       search_img.setLayoutParams(lp1);
 
-        recyclerView.setPadding(0,screenHeight/12,0,0);
+        recyclerView.setPadding(0, screenHeight /12,0,0);
 
         editText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -118,7 +113,7 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
 
         editText.setOnFocusChangeListener((v, hasFocus) -> {
             if(hasFocus){
-                sreach_img.setVisibility(View.GONE);
+               search_img.setVisibility(View.GONE);
                 setHint();
                 InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                 if (imm != null) {
@@ -126,7 +121,7 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
                 }
             }else{
                 if(key.length()==0){
-                    sreach_img.setVisibility(View.VISIBLE);
+                   search_img.setVisibility(View.VISIBLE);
                     hideHint();
                 }
                 InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);

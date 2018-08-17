@@ -22,7 +22,6 @@ import com.mredrock.cyxbs.freshman.utils.net.Const;
  * 重邮风采第二个页面 展示大型活动
  */
 public class CquptMienActFragment extends Fragment implements CquptMienBaseContract.ICquptMienActView  {
-    private View parent;
     private RecyclerView recyclerView;
     private CquptMienActPresenter presenter;
     private boolean isCat = false;
@@ -30,7 +29,7 @@ public class CquptMienActFragment extends Fragment implements CquptMienBaseContr
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        parent = inflater.inflate(R.layout.freshman_fragment_cqupt_mien_act,container,false);
+        View parent = inflater.inflate(R.layout.freshman_fragment_cqupt_mien_act, container, false);
         recyclerView = parent.findViewById(R.id.freshman_CyMien_act_rv);
         initMvp();
         return parent;
