@@ -17,7 +17,9 @@ import com.makeramen.roundedimageview.RoundedImageView;
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.bean.MienStu;
 import com.mredrock.cyxbs.freshman.utils.DensityUtils;
+import com.mredrock.cyxbs.freshman.utils.net.APIService;
 import com.mredrock.cyxbs.freshman.utils.net.Const;
+import com.mredrock.cyxbs.freshman.utils.net.HttpLoader;
 
 @SuppressLint("ValidFragment")
 public class CquptMienStuFragment extends Fragment {
@@ -31,7 +33,7 @@ public class CquptMienStuFragment extends Fragment {
     private boolean isSeeMore = false;
 
 
-    public CquptMienStuFragment(MienStu.ArrayBean bean) {
+    public void setBean(MienStu.ArrayBean bean) {
         this.bean = bean;
     }
 
@@ -48,16 +50,33 @@ public class CquptMienStuFragment extends Fragment {
         tv = parent.findViewById(R.id.freshman_CyMien_detail_desc);
         name = parent.findViewById(R.id.freshman_CyMien_detail_name);
         seeMore = parent.findViewById(R.id.freshman_CyMien_detail_seeMore);
-        Glide.with(getContext()).load(Const.IMG_BASE_URL+bean.getPicture().get(0))
-                .asBitmap()
-                .placeholder(R.drawable.freshman_preload_img)
-                .thumbnail(0.1f)
-                .into(new BitmapImageViewTarget(img){
-                    @Override
-                    protected void setResource(Bitmap resource) {
-                        img.setImageBitmap(resource);
-                    }
-                });
+        if(bean.getName().equals("校学生会")||//这几个图片不能使用centerCrop
+                bean.getName().equals("重庆邮电大学青年志愿者协会")||
+                bean.getName().equals("社团联合会")||
+                bean.getName().equals("学生科技联合会")){
+            Glide.with(getContext()).load(Const.IMG_BASE_URL+bean.getPicture().get(0))
+                    .asBitmap()
+                    .placeholder(R.drawable.freshman_preload_img)
+                    .thumbnail(0.1f)
+                    .into(new BitmapImageViewTarget(img){
+                        @Override
+                        protected void setResource(Bitmap resource) {
+                            img.setImageBitmap(resource);
+                        }
+                    });
+        }else{
+            Glide.with(getContext()).load(Const.IMG_BASE_URL+bean.getPicture().get(0))
+                    .asBitmap()
+                    .centerCrop()
+                    .placeholder(R.drawable.freshman_preload_img)
+                    .thumbnail(0.1f)
+                    .into(new BitmapImageViewTarget(img){
+                        @Override
+                        protected void setResource(Bitmap resource) {
+                            img.setImageBitmap(resource);
+                        }
+                    });
+        }
         tv.setText(bean.getContent());
         name.setText(bean.getName());
         tv.setLines(4);
@@ -77,6 +96,7 @@ public class CquptMienStuFragment extends Fragment {
                 isSeeMore = true;
             }
         });
+
     }
 
 }

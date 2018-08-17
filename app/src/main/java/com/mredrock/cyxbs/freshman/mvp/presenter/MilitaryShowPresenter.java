@@ -12,8 +12,6 @@ import java.util.List;
 
 public class MilitaryShowPresenter extends BasePresenter<MilitaryShowContract.IMilitaryShowView> {
     private MilitaryShowContract.IMilitaryShowModel model;
-    private List<String> photos;
-    private List<String> videos;
 
     public static final  String TAG = "MilitaryShowPresenter";
 
@@ -23,7 +21,6 @@ public class MilitaryShowPresenter extends BasePresenter<MilitaryShowContract.IM
 
     public void start(){
         checkIsAttach();
-        initArray();
         model.loadData(new BaseContract.ISomethingModel.LoadCallBack() {
             @Override
             public void succeed(Object o) {
@@ -36,10 +33,5 @@ public class MilitaryShowPresenter extends BasePresenter<MilitaryShowContract.IM
                 ToastUtils.show(App.getContext().getResources().getString(R.string.freshman_error_soft));
             }
         });
-    }
-
-    private void initArray(){
-        photos = new ArrayList<>();
-        videos = new ArrayList<>();
     }
 }

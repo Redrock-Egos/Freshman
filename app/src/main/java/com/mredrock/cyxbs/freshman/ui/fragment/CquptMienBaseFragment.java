@@ -33,7 +33,7 @@ public class CquptMienBaseFragment extends Fragment implements CquptMienBaseCont
     private TabLayout layout;
     private Context context;
 
-    public CquptMienBaseFragment(Context context) {
+    public void setContext(Context context){
         this.context = context;
     }
 

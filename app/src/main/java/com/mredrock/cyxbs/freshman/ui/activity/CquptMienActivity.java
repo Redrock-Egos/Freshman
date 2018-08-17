@@ -43,7 +43,9 @@ public class CquptMienActivity extends BaseActivity {
     private void initVP() {
         List<Fragment> fragments = new ArrayList<>();
         List<String> titles = new ArrayList<>();
-        fragments.add(new CquptMienBaseFragment(this));
+        CquptMienBaseFragment fragment  = new CquptMienBaseFragment();
+        fragment.setContext(this);
+        fragments.add(fragment);
         fragments.add(new CquptMienActFragment());
         titles.add("学生组织");
         titles.add("大型活动");

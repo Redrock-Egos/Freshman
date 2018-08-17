@@ -16,7 +16,6 @@ import java.util.List;
 
 public class CquptMienBasePresenter extends BasePresenter<CquptMienBaseContract.ICquptMienBaseView> {
     private CquptMienBaseContract.ICquptMienBaseModel model;
-    private MyFragmentPagerAdapter adapter;
 
     public CquptMienBasePresenter(CquptMienBaseContract.ICquptMienBaseModel model) {
         this.model = model;
@@ -32,7 +31,8 @@ public class CquptMienBasePresenter extends BasePresenter<CquptMienBaseContract.
                     List<String> titles = new ArrayList<>();
 
                     for (int i = 0; i < stu.getArray().size(); i++) {
-                        CquptMienStuFragment fragment = new CquptMienStuFragment(stu.getArray().get(i));
+                        CquptMienStuFragment fragment = new CquptMienStuFragment();
+                        fragment.setBean(stu.getArray().get(i));
                         fragments.add(fragment);
                         titles.add(stu.getArray().get(i).getName());
                     }

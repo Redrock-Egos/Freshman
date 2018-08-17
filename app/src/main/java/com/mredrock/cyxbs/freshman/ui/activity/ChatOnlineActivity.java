@@ -31,8 +31,11 @@ public class ChatOnlineActivity extends BaseActivity {
         TabLayout tabLayout = findViewById(R.id.freshman_chatOnline_tl);
         List<Fragment> fragments = new ArrayList<>();
         List<String> titles = new ArrayList<>();
-        ChatOnlineFragment fragment = new ChatOnlineFragment(this,"学校群");
-        ChatOnlineFragment fragment1 = new ChatOnlineFragment(this,"老乡群");
+        ChatOnlineFragment fragment = new ChatOnlineFragment();
+        fragment.setInit(this,"学院群");
+        ChatOnlineFragment fragment1 = new ChatOnlineFragment();
+        fragment1.setInit(this,"老乡群");
+
         fragments.add(fragment);
         fragments.add(fragment1);
         titles.add("学院群");

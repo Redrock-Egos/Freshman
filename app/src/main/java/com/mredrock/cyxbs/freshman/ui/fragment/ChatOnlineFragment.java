@@ -1,6 +1,5 @@
 package com.mredrock.cyxbs.freshman.ui.fragment;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -29,12 +28,11 @@ import com.mredrock.cyxbs.freshman.utils.ToastUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressLint("ValidFragment")
 public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.IChatOnlineView{
     private Context context;
     private String kind;
     private View parent;
-    private String key;
+    private String key="";
 
     private EditText editText;
     private RecyclerView recyclerView;
@@ -46,7 +44,7 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
     private JCardView jCardView;
     private ImageView view;
 
-    public ChatOnlineFragment(Context context, String kind) {
+    public void setInit(Context context,String kind) {
         this.context = context;
         this.kind = kind;
     }
@@ -55,6 +53,7 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         parent = inflater.inflate(R.layout.freshman_fragment_chatonline,container,false);
+
         initP();
         init();
         setET();
@@ -125,9 +124,14 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
                 if (imm != null) {
                     imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
                 }
-            }else if(key.length()==0&&!hasFocus){
-                if(datas.size()==0){
+            }else{
+                if(key.length()==0){
                     sreach_img.setVisibility(View.VISIBLE);
+                    hideHint();
+                }
+                InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
                 }
                 hideHint();
             }
