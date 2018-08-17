@@ -86,7 +86,19 @@ public class CquptMienStuFragment extends Fragment {
 
         tv.setOnClickListener(v -> {
             if(isSeeMore){
-                tv.setMaxLines(4);
+                tv.setMaxLines(6);
+                seeMore.setBackgroundResource(R.drawable.freshman_icon_report_more);
+                isSeeMore = false;
+            }else{
+                tv.setMaxLines(500);
+                seeMore.setBackgroundResource(R.drawable.freshman_icon_report_simple);
+                isSeeMore = true;
+            }
+        });
+
+        seeMore.setOnClickListener(v -> {
+            if(isSeeMore){
+                tv.setMaxLines(6);
                 seeMore.setBackgroundResource(R.drawable.freshman_icon_report_more);
                 isSeeMore = false;
             }else{
