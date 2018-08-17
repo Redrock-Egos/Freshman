@@ -37,6 +37,7 @@ public class CircleProcessView extends View {
     private float[] process;
     private RectF rectF = new RectF();
     private Rect mText = new Rect();
+    private boolean isStart;
 
     public CircleProcessView(Context context) {
         this(context, null);
@@ -50,6 +51,7 @@ public class CircleProcessView extends View {
         super(context, attrs, defStyleAttr);
         initAttr(attrs);
         initPaints();
+        isStart = false;
     }
 
     private void initAttr(AttributeSet attributeSet) {
@@ -107,6 +109,8 @@ public class CircleProcessView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        if (!isStart)
+            return;
         drawDescription(canvas);
         int x = getWidth() / 2;
         for (int i = 0; i < num; i++) {
@@ -207,7 +211,7 @@ public class CircleProcessView extends View {
             final int finalI = i;
             animator.addUpdateListener(animation -> {
                 process[finalI] = (float) animation.getAnimatedValue();
-                invalidate();
+                postInvalidate();
             });
             animator.start();
         }
@@ -221,6 +225,11 @@ public class CircleProcessView extends View {
 
     public void setProcess(float[] process) {
         this.processes = process;
+        start();
+    }
+
+    public void start(){
+        isStart = true;
         setAnim();
     }
 

@@ -97,10 +97,11 @@ public class DataDetailSubjectFragment extends Fragment implements DataDetailSub
         while(temp < max){
             temp = temp + 30;
         }
-        while (temp - max > 60){
+        while (temp - max > 45){
             temp = temp - 30;
         }
         time = temp <= 60 ? 0.5f : 2f;
+        time = temp <= 30 ? 0.2f : 2f;
         if (temp - max < temp / 6 / 3 && temp != 120)
             temp = temp + 30;
         max = temp;
