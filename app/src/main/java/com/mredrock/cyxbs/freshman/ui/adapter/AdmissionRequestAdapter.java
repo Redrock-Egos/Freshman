@@ -183,6 +183,7 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
                         title.setTextColor(App.getContext().getResources().getColor(R.color.freshmen_finish_black));
                         mDataList.get(getLayoutPosition()).setCheck(true);
                         from2(getLayoutPosition(), 0);
+                        mListener.scrollToTop(true);
                     } else {
                         item.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_check_normal));
                         title.setTextColor(App.getContext().getResources().getColor(R.color.freshmen_title_black));
@@ -196,5 +197,6 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
 
     public interface OnDeleteDataListener {
         void getTotalNum(int count);
+        void scrollToTop(boolean isGoTo);
     }
 }
