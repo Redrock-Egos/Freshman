@@ -16,6 +16,7 @@
                 android:layout_height="wrap_content">
 
                 <LinearLayout
+                    android:id="@+id/freshman_CyMien_detail_parent"
                     android:layout_marginLeft="14dp"
                     android:layout_marginRight="14dp"
                     android:layout_marginTop="14dp"
@@ -57,9 +58,11 @@
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginBottom="10dp"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/freshman_icon_report_more" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"/>
                 </LinearLayout>
             </ScrollView>
 </com.gigamole.library.ShadowLayout>

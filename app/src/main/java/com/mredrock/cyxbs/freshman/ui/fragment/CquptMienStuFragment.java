@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -27,6 +28,7 @@ public class CquptMienStuFragment extends Fragment {
     private RoundedImageView img;
     private TextView tv;
     private ImageView seeMore;
+    private LinearLayout linearLayout;
     private boolean isSeeMore = false;
 
 
@@ -47,6 +49,7 @@ public class CquptMienStuFragment extends Fragment {
         tv = parent.findViewById(R.id.freshman_CyMien_detail_desc);
         TextView name = parent.findViewById(R.id.freshman_CyMien_detail_name);
         seeMore = parent.findViewById(R.id.freshman_CyMien_detail_seeMore);
+        linearLayout = parent.findViewById(R.id.freshman_CyMien_detail_parent);
 
         if(bean.getName().equals("校学生会")||//这几个图片不能使用centerCrop
                 bean.getName().equals("重庆邮电大学青年志愿者协会")||
@@ -83,19 +86,7 @@ public class CquptMienStuFragment extends Fragment {
         layoutParams.height = DensityUtils.getScreenHeight(getActivity())/4;
         img.setLayoutParams(layoutParams);
 
-        tv.setOnClickListener(v -> {
-            if(isSeeMore){
-                tv.setMaxLines(6);
-                seeMore.setBackgroundResource(R.drawable.freshman_icon_report_more);
-                isSeeMore = false;
-            }else{
-                tv.setMaxLines(500);
-                seeMore.setBackgroundResource(R.drawable.freshman_icon_report_simple);
-                isSeeMore = true;
-            }
-        });
-
-        seeMore.setOnClickListener(v -> {
+        linearLayout.setOnClickListener(v -> {
             if(isSeeMore){
                 tv.setMaxLines(6);
                 seeMore.setBackgroundResource(R.drawable.freshman_icon_report_more);
