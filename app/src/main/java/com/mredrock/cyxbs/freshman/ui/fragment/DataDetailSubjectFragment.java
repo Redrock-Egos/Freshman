@@ -45,7 +45,7 @@ public class DataDetailSubjectFragment extends Fragment implements DataDetailSub
         View view = inflater.inflate(R.layout.freshman_fragment_data_detail_subject, container, false);
         rectFirst = true;
         rootView = view;
-
+        initView(view);
         initMVP();
 
         return view;
@@ -63,6 +63,8 @@ public class DataDetailSubjectFragment extends Fragment implements DataDetailSub
         if (rootView == null)
             return;
         if (rectFirst && isVisibleToUser) {
+            if (subjectName == null && personNum == null)
+                return;
             mRpv.setSubject(subjectName);
             mRpv.setMax(max);
             mRpv.setAnim(personNum, time);
@@ -105,7 +107,5 @@ public class DataDetailSubjectFragment extends Fragment implements DataDetailSub
         if (temp - max < temp / 6 / 3 && temp != 120)
             temp = temp + 30;
         max = temp;
-
-        initView(rootView);
     }
 }

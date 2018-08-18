@@ -23,24 +23,20 @@ import com.mredrock.cyxbs.freshman.utils.ToastUtils;
 public class DataDetailSexFragment extends Fragment implements DataDetailSexContract.IDataDetailSexView {
 
     private String name;
-    private float[] process;
-    private View rootView;
+    private CircleProcessView mCpv;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.freshman_fragment_data_detail_sex, container, false);
-        rootView = view;
-
+        initView(view);
         initMVP();
-
         return view;
     }
 
     private void initView(View view) {
-        CircleProcessView mCpv = view.findViewById(R.id.cpv_data);
-        mCpv.setProcess(process);
+        mCpv = view.findViewById(R.id.cpv_data);
         TextView title = view.findViewById(R.id.tv_data_sex);
         String temp = name + getResources().getString(R.string.freshman_campus_data_detail_sex);
         title.setText(temp);
@@ -66,7 +62,7 @@ public class DataDetailSexFragment extends Fragment implements DataDetailSexCont
         float total = sexProportion.getFemale_amount() + sexProportion.getMale_amount();
         int manPro = (int) (sexProportion.getMale_amount() / total * 100);
         int womanPro = 100 - manPro;
-        process = new float[]{womanPro, manPro};
-        initView(rootView);
+        float[] process = new float[]{womanPro, manPro};
+        mCpv.setProcess(process);
     }
 }

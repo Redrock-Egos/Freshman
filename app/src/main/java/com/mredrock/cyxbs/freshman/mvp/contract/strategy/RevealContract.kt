@@ -9,7 +9,7 @@ class RevealContract {
     }
 
     interface IRevealModel {
-        fun getAcademyName(success: (List<String>) -> Unit, fail: (Throwable) -> Unit = { throw it })
+        fun getAcademyName(success: (List<String>) -> Unit)
     }
 
     interface IRevealPresenter : IBasePresenter<IRevealView> {
