@@ -5,18 +5,22 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     >
+
+
+
     <com.mredrock.cyxbs.freshman.ui.widget.JCardView
+        android:id="@+id/freshman_CyMien_detail_jv"
         android:layout_marginTop="5dp"
         app:shadowColor="#DADADA"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <ScrollView
+            android:scrollbars="none"
             android:id="@+id/freshman_CyMien_detail_sv"
             android:layout_width="match_parent"
-            android:fillViewport="true"
             android:layout_height="wrap_content">
+
 
             <LinearLayout
                 android:layout_marginLeft="10dp"
@@ -31,6 +35,8 @@
                     android:id="@+id/freshman_CyMien_detail_img"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+
+
 
                 <TextView
                     android:id="@+id/freshman_CyMien_detail_name"
@@ -60,8 +66,11 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content" />
-            </LinearLayout>
 
+            </LinearLayout>
         </ScrollView>
+
     </com.mredrock.cyxbs.freshman.ui.widget.JCardView>
+
+
 </FrameLayout>

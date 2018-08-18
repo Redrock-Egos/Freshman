@@ -16,6 +16,7 @@ import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.bean.MienStu;
+import com.mredrock.cyxbs.freshman.ui.widget.JCardView;
 import com.mredrock.cyxbs.freshman.utils.DensityUtils;
 import com.mredrock.cyxbs.freshman.utils.net.APIService;
 import com.mredrock.cyxbs.freshman.utils.net.Const;
@@ -49,6 +50,7 @@ public class CquptMienStuFragment extends Fragment {
         tv = parent.findViewById(R.id.freshman_CyMien_detail_desc);
         TextView name = parent.findViewById(R.id.freshman_CyMien_detail_name);
         seeMore = parent.findViewById(R.id.freshman_CyMien_detail_seeMore);
+
         if(bean.getName().equals("校学生会")||//这几个图片不能使用centerCrop
                 bean.getName().equals("重庆邮电大学青年志愿者协会")||
                 bean.getName().equals("社团联合会")||
