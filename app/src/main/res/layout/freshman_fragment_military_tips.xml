@@ -1,77 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_gravity="center"
+    android:scrollbars="none"
+    >
+
+<com.gigamole.library.ShadowLayout
+
+    app:sl_shadow_radius="5dp"
+    app:sl_shadow_color="#EFEFEF"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <com.mredrock.cyxbs.freshman.ui.widget.JCardView
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginBottom="15dp"
-                android:layout_marginRight="15dp"
-                app:backgroundColor="@color/freshman_bg_white"
-                app:radius="5dp"
-                app:shadowColor="@color/freshmen_shadow_black"
-                app:shadowRadius="5dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginTop="5dp"
+            android:padding="20dp"
+            android:background="@drawable/freshman_shape_bg"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/freshman_military_tips_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <LinearLayout
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginRight="22dp"
-                    android:layout_marginBottom="20dp"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:text="标题"
+                android:textColor="#020203"
+                android:textSize="18sp"
+                app:autoSizeMaxTextSize="16sp"
+                app:autoSizeTextType="uniform" />
 
-                    <android.support.v7.widget.AppCompatTextView
-                        android:id="@+id/freshman_military_tips_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="标题"
-                        app:autoSizeMaxTextSize="16sp"
-                        app:autoSizeTextType="uniform"
-                        android:textColor="#020203"
-                        android:textSize="18sp" />
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/freshman_military_tips_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="我是内容"
+                android:textSize="14sp"
+                app:autoSizeMaxTextSize="14sp"
+                app:autoSizeTextType="uniform" />
 
-                    <android.support.v7.widget.AppCompatTextView
-                        android:id="@+id/freshman_military_tips_content"
-                        android:text="我是内容"
-                        android:layout_marginTop="15dp"
-                        android:textSize="14sp"
-                        app:autoSizeMaxTextSize="14sp"
-                        app:autoSizeTextType="uniform"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                    <android.support.v7.widget.AppCompatTextView
-                        android:id="@+id/freshman_military_tips_name1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="标题"
-                        android:layout_marginTop="15dp"
-                        app:autoSizeMaxTextSize="16sp"
-                        app:autoSizeTextType="uniform"
-                        android:textColor="#020203"
-                        android:textSize="18sp" />
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/freshman_military_tips_name1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="标题"
+                android:textColor="#020203"
+                android:textSize="18sp"
+                app:autoSizeMaxTextSize="16sp"
+                app:autoSizeTextType="uniform" />
 
-                    <android.support.v7.widget.AppCompatTextView
-                        android:id="@+id/freshman_military_tips_content1"
-                        android:text="我是内容"
-                        android:layout_marginTop="15dp"
-                        android:textSize="14sp"
-                        app:autoSizeMaxTextSize="14sp"
-                        app:autoSizeTextType="uniform"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-            </com.mredrock.cyxbs.freshman.ui.widget.JCardView>
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/freshman_military_tips_content1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="我是内容"
+                android:textSize="14sp"
+                app:autoSizeMaxTextSize="14sp"
+                app:autoSizeTextType="uniform" />
             <View
                 android:layout_width="match_parent"
-                android:layout_height="5dp"/>
+                android:layout_height="5dp" />
         </LinearLayout>
 
+</com.gigamole.library.ShadowLayout>
 </ScrollView>

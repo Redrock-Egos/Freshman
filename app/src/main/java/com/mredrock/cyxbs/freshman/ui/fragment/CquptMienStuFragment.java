@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -51,12 +52,6 @@ public class CquptMienStuFragment extends Fragment {
         TextView name = parent.findViewById(R.id.freshman_CyMien_detail_name);
         seeMore = parent.findViewById(R.id.freshman_CyMien_detail_seeMore);
         JCardView jCardView = parent.findViewById(R.id.freshman_CyMien_detail_jv);
-
-        //重新设置硬件加速
-        img.setLayerType(View.LAYER_TYPE_HARDWARE,null);
-        tv.setLayerType(View.LAYER_TYPE_HARDWARE,null);
-        name.setLayerType(View.LAYER_TYPE_HARDWARE,null);
-        seeMore.setLayerType(View.LAYER_TYPE_HARDWARE,null);
         jCardView.setLayerType(View.LAYER_TYPE_HARDWARE,null);
 
         if(bean.getName().equals("校学生会")||//这几个图片不能使用centerCrop
