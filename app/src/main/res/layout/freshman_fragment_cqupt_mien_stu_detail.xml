@@ -9,22 +9,9 @@
     app:sl_shadow_radius="10dp"
     app:sl_shadowed="true">
 
-    <com.mredrock.cyxbs.freshman.ui.widget.JCardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/freshman_CyMien_detail_jv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:orientation="vertical"
-        app:hideBottomShadow="true"
-        app:hideLeftShadow="true"
-        app:hideRightShadow="true"
-        app:hideTopShadow="true"
-        app:shadowRadius="0dp">
-
-
             <ScrollView
                 android:scrollbars="none"
+                android:background="@drawable/freshman_shape_bg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -75,5 +62,4 @@
                         android:background="@drawable/freshman_icon_report_more" />
                 </LinearLayout>
             </ScrollView>
-    </com.mredrock.cyxbs.freshman.ui.widget.JCardView>
 </com.gigamole.library.ShadowLayout>
