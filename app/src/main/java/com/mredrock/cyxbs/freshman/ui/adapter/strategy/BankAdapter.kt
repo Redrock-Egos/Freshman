@@ -4,11 +4,11 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.bean.StrategyData
 import com.mredrock.cyxbs.freshman.ui.activity.start
+import com.mredrock.cyxbs.freshman.utils.kt.g
 import com.mredrock.cyxbs.freshman.utils.kt.getScreenWidth
 import kotlinx.android.synthetic.main.freshman_item_strategy_bank.view.*
 
@@ -20,7 +20,6 @@ class BankAdapter(val list: List<StrategyData.DetailData>) : RecyclerView.Adapte
             scale36 = (scale6 * 6).toInt()
             scale89 = (scale6 * 89 / 6.0).toInt()
             scale102 = (scale6 * 17).toInt()
-            g = Glide.with(parent.context)
         }
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.freshman_item_strategy_bank, parent, false))
     }
@@ -36,7 +35,6 @@ class BankAdapter(val list: List<StrategyData.DetailData>) : RecyclerView.Adapte
     private var scale36 = 0
     private var scale89 = 0
     private var scale102 = 0
-    private var g: RequestManager? = null
 
     private fun View.initView(mData: StrategyData.DetailData) {
         tv_name.text = mData.name
@@ -50,7 +48,7 @@ class BankAdapter(val list: List<StrategyData.DetailData>) : RecyclerView.Adapte
         iv_img.apply {
             iv_img.layoutParams.width = scale102
             setOnClickListener { start(context, mData.picture) }
-            g?.load(mData.picture.first())?.into(this)
+            g.load(mData.picture.first()).into(this)
         }
     }
 }

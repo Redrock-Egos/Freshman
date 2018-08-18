@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.mredrock.cyxbs.freshman.R;
@@ -18,6 +17,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.mredrock.cyxbs.freshman.ui.activity.App.g;
 
 public class ReportingProcessMoreActivity extends BaseActivity implements View.OnClickListener {
 
@@ -55,7 +56,7 @@ public class ReportingProcessMoreActivity extends BaseActivity implements View.O
         step.setText(temp);
         realStr = "http://47.106.33.112:8080/welcome2018" + mData.getPicture().get(0);
         mapStr = "http://47.106.33.112:8080/welcome2018" + mData.getPicture().get(1);
-        Glide.with(App.getContext())
+        g()
                 .load(realStr)
                 .asBitmap()
                 .thumbnail(0.2f)
@@ -66,7 +67,7 @@ public class ReportingProcessMoreActivity extends BaseActivity implements View.O
                         real.setImageBitmap(resource);
                     }
                 });
-        Glide.with(App.getContext())
+        g()
                 .load(mapStr)
                 .asBitmap()
                 .thumbnail(0.2f)

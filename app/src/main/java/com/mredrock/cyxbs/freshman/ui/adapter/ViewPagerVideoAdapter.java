@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -20,6 +19,8 @@ import com.mredrock.cyxbs.freshman.bean.MilitaryShow;
 import com.mredrock.cyxbs.freshman.utils.net.Const;
 
 import java.util.List;
+
+import static com.mredrock.cyxbs.freshman.ui.activity.App.g;
 
 public class ViewPagerVideoAdapter extends PagerAdapter {
     private List<MilitaryShow.VideoBean> datas;
@@ -50,7 +51,7 @@ public class ViewPagerVideoAdapter extends PagerAdapter {
 
 
         tv.setText(datas.get(position).getName());
-        Glide.with(context)
+        g()
                 .load(Const.IMG_BASE_URL + datas.get(position).getVideo_pic().getUrl())
                 .asBitmap()
                 .placeholder(R.drawable.freshman_preload_img)

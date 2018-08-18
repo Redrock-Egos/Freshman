@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.mredrock.cyxbs.freshman.R;
@@ -19,6 +18,8 @@ import com.mredrock.cyxbs.freshman.ui.activity.PhotoViewerActivityKt;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.mredrock.cyxbs.freshman.ui.activity.App.g;
 
 /*
  by Cynthia at 2018/8/16
@@ -93,7 +94,7 @@ public class ReportingProcessAdapter extends RecyclerView.Adapter<ReportingProce
             step.setText(temp);
             realStr = "http://47.106.33.112:8080/welcome2018" + detailData.getPicture().get(0);
             mapStr = "http://47.106.33.112:8080/welcome2018" + detailData.getPicture().get(1);
-            Glide.with(App.getContext())
+            g()
                     .load(realStr)
                     .asBitmap()
                     .thumbnail(0.2f)
@@ -104,7 +105,7 @@ public class ReportingProcessAdapter extends RecyclerView.Adapter<ReportingProce
                             real.setImageBitmap(resource);
                         }
                     });
-            Glide.with(App.getContext())
+            g()
                     .load(mapStr)
                     .asBitmap()
                     .thumbnail(0.2f)

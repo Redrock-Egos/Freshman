@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.widget.ImageView
 import android.widget.LinearLayout
-import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.makeramen.roundedimageview.RoundedImageView
@@ -18,6 +17,7 @@ import com.mredrock.cyxbs.freshman.bean.StrategyData
 import com.mredrock.cyxbs.freshman.ui.activity.start
 import com.mredrock.cyxbs.freshman.ui.adapter.BasePagerAdapter
 import com.mredrock.cyxbs.freshman.utils.DensityUtils.dp2px
+import com.mredrock.cyxbs.freshman.utils.kt.g
 import com.mredrock.cyxbs.freshman.utils.kt.getScreenHeight
 import kotlinx.android.synthetic.main.freshman_item_strategy.view.*
 
@@ -30,10 +30,6 @@ open class StrategyAdapter(private val list: List<StrategyData.DetailData>) : Re
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder? {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.freshman_item_strategy, parent, false)
-        val context = parent.context
-        if (g == null) {
-            g = Glide.with(context)
-        }
         if (lParams == null) {
             lParams = LinearLayout.LayoutParams(dp8, dp8)
             lParams!!.setMargins(dp4, dp4, dp4, dp4)
@@ -58,17 +54,18 @@ open class StrategyAdapter(private val list: List<StrategyData.DetailData>) : Re
 
     override fun getItemCount() = list.size
 
-    override fun onBindViewHolder(holder: StrategyAdapter.ViewHolder, position: Int) = holder.v.initView(list[position])
+    override fun onBindViewHolder(holder: StrategyAdapter.ViewHolder, position: Int) = holder.v.initView(list[position],position)
 
     private var pointWidth = 0
-    private var g: RequestManager? = null
     private var lParams: LinearLayout.LayoutParams? = null
 
-    private fun View.initView(mData: StrategyData.DetailData) {
+    private fun View.initView(mData: StrategyData.DetailData, pos: Int) {
         tv_describe_name.text = mData.name
         tv_describe_detail.text = mData.content
         if (!mData.property.isNullOrBlank()) {
+            tv_tag.visibility = View.VISIBLE
             tv_describe_money_per.visibility = View.VISIBLE
+            tv_tag.text = (pos + 1).toString()
             tv_describe_money_per.text = "￥${mData.property}（人）"
         }
 
@@ -109,10 +106,7 @@ open class StrategyAdapter(private val list: List<StrategyData.DetailData>) : Re
             setOnClickListener { _ ->
                 start(context, picUrls, picUrls.indexOf(mData))
             }
-            g?.load(mData)
-                    ?.thumbnail(0.1f)
-                    ?.diskCacheStrategy(DiskCacheStrategy.ALL)
-                    ?.into(this)
+            g.load(mData).thumbnail(0.1f).diskCacheStrategy(DiskCacheStrategy.ALL).into(this)
         }
     }
 }

@@ -12,13 +12,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.bean.MienStu;
 import com.mredrock.cyxbs.freshman.utils.DensityUtils;
 import com.mredrock.cyxbs.freshman.utils.net.Const;
+
+import static com.mredrock.cyxbs.freshman.ui.activity.App.g;
 
 @SuppressLint("ValidFragment")
 public class CquptMienStuFragment extends Fragment {
@@ -55,7 +56,7 @@ public class CquptMienStuFragment extends Fragment {
                 bean.getName().equals("重庆邮电大学青年志愿者协会")||
                 bean.getName().equals("社团联合会")||
                 bean.getName().equals("学生科技联合会")){
-            Glide.with(getContext()).load(Const.IMG_BASE_URL+bean.getPicture().get(0))
+            g().load(Const.IMG_BASE_URL+bean.getPicture().get(0))
                     .asBitmap()
                     .placeholder(R.drawable.freshman_preload_img)
                     .thumbnail(0.1f)
@@ -66,7 +67,7 @@ public class CquptMienStuFragment extends Fragment {
                         }
                     });
         }else{
-            Glide.with(getContext()).load(Const.IMG_BASE_URL+bean.getPicture().get(0))
+            g().load(Const.IMG_BASE_URL+bean.getPicture().get(0))
                     .asBitmap()
                     .centerCrop()
                     .placeholder(R.drawable.freshman_preload_img)
@@ -91,7 +92,7 @@ public class CquptMienStuFragment extends Fragment {
                 tv.setMaxLines(6);
                 seeMore.setBackgroundResource(R.drawable.freshman_icon_report_more);
                 isSeeMore = false;
-            }else{
+            } else {
                 tv.setMaxLines(500);
                 seeMore.setBackgroundResource(R.drawable.freshman_icon_report_simple);
                 isSeeMore = true;

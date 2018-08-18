@@ -12,6 +12,8 @@ import io.reactivex.schedulers.Schedulers
  * 你们不用KT，这里我就不写文档了
  */
 
+val g get() = App.g()
+
 fun <T> getBeanFromNet(success: (T) -> Unit, fail: (Throwable) -> Unit = { it.printStackTrace() }, observable: APIService.() -> Observable<T>) {
     observable(service)
             .subscribeOn(Schedulers.io())
