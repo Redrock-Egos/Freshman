@@ -92,6 +92,7 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
         mWindow.setFocusable(true);
         mWindow.setBackgroundDrawable(new ColorDrawable());
         mWindow.setOnDismissListener(this::returnButton);
+        mWindow.setAnimationStyle(R.style.freshman_anim_popup);
         mWindow.showAtLocation(root, Gravity.BOTTOM, 0, 0);
     }
 
@@ -99,11 +100,20 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
     public void setRv(Description description) {
         ScrollSpeedLinearLayoutManger manger = new ScrollSpeedLinearLayoutManger(App.getContext());
         manger.setSpeedSlow();
-        mAdapter = new AdmissionRequestAdapter(description.getDescribe(), count -> {
-            String total = App.getContext().getResources().getString(R.string.freshmen_admission_delete);
-            if (count != 0)
-                total = App.getContext().getResources().getString(R.string.freshmen_admission_delete) + "(" + count + ")";
-            edit.setText(total);
+        mAdapter = new AdmissionRequestAdapter(description.getDescribe(), new AdmissionRequestAdapter.OnDeleteDataListener() {
+            @Override
+            public void getTotalNum(int count) {
+                String total = App.getContext().getResources().getString(R.string.freshmen_admission_delete);
+                if (count != 0)
+                    total = App.getContext().getResources().getString(R.string.freshmen_admission_delete) + "(" + count + ")";
+                edit.setText(total);
+            }
+
+            @Override
+            public void scrollToTop(boolean isGoTo) {
+                if (isGoTo)
+                    scrollToPos(0);
+            }
         });
         mRv.setLayoutManager(new LinearLayoutManager(this));
         mRv.setAdapter(mAdapter);
@@ -113,7 +123,7 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
 
     @Override
     public void prepareAddData() {
-        mFabtn.setVisibility(View.GONE);
+        mFabtn.hide();
         initWindow(this);
     }
 
@@ -133,7 +143,7 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
         if (imm != null && v != null) {
             imm.hideSoftInputFromWindow(v.getApplicationWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         }
-        mFabtn.setVisibility(View.VISIBLE);
+        mFabtn.show();
         if (mWindow.isShowing())
             mWindow.dismiss();
     }
@@ -156,11 +166,11 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
                 isEdit = !isEdit;
                 if (isEdit) {
                     edit.setText(getResources().getString(R.string.freshmen_admission_delete));
-                    mFabtn.setVisibility(View.GONE);
+                    mFabtn.show();
                 } else {
                     edit.setText(getResources().getString(R.string.freshmen_admission_edit));
                     mAdapter.deleteDatas();
-                    mFabtn.setVisibility(View.VISIBLE);
+                    mFabtn.hide();
                 }
                 mAdapter.changeData(isEdit);
                 break;
