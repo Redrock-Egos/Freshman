@@ -48,7 +48,6 @@
         </LinearLayout>
 
 
-
         <TextView
             android:id="@+id/tv_report_location"
             android:layout_width="wrap_content"
@@ -57,7 +56,7 @@
             android:layout_marginTop="20dp"
             android:textColor="#cc010100"
             android:textSize="16sp"
-            tools:text="体育馆"/>
+            tools:text="体育馆" />
 
         <TextView
             android:id="@+id/tv_report_step"
@@ -81,8 +80,7 @@
             android:textColor="#b3000000"
             android:maxLines="4"
             android:textSize="14sp"
-            tools:text="具体报名流程，什么步骤等等等具体报名流程，什么步骤等等等具体报名流程，什么步骤等等等具体报名流程，什么步骤等等等具体报名流程，什么步骤等等等具体报名流程，什么步骤等等等耶等具体报名流程"
-            />
+            tools:text="具体报名流程，什么步骤等等等具体报名流程，什么步骤等等等具体报名流程，什么步骤等等等具体报名流程，什么步骤等等等具体报名流程，什么步骤等等等具体报名流程，什么步骤等等等耶等具体报名流程" />
 
         <ImageView
             android:id="@+id/iv_report_arrow"

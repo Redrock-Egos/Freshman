@@ -45,7 +45,7 @@ public class Description {
             isOpen = open;
         }
 
-        public void setCheck(boolean isCheck){
+        public void setCheck(boolean isCheck) {
             this.isCheck = isCheck;
         }
 

@@ -14,7 +14,7 @@ class DormitoryPageAdapter : BasePagerAdapter<SwipeRefreshLayout, String>(
         listOf(DORMITORY_NAME_1, DORMITORY_NAME_2, DORMITORY_NAME_3, DORMITORY_NAME_4)) {
     override fun SwipeRefreshLayout.initView(mData: String) {
         rv_strategy.layoutManager = LinearLayoutManager(context)
-        val fresh = {it: StrategyData ->
+        val fresh = { it: StrategyData ->
             rv_strategy.adapter = StrategyAdapter(it.details)
             isRefreshing = false
         }

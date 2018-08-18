@@ -16,7 +16,7 @@
         <activity android:name=".ui.activity.AdmissionRequestActivity" />
         <activity android:name=".ui.activity.strategy.RevealMVPActivity" />
         <activity android:name=".ui.activity.MilitaryTrainingActivity" />
-        <activity android:name=".ui.activity.MainMVPActivity">
+        <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

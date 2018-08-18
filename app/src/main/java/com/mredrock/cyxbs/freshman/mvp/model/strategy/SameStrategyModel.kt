@@ -7,18 +7,18 @@ import com.mredrock.cyxbs.freshman.utils.net.Const.*
 
 class SameStrategyModel : SameStrategyContract.ISameStrategyModel {
     override fun getStrategyData(label: String, onSuccess: (StrategyData) -> Unit, onFail: (Throwable) -> Unit) =
-        withSPCache(label, StrategyData::class.java, {
-            when (label) {
-                DORMITORY_NAME_1, DORMITORY_NAME_2, DORMITORY_NAME_3, DORMITORY_NAME_4 -> this.getDormitoryData(label)
-                else -> this.getStrategyData(label, STRATEGY_PAGE_NUM, STRATEGY_PAGE_SIZE)
-            }
-        }, {
-            it.details.forEach {detail ->
-                detail.picture = detail.picture.map {url ->
-                    IMG_BASE_URL + url
+            withSPCache(label, StrategyData::class.java, {
+                when (label) {
+                    DORMITORY_NAME_1, DORMITORY_NAME_2, DORMITORY_NAME_3, DORMITORY_NAME_4 -> this.getDormitoryData(label)
+                    else -> this.getStrategyData(label, STRATEGY_PAGE_NUM, STRATEGY_PAGE_SIZE)
                 }
-            }
+            }, {
+                it.details.forEach { detail ->
+                    detail.picture = detail.picture.map { url ->
+                        IMG_BASE_URL + url
+                    }
+                }
 
-            onSuccess(it)
-        }, onFail, "strategy")
+                onSuccess(it)
+            }, onFail, "strategy")
 }

@@ -10,16 +10,17 @@ import com.mredrock.cyxbs.freshman.mvp.contract.strategy.RevealContract
 import com.mredrock.cyxbs.freshman.mvp.presenter.strategy.RevealPresenter
 import kotlinx.android.synthetic.main.freshman_item_strategy_reveal.view.*
 
-class RevealAdapter : RecyclerView.Adapter<RevealAdapter.ViewHolder>(),RevealContract.IRevealView {
+class RevealAdapter : RecyclerView.Adapter<RevealAdapter.ViewHolder>(), RevealContract.IRevealView {
     val presenter: RevealContract.IRevealPresenter = RevealPresenter()
     var list: List<String> = listOf()
 
     var srl: SwipeRefreshLayout? = null
         set(value) {
             field = value
-            field?.setOnRefreshListener (presenter::onRefresh)
+            field?.setOnRefreshListener(presenter::onRefresh)
             presenter.onRefresh()
         }
+
     override fun onGetAcademyName(names: List<String>) {
         srl?.isRefreshing = false
         list = names

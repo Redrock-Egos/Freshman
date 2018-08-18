@@ -53,7 +53,7 @@ class SameStrategyMVPActivity : BaseMVPActivity<ISameStrategyView, ISameStrategy
         }
 
         persenter.refreshData(label)
-        srl_refresh.setOnRefreshListener{ persenter.refreshData(label)}
+        srl_refresh.setOnRefreshListener { persenter.refreshData(label) }
     }
 
 

@@ -25,7 +25,7 @@ public class ViewPagerVideoAdapter extends PagerAdapter {
     private List<MilitaryShow.VideoBean> datas;
     private Context context;
 
-    public ViewPagerVideoAdapter(Context context,List<MilitaryShow.VideoBean> datas) {
+    public ViewPagerVideoAdapter(Context context, List<MilitaryShow.VideoBean> datas) {
         this.datas = datas;
         this.context = context;
     }
@@ -42,7 +42,7 @@ public class ViewPagerVideoAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        View view = LayoutInflater.from(context).inflate(R.layout.freshman_item_military_video,null);
+        View view = LayoutInflater.from(context).inflate(R.layout.freshman_item_military_video, null);
 
         TextView tv = view.findViewById(R.id.freshman_military_video_tv);
         Button play = view.findViewById(R.id.freshman_military_video_play);
@@ -51,12 +51,12 @@ public class ViewPagerVideoAdapter extends PagerAdapter {
 
         tv.setText(datas.get(position).getName());
         Glide.with(context)
-                .load(Const.IMG_BASE_URL+datas.get(position).getVideo_pic().getUrl())
+                .load(Const.IMG_BASE_URL + datas.get(position).getVideo_pic().getUrl())
                 .asBitmap()
                 .placeholder(R.drawable.freshman_preload_img)
                 .thumbnail(0.1f)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(new BitmapImageViewTarget(imageView){
+                .into(new BitmapImageViewTarget(imageView) {
                     @Override
                     protected void setResource(Bitmap resource) {
                         imageView.setImageBitmap(resource);

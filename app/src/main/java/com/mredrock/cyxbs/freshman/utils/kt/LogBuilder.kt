@@ -8,7 +8,7 @@ import android.util.Log
  */
 
 enum class Level {
-    ALL,VERBOSE,DEBUG,INFO,WARN,ERROR,NOTHING
+    ALL, VERBOSE, DEBUG, INFO, WARN, ERROR, NOTHING
 }
 
 /**

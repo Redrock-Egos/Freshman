@@ -14,11 +14,11 @@ public class DataDetailSexPresenter extends BasePresenter<DataDetailSexContract.
     private DataDetailSexModel model;
     private SexProportion sex;
 
-    public DataDetailSexPresenter(DataDetailSexModel model){
+    public DataDetailSexPresenter(DataDetailSexModel model) {
         this.model = model;
     }
 
-    public void start(){
+    public void start() {
         model.loadData(new BaseContract.ISomethingModel.LoadCallBack() {
             @Override
             public void succeed(Object o) {

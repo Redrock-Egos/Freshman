@@ -16,6 +16,7 @@ BaseAdapter<T> extends RecyclerView.Adapter<BaseHolder> {
     Context context;
     List<T> data;
     int[] layoutIds;
+
     public BaseAdapter(Context context, List<T> data, int layoutId) {
         this.context = context;
         this.data = data;
@@ -53,13 +54,13 @@ BaseAdapter<T> extends RecyclerView.Adapter<BaseHolder> {
     public BaseHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //从holder基类中获取holder 根据viewType来返回不同的layout
         //若加载多布局，需要覆写getItemView
-        return BaseHolder.getHolder(context,parent,layoutIds[viewType]);
+        return BaseHolder.getHolder(context, parent, layoutIds[viewType]);
     }
 
     @Override
     public void onBindViewHolder(BaseHolder holder, int position, List<Object> payloads) {
-        onBind(holder,data.get(position),position);
+        onBind(holder, data.get(position), position);
     }
 
-    public abstract void onBind(BaseHolder holder,T t,int position);
+    public abstract void onBind(BaseHolder holder, T t, int position);
 }

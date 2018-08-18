@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 public class CustomVIewPager extends ViewPager {
 
     private boolean isCanScroll = true;
+
     public CustomVIewPager(@NonNull Context context) {
         super(context);
     }
@@ -24,19 +25,20 @@ public class CustomVIewPager extends ViewPager {
 
     /**
      * 设置不能滑动
+     *
      * @param isCanScroll
      */
-    public void setScanScroll(boolean isCanScroll){
+    public void setScanScroll(boolean isCanScroll) {
         this.isCanScroll = isCanScroll;
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        return isCanScroll&&super.onInterceptTouchEvent(ev);
+        return isCanScroll && super.onInterceptTouchEvent(ev);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        return isCanScroll&&super.onTouchEvent(ev);
+        return isCanScroll && super.onTouchEvent(ev);
     }
 }

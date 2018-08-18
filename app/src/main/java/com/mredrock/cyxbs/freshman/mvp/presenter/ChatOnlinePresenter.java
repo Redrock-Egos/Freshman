@@ -12,7 +12,7 @@ public class ChatOnlinePresenter extends BasePresenter<ChatOnlineContract.IChatO
         this.model = model;
     }
 
-    public void search(String index,String key){
+    public void search(String index, String key) {
         model.LoadData(index, key, new BaseContract.ISomethingModel.LoadCallBack() {
             @Override
             public void succeed(Object o) {

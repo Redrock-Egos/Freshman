@@ -11,6 +11,7 @@ class MainContract {
          * pos=2
          */
         fun initBuilding(pos: Int)
+
         fun initCars(pos: Int)
 
         /**

@@ -2,7 +2,6 @@ package com.mredrock.cyxbs.freshman.ui.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,10 +15,7 @@ import com.makeramen.roundedimageview.RoundedImageView;
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.bean.StrategyData;
 import com.mredrock.cyxbs.freshman.ui.activity.App;
-import com.mredrock.cyxbs.freshman.ui.activity.PhotoViewerActivity;
 import com.mredrock.cyxbs.freshman.ui.activity.PhotoViewerActivityKt;
-import com.mredrock.cyxbs.freshman.ui.activity.ReportingProcessActivity;
-import com.mredrock.cyxbs.freshman.utils.net.Const;
 
 import java.util.ArrayList;
 import java.util.List;

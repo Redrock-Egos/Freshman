@@ -8,6 +8,7 @@ import com.mredrock.cyxbs.freshman.utils.kt.LogBuilder;
  * 你可以直接调用静态方法进行日志输出。
  * 但是我还是更建议你为单独的模块设置单独的LogBuilder，
  * 因为这样方便管理模块间的Log输出等级。
+ *
  * @see LogBuilder
  */
 public class LogUtils {

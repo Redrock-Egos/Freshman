@@ -43,7 +43,7 @@ public class CquptMienActivity extends BaseActivity {
     private void initVP() {
         List<Fragment> fragments = new ArrayList<>();
         List<String> titles = new ArrayList<>();
-        CquptMienBaseFragment fragment  = new CquptMienBaseFragment();
+        CquptMienBaseFragment fragment = new CquptMienBaseFragment();
         fragment.setContext(this);
         fragments.add(fragment);
         fragments.add(new CquptMienActFragment());
@@ -62,9 +62,13 @@ public class CquptMienActivity extends BaseActivity {
     }
 
     @Override
-    public int getLayoutResID() { return R.layout.freshman_activity_cqupt_mien; }
+    public int getLayoutResID() {
+        return R.layout.freshman_activity_cqupt_mien;
+    }
 
     @NotNull
     @Override
-    public String getToolbarTitle() { return Const.INDEX_MIEN; }
+    public String getToolbarTitle() {
+        return Const.INDEX_MIEN;
+    }
 }

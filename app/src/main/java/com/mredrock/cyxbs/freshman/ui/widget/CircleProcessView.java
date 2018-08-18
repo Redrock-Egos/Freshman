@@ -228,7 +228,7 @@ public class CircleProcessView extends View {
         start();
     }
 
-    public void start(){
+    public void start() {
         isStart = true;
         setAnim();
     }

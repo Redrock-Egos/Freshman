@@ -3,7 +3,7 @@ package com.mredrock.cyxbs.freshman.mvp.presenter;
 
 import com.mredrock.cyxbs.freshman.mvp.contract.BaseContract;
 
-public class BasePresenter<V extends BaseContract.ISomethingView> implements IBasePresenter<V>{
+public class BasePresenter<V extends BaseContract.ISomethingView> implements IBasePresenter<V> {
     private V view;
 
     //关联View
@@ -18,18 +18,18 @@ public class BasePresenter<V extends BaseContract.ISomethingView> implements IBa
         view = null;
     }
 
-    public V getView(){
+    public V getView() {
         return view;
     }
 
 
-    private boolean isViewAttach(){
+    private boolean isViewAttach() {
         return view != null;
     }
 
     //确定是否关联了视图
-    public void checkIsAttach()  {
-        if(!isViewAttach()){
+    public void checkIsAttach() {
+        if (!isViewAttach()) {
             throw new RuntimeException("未连接View");
         }
     }

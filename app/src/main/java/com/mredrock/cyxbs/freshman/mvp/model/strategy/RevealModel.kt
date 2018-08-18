@@ -6,5 +6,5 @@ import com.mredrock.cyxbs.freshman.utils.kt.withSPCache
 
 class RevealModel : RevealContract.IRevealModel {
     override fun getAcademyName(success: (List<String>) -> Unit, fail: (Throwable) -> Unit) =
-        withSPCache("academyName",Entity::class.java,{academyName},{ success(it.name)},fail)
+            withSPCache("academyName", Entity::class.java, { academyName }, { success(it.name) }, fail)
 }

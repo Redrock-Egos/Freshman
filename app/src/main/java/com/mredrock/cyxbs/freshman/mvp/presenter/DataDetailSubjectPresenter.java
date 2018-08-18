@@ -14,11 +14,11 @@ public class DataDetailSubjectPresenter extends BasePresenter<DataDetailSubjectC
     private DataDetailSubjectModel model;
     private SubjectProportion subject;
 
-    public DataDetailSubjectPresenter(DataDetailSubjectModel model){
+    public DataDetailSubjectPresenter(DataDetailSubjectModel model) {
         this.model = model;
     }
 
-    public void start(){
+    public void start() {
         model.loadData(new BaseContract.ISomethingModel.LoadCallBack() {
             @Override
             public void succeed(Object o) {

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:scrollbars="none"
     android:background="@drawable/freshman_bg_tb"
-    tools:context=".ui.activity.MainMVPActivity">
+    tools:context=".ui.activity.MainActivity">
 
     <!--为了适配，必须单独在背景基础上固定建筑的位置，所以这里就只能多一层LL-->
     <LinearLayout

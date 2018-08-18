@@ -25,30 +25,29 @@ public class MilitaryTipsFragment extends Fragment implements MilitaryTipsContra
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        parent = inflater.inflate(R.layout.freshman_fragment_military_tips,container,false);
+        parent = inflater.inflate(R.layout.freshman_fragment_military_tips, container, false);
         findById();
         initMvp();
         return parent;
     }
 
-    private void findById(){
+    private void findById() {
         name = parent.findViewById(R.id.freshman_military_tips_name);
         content = parent.findViewById(R.id.freshman_military_tips_content);
         name1 = parent.findViewById(R.id.freshman_military_tips_name1);
         content1 = parent.findViewById(R.id.freshman_military_tips_content1);
     }
 
-    private void initMvp(){
+    private void initMvp() {
         presenter = new MilitaryTipsPresenter(new MilitaryTipsModel());
         presenter.attachView(this);
         presenter.start();
     }
 
 
-
     @Override
     public void setData(Description data) {
-        name.setText(data.getDescribe().get(0).getContent().replace(" ",""));
+        name.setText(data.getDescribe().get(0).getContent().replace(" ", ""));
         content.setText(data.getDescribe().get(1).getContent());
         name1.setText(data.getDescribe().get(2).getContent());
         content1.setText(data.getDescribe().get(3).getContent());

@@ -13,10 +13,12 @@ import com.mredrock.cyxbs.freshman.ui.activity.App;
 public class ToastUtils {
     private static Toast mToast;
 
-    private ToastUtils() {throw new UnsupportedOperationException("cannot be instantiated");}
+    private ToastUtils() {
+        throw new UnsupportedOperationException("cannot be instantiated");
+    }
 
     public static void show(String text) {
-        show(text,Toast.LENGTH_SHORT);
+        show(text, Toast.LENGTH_SHORT);
     }
 
     @SuppressLint("ShowToast")

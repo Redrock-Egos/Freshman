@@ -146,7 +146,7 @@ public class RectProcessView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (!isStart){
+        if (!isStart) {
             return;
         }
         setData(getWidth(), (int) (getHeight() / 1.25f));
@@ -177,12 +177,12 @@ public class RectProcessView extends View {
         for (int i = 0; i < num; i++) {
             textPaint.getTextBounds(subject[i], 0, subject[i].length(), rect);
             float height = rect.height();
-            StaticLayout layout = new StaticLayout(subject[i],textPaint, (int) columnarLocation[1], Layout.Alignment.ALIGN_CENTER,1.0f,0f,true);
-            canvas.translate(columnarLocation[2 * (i + 1)] - columnarLocation[0] / 2,dashLocation[6] + height/2);
+            StaticLayout layout = new StaticLayout(subject[i], textPaint, (int) columnarLocation[1], Layout.Alignment.ALIGN_CENTER, 1.0f, 0f, true);
+            canvas.translate(columnarLocation[2 * (i + 1)] - columnarLocation[0] / 2, dashLocation[6] + height / 2);
             layout.draw(canvas);
-            canvas.translate(-(columnarLocation[2 * (i + 1)] - columnarLocation[0] / 2),-(dashLocation[6] + height/2));
+            canvas.translate(-(columnarLocation[2 * (i + 1)] - columnarLocation[0] / 2), -(dashLocation[6] + height / 2));
         }
-        for (int i = 0; i <num; i++) {
+        for (int i = 0; i < num; i++) {
             rectF.left = columnarLocation[2 * (i + 1)];
             rectF.right = columnarLocation[2 * (i + 1) + 1];
             rectF.bottom = dashLocation[6];
@@ -207,7 +207,7 @@ public class RectProcessView extends View {
             processPaint.setShader(shader);
             canvas.drawRoundRect(rectF, 5, 5, processPaint);
 
-            String pe = String.valueOf((int)current[i]) + "人";
+            String pe = String.valueOf((int) current[i]) + "人";
             textPaint.getTextBounds(pe, 0, pe.length(), rect);
             float h = rect.height();
             textPaint.setColor(Color.parseColor("#ccFF5A5A"));
@@ -239,13 +239,13 @@ public class RectProcessView extends View {
         this.subject = subject;
     }
 
-    public void setAnim(int[] processes,float time) {
+    public void setAnim(int[] processes, float time) {
         this.processes = processes;
         this.time = time;
         start();
     }
 
-    public void start(){
+    public void start() {
         isStart = true;
         setAnim();
     }

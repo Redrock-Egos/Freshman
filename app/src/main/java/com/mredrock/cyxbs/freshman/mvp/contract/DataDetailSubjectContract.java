@@ -7,13 +7,15 @@ import com.mredrock.cyxbs.freshman.bean.SubjectProportion;
  description : 
  */
 public class DataDetailSubjectContract {
-    public interface IDataDetailSubjectModel extends BaseContract.ISomethingModel{
+    public interface IDataDetailSubjectModel extends BaseContract.ISomethingModel {
         void setSubject(SubjectProportion subject, LoadCallBack loadCallBack);
-        void error(String error,LoadCallBack callBack);
+
+        void error(String error, LoadCallBack callBack);
     }
 
-    public interface IDataDetailSubjectView extends BaseContract.ISomethingView{
+    public interface IDataDetailSubjectView extends BaseContract.ISomethingView {
         void showError(String msg);
+
         void loadSubjectView(SubjectProportion subjectProportion);
     }
 }

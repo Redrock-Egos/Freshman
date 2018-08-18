@@ -50,7 +50,7 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.freshman_activity_admission_request);
         Toolbar mbar = findViewById(R.id.tb_admission);
-        DensityUtils.setTransparent(mbar,this);
+        DensityUtils.setTransparent(mbar, this);
 
         ImageView help = findViewById(R.id.iv_admission_help);
         ImageView back = findViewById(R.id.iv_admission_back);
@@ -92,7 +92,7 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
         mWindow.setFocusable(true);
         mWindow.setBackgroundDrawable(new ColorDrawable());
         mWindow.setOnDismissListener(this::returnButton);
-        mWindow.showAtLocation(root,Gravity.BOTTOM,0,0);
+        mWindow.showAtLocation(root, Gravity.BOTTOM, 0, 0);
     }
 
     @Override
@@ -102,7 +102,7 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
         mAdapter = new AdmissionRequestAdapter(description.getDescribe(), count -> {
             String total = App.getContext().getResources().getString(R.string.freshmen_admission_delete);
             if (count != 0)
-                total = App.getContext().getResources().getString(R.string.freshmen_admission_delete)+"("+count+")";
+                total = App.getContext().getResources().getString(R.string.freshmen_admission_delete) + "(" + count + ")";
             edit.setText(total);
         });
         mRv.setLayoutManager(new LinearLayoutManager(this));
@@ -176,7 +176,7 @@ public class AdmissionRequestActivity extends AppCompatActivity implements Admis
     @Override
     protected void onDestroy() {
         if (mAdapter != null)
-            SPHelper.putBean("admission","admission",mAdapter.getDatas());
+            SPHelper.putBean("admission", "admission", mAdapter.getDatas());
         mPresenter.detachView();
         super.onDestroy();
     }

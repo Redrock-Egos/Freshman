@@ -10,19 +10,19 @@ import android.widget.ImageView
 import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.mvp.contract.MainContract
 import com.mredrock.cyxbs.freshman.mvp.presenter.MainPresenter
-import com.mredrock.cyxbs.freshman.utils.DensityUtils
 import com.mredrock.cyxbs.freshman.utils.kt.BaseMVPActivity
+import com.mredrock.cyxbs.freshman.utils.kt.getScreenWidth
 import com.mredrock.cyxbs.freshman.utils.net.Const
 import kotlinx.android.synthetic.main.freshman_activity_main.*
 
-class MainMVPActivity : BaseMVPActivity<MainContract.IMainView, MainContract.IMainPresenter>(), MainContract.IMainView {
+class MainActivity : BaseMVPActivity<MainContract.IMainView, MainContract.IMainPresenter>(), MainContract.IMainView {
     override fun getLayoutResID() = R.layout.freshman_activity_main
 
     override fun getToolbarTitle() = Const.INDEX_MAIN
 
     private val mCars by lazy { arrayOf(car1, car2, car3, car4, car5) }
     private val mPassCars by lazy { arrayOf(car1_2, car2_3, car3_4, car4_5) }
-    private val scale by lazy { DensityUtils.getScreenWidth(this).toDouble() / iv_bg.drawable.intrinsicWidth }
+    private val scale by lazy { getScreenWidth().toDouble() / iv_bg.drawable.intrinsicWidth }
     private val carScale by lazy {
         arrayOf(0.4762f, 0.5556f, 0.7143f, 0.8741f, 1f)
                 .map { it * scale }
@@ -64,7 +64,7 @@ class MainMVPActivity : BaseMVPActivity<MainContract.IMainView, MainContract.IMa
                 setScaledBitmap(freshman_building_military, R.drawable.freshman_building_military)
             }
 
-    fun unlockBuilding(building:Pair<ImageView,Pair<Int,Int>>) =
+    fun unlockBuilding(building: Pair<ImageView, Pair<Int, Int>>) =
             setScaledBitmap(building.first, building.second.first)
 
     private fun setScaledBitmap(view: ImageView, unlockId: Int, lockedId: Int = unlockId, isLocked: Boolean = false) {
@@ -129,10 +129,12 @@ class MainMVPActivity : BaseMVPActivity<MainContract.IMainView, MainContract.IMa
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+
     override fun onResume() {
         super.onResume()
         persenter.onResume()
     }
+
     fun onBuildingClick(view: View) = persenter.onBuildingClick(view.id)
 
     override fun getContext() = this

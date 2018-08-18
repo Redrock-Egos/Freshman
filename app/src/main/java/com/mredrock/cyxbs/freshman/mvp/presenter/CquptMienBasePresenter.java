@@ -7,7 +7,6 @@ import com.mredrock.cyxbs.freshman.bean.MienStu;
 import com.mredrock.cyxbs.freshman.mvp.contract.BaseContract;
 import com.mredrock.cyxbs.freshman.mvp.contract.CquptMienBaseContract;
 import com.mredrock.cyxbs.freshman.ui.activity.App;
-import com.mredrock.cyxbs.freshman.ui.adapter.MyFragmentPagerAdapter;
 import com.mredrock.cyxbs.freshman.ui.fragment.CquptMienStuFragment;
 import com.mredrock.cyxbs.freshman.utils.ToastUtils;
 
@@ -21,12 +20,12 @@ public class CquptMienBasePresenter extends BasePresenter<CquptMienBaseContract.
         this.model = model;
     }
 
-    public void start(){
+    public void start() {
         model.loadData(new BaseContract.ISomethingModel.LoadCallBack() {
             @Override
             public void succeed(Object o) {
                 MienStu stu = (MienStu) o;
-                if(stu!=null){
+                if (stu != null) {
                     List<Fragment> fragments = new ArrayList<>();
                     List<String> titles = new ArrayList<>();
 
@@ -36,7 +35,7 @@ public class CquptMienBasePresenter extends BasePresenter<CquptMienBaseContract.
                         fragments.add(fragment);
                         titles.add(stu.getArray().get(i).getName());
                     }
-                    getView().setData(fragments,titles);
+                    getView().setData(fragments, titles);
                 }
             }
 
@@ -47,10 +46,6 @@ public class CquptMienBasePresenter extends BasePresenter<CquptMienBaseContract.
         });
 
     }
-
-
-
-
 
 
 }

@@ -15,12 +15,12 @@ public class AdmissionRequestModel implements AdmissionRequestContract.IAdmissio
     @Override
     public void loadData(LoadCallBack callBack) {
 //      先从缓存中读取，加入没有再从网络中获取
-        Description mDatas = SPHelper.getBean("admission","admission",Description.class);
-        if (mDatas == null){
+        Description mDatas = SPHelper.getBean("admission", "admission", Description.class);
+        if (mDatas == null) {
             HttpLoader.<Description>get(
                     service -> service.getDescriptions(Const.INDEX_REQUIRED),
-                    item -> setItem(item,callBack),
-                    error -> error(error.toString(),callBack)
+                    item -> setItem(item, callBack),
+                    error -> error(error.toString(), callBack)
             );
         } else {
             callBack.succeed(mDatas);
@@ -31,7 +31,7 @@ public class AdmissionRequestModel implements AdmissionRequestContract.IAdmissio
     @Override
     public void setItem(Description description, LoadCallBack callBack) {
         log.i(description.toString());
-        for (Description.DescribeBean m:description.getDescribe()) {
+        for (Description.DescribeBean m : description.getDescribe()) {
             m.setCheck(false);
             m.setDelete(false);
             m.setOpen(false);

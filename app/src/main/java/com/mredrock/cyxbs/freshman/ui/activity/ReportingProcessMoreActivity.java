@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReportingProcessMoreActivity extends BaseActivity implements View.OnClickListener{
+public class ReportingProcessMoreActivity extends BaseActivity implements View.OnClickListener {
 
     private StrategyData.DetailData mData;
     private RoundedImageView real;
@@ -37,7 +37,7 @@ public class ReportingProcessMoreActivity extends BaseActivity implements View.O
         initView();
     }
 
-    private void initView(){
+    private void initView() {
         real = findViewById(R.id.riv_report_real_more);
         map = findViewById(R.id.riv_report_map_more);
         TextView title = findViewById(R.id.tv_report_location_more);
@@ -102,7 +102,7 @@ public class ReportingProcessMoreActivity extends BaseActivity implements View.O
     @Override
     public void finish() {
         super.finish();
-        overridePendingTransition(R.anim.freshman_anim_in,R.anim.freshman_anim_out);
+        overridePendingTransition(R.anim.freshman_anim_in, R.anim.freshman_anim_out);
     }
 
     @Override

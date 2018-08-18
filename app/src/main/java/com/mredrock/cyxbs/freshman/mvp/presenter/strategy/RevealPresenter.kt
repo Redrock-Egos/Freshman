@@ -9,10 +9,10 @@ import com.mredrock.cyxbs.freshman.utils.kt.BasePresenter
 
 class RevealPresenter : BasePresenter<IRevealView, IRevealModel>(), IRevealPresenter {
     override fun onRefresh() =
-        model.getAcademyName(mvpView!!::onGetAcademyName){
-            it.printStackTrace()
-            ToastUtils.show("网络错误")
-        }
+            model.getAcademyName(mvpView!!::onGetAcademyName) {
+                it.printStackTrace()
+                ToastUtils.show("网络错误")
+            }
 
 
     override fun onShowDetail(name: String, context: Context) = CampusDataDetailActivity.start(name, context)

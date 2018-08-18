@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.Toolbar
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/toolbar"
@@ -8,6 +7,7 @@
     android:layout_height="?attr/actionBarSize"
     app:navigationIcon="@drawable/freshman_icon_back"
     android:background="@drawable/freshman_bg_tb">
+
     <TextView
         android:id="@+id/tv_toolbar_title"
         android:layout_width="wrap_content"

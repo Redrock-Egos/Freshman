@@ -28,10 +28,10 @@ import com.mredrock.cyxbs.freshman.utils.ToastUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.IChatOnlineView{
+public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.IChatOnlineView {
     private String kind;
     private View parent;
-    private String key="";
+    private String key = "";
 
     private EditText editText;
     private RecyclerView recyclerView;
@@ -48,7 +48,7 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        parent = inflater.inflate(R.layout.freshman_fragment_chatonline,container,false);
+        parent = inflater.inflate(R.layout.freshman_fragment_chatonline, container, false);
 
         initP();
         init();
@@ -56,34 +56,35 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
         return parent;
     }
 
-    private void initP(){
+    private void initP() {
         presenter = new ChatOnlinePresenter(new ChatOnlineModel());
         presenter.attachView(this);
     }
 
-    private void init(){
+    private void init() {
         editText = parent.findViewById(R.id.freshman_chatonline_et);
         recyclerView = parent.findViewById(R.id.freshman_chatonline_rv);
-       search_img = parent.findViewById(R.id.freshman_chat_search);
+        search_img = parent.findViewById(R.id.freshman_chat_search);
         jCardView = parent.findViewById(R.id.freshman_chatonline_jc);
         datas = new ArrayList<>();
     }
-    private void setET(){
-        adapter = new ChatOnlineAdapter(getContext(),datas,new int[]{R.layout.freshman_item_chatonline_lv});
+
+    private void setET() {
+        adapter = new ChatOnlineAdapter(getContext(), datas, new int[]{R.layout.freshman_item_chatonline_lv});
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         int screenHeight = DensityUtils.getScreenHeight(getContext());
 
         ViewGroup.LayoutParams lp = jCardView.getLayoutParams();
-        lp.height = screenHeight /9;
+        lp.height = screenHeight / 9;
         jCardView.setLayoutParams(lp);
 
 
-        ViewGroup.LayoutParams lp1 =search_img.getLayoutParams();
-        lp1.height = screenHeight /30;
-       search_img.setLayoutParams(lp1);
+        ViewGroup.LayoutParams lp1 = search_img.getLayoutParams();
+        lp1.height = screenHeight / 30;
+        search_img.setLayoutParams(lp1);
 
-        recyclerView.setPadding(0, screenHeight /12,0,0);
+        recyclerView.setPadding(0, screenHeight / 12, 0, 0);
 
         editText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -94,8 +95,8 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 key = s.toString();
-                presenter.search(kind,key);
-                if(s.length()==0){
+                presenter.search(kind, key);
+                if (s.length() == 0) {
                     adapter.clearData();
                 }
             }
@@ -106,25 +107,25 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
             }
         });
 
-        InputMethodManager imm1 = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm1 = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm1 != null) {
-            imm1.toggleSoftInput( InputMethodManager.HIDE_NOT_ALWAYS,0);
+            imm1.toggleSoftInput(InputMethodManager.HIDE_NOT_ALWAYS, 0);
         }
 
         editText.setOnFocusChangeListener((v, hasFocus) -> {
-            if(hasFocus){
-               search_img.setVisibility(View.GONE);
+            if (hasFocus) {
+                search_img.setVisibility(View.GONE);
                 setHint();
-                InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                 if (imm != null) {
                     imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
                 }
-            }else{
-                if(key.length()==0){
-                   search_img.setVisibility(View.VISIBLE);
+            } else {
+                if (key.length() == 0) {
+                    search_img.setVisibility(View.VISIBLE);
                     hideHint();
                 }
-                InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                 if (imm != null) {
                     imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
                 }
@@ -133,25 +134,25 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
         });
     }
 
-    private void setHint(){
-        if(kind.equals("老乡群")){
+    private void setHint() {
+        if (kind.equals("老乡群")) {
             editText.setHint("请输入地区");
-        }else{
+        } else {
             editText.setHint("请输入学院");
         }
     }
 
-    private void hideHint(){
+    private void hideHint() {
         editText.setHint("");
     }
 
 
     @Override
     public void setData(ChatOnline bean) {
-        if(bean.getArray().size()>0){
+        if (bean.getArray().size() > 0) {
             adapter.refreshData(bean);
             adapter.notifyDataSetChanged();
-        }else{
+        } else {
             ToastUtils.show("开发小哥：没有搜索到对应数据噢！");
         }
     }

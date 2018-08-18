@@ -32,25 +32,25 @@ public class CquptMienBaseFragment extends Fragment implements CquptMienBaseCont
     private TabLayout layout;
     private Context context;
 
-    public void setContext(Context context){
+    public void setContext(Context context) {
         this.context = context;
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        parent = inflater.inflate(R.layout.freshman_fragment_cqupt_mien_stu,container,false);
+        parent = inflater.inflate(R.layout.freshman_fragment_cqupt_mien_stu, container, false);
         findById();
         initMvp();
         return parent;
     }
 
-    private void findById(){
+    private void findById() {
         pager = parent.findViewById(R.id.freshman_CyMien_stu_vp);
         layout = parent.findViewById(R.id.freshman_CyMien_stu_tl);
     }
 
-    private void initMvp(){
+    private void initMvp() {
         presenter = new CquptMienBasePresenter(new CquptMienBaseModel());
         presenter.attachView(this);
         presenter.start();
@@ -64,7 +64,7 @@ public class CquptMienBaseFragment extends Fragment implements CquptMienBaseCont
         layout.setupWithViewPager(pager);
 
         ViewGroup.LayoutParams layoutParams = layout.getLayoutParams();
-        layoutParams.height = DensityUtils.getScreenHeight(getActivity())/16;
+        layoutParams.height = DensityUtils.getScreenHeight(getActivity()) / 16;
         layout.setLayoutParams(layoutParams);
     }
 
