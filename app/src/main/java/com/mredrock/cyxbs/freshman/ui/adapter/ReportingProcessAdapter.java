@@ -1,7 +1,6 @@
 package com.mredrock.cyxbs.freshman.ui.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.bean.StrategyData;
@@ -95,26 +93,12 @@ public class ReportingProcessAdapter extends RecyclerView.Adapter<ReportingProce
             mapStr = "http://47.106.33.112:8080/welcome2018" + detailData.getPicture().get(1);
             Glide.with(App.getContext())
                     .load(realStr)
-                    .asBitmap()
-                    .thumbnail(0.2f)
-                    .placeholder(R.drawable.freshman_preload_img)
-                    .into(new BitmapImageViewTarget(real) {
-                        @Override
-                        protected void setResource(Bitmap resource) {
-                            real.setImageBitmap(resource);
-                        }
-                    });
+                    .thumbnail(0.1f)
+                    .into(real);
             Glide.with(App.getContext())
                     .load(mapStr)
-                    .asBitmap()
-                    .thumbnail(0.2f)
-                    .placeholder(R.drawable.freshman_preload_img)
-                    .into(new BitmapImageViewTarget(map) {
-                        @Override
-                        protected void setResource(Bitmap resource) {
-                            map.setImageBitmap(resource);
-                        }
-                    });
+                    .thumbnail(0.1f)
+                    .into(map);
             context.setText(detailData.getContent());
         }
 

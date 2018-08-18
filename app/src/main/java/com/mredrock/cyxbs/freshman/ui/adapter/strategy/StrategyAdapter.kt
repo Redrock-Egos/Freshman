@@ -11,7 +11,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.makeramen.roundedimageview.RoundedImageView
 import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.bean.StrategyData
@@ -111,7 +110,6 @@ open class StrategyAdapter(private val list: List<StrategyData.DetailData>) : Re
             }
             g?.load(mData)
                     ?.thumbnail(0.1f)
-                    ?.diskCacheStrategy(DiskCacheStrategy.ALL)
                     ?.into(this)
         }
     }

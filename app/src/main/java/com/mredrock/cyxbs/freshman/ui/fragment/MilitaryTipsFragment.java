@@ -51,6 +51,9 @@ public class MilitaryTipsFragment extends Fragment implements MilitaryTipsContra
         content.setText(data.getDescribe().get(1).getContent());
         name1.setText(data.getDescribe().get(2).getContent());
         content1.setText(data.getDescribe().get(3).getContent());
+
+        content.setLineSpacing(0,1.5f);
+        content1.setLineSpacing(0,1.5f);
     }
 
     @Override

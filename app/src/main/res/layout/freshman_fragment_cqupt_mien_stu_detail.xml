@@ -39,18 +39,19 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="20dp"
                         android:textColor="#000000"
                         android:textSize="16sp" />
 
 
                     <TextView
                         android:id="@+id/freshman_CyMien_detail_desc"
+                        android:autoLink = "web|phone|email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="10dp"
                         android:textSize="14sp" />
 
                     <ImageView

@@ -76,12 +76,12 @@ public class ChatOnlineFragment extends Fragment implements ChatOnlineContract.I
         int screenHeight = DensityUtils.getScreenHeight(getContext());
 
         ViewGroup.LayoutParams lp = jCardView.getLayoutParams();
-        lp.height = screenHeight / 9;
+        lp.height = (int)(screenHeight / 9.5);
         jCardView.setLayoutParams(lp);
 
 
         ViewGroup.LayoutParams lp1 = search_img.getLayoutParams();
-        lp1.height = screenHeight / 30;
+        lp1.height = lp.height/3;
         search_img.setLayoutParams(lp1);
 
         recyclerView.setPadding(0, screenHeight / 12, 0, 0);

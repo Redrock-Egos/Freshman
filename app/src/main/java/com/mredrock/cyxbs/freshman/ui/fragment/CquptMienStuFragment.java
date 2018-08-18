@@ -1,10 +1,16 @@
 package com.mredrock.cyxbs.freshman.ui.fragment;
 
 import android.annotation.SuppressLint;
-import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +19,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.bean.MienStu;
@@ -55,30 +60,43 @@ public class CquptMienStuFragment extends Fragment {
                 bean.getName().equals("重庆邮电大学青年志愿者协会")||
                 bean.getName().equals("社团联合会")||
                 bean.getName().equals("学生科技联合会")){
-            Glide.with(getContext()).load(Const.IMG_BASE_URL+bean.getPicture().get(0))
-                    .asBitmap()
-                    .placeholder(R.drawable.freshman_preload_img)
+            Glide.with(getContext())
+                    .load(Const.IMG_BASE_URL+bean.getPicture().get(0))
                     .thumbnail(0.1f)
-                    .into(new BitmapImageViewTarget(img){
-                        @Override
-                        protected void setResource(Bitmap resource) {
-                            img.setImageBitmap(resource);
-                        }
-                    });
+                    .into(img);
         }else{
-            Glide.with(getContext()).load(Const.IMG_BASE_URL+bean.getPicture().get(0))
-                    .asBitmap()
-                    .centerCrop()
-                    .placeholder(R.drawable.freshman_preload_img)
+            img.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            Glide.with(getContext())
+                    .load(Const.IMG_BASE_URL+bean.getPicture().get(0))
                     .thumbnail(0.1f)
-                    .into(new BitmapImageViewTarget(img){
-                        @Override
-                        protected void setResource(Bitmap resource) {
-                            img.setImageBitmap(resource);
-                        }
-                    });
+                    .into(img);
         }
-        tv.setText(bean.getContent());
+        String content = bean.getContent();
+        int start = 0;
+        int end = 0;
+        SpannableStringBuilder spannable = new SpannableStringBuilder(content);
+        if(bean.getName().equals("红岩网校工作站")){
+            for (int i = 0; i < content.length(); i++) {
+                if(content.charAt(i) == '【') start = i;
+
+                if(content.charAt(i) == '】') end = i;
+
+
+
+                if(start!=0&&end!=0){
+                    Log.d("fxy", "init: start="+start+" end="+end);
+                    spannable.setSpan(new RelativeSizeSpan(1.03f),start,end+1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    spannable.setSpan(new ForegroundColorSpan(Color.parseColor("#505050")),start,end+1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    start = 0;
+                    end = 0;
+                }
+            }
+            tv.setText(spannable);
+        }else{
+            tv.setText(bean.getContent());
+        }
+        tv.setLineSpacing(0,1.5f);
+
         name.setText(bean.getName());
         tv.setLines(6);
 
@@ -87,6 +105,18 @@ public class CquptMienStuFragment extends Fragment {
         img.setLayoutParams(layoutParams);
 
         linearLayout.setOnClickListener(v -> {
+            if(isSeeMore){
+                tv.setMaxLines(6);
+                seeMore.setBackgroundResource(R.drawable.freshman_icon_report_more);
+                isSeeMore = false;
+            }else{
+                tv.setMaxLines(500);
+                seeMore.setBackgroundResource(R.drawable.freshman_icon_report_simple);
+                isSeeMore = true;
+            }
+        });
+
+        tv.setOnClickListener(v ->{
             if(isSeeMore){
                 tv.setMaxLines(6);
                 seeMore.setBackgroundResource(R.drawable.freshman_icon_report_more);
