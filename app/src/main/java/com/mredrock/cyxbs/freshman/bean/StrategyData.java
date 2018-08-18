@@ -35,9 +35,9 @@ public class StrategyData implements Serializable {
     public static class DetailData implements Serializable {
         /**
          * content : 地理位置：老校门斜对面第二个巷子内
-         店家描述：学校附近少有的装修精美的餐馆，没有了其他街头小店的浮躁，多的是对美食，对生活精致的态度。这份精致，体现在每一道菜品别具一格的名字，体现在对味道的极致追求。
-         推荐菜目：日本豆腐煲，谢氏玉米烙
-
+         * 店家描述：学校附近少有的装修精美的餐馆，没有了其他街头小店的浮躁，多的是对美食，对生活精致的态度。这份精致，体现在每一道菜品别具一格的名字，体现在对味道的极致追求。
+         * 推荐菜目：日本豆腐煲，谢氏玉米烙
+         * <p>
          * id : 1
          * name : 无届青年餐馆
          * picture : ["/picture/dbacc0c129424d3cb10a1d3144c10b62.jpg"]

@@ -58,7 +58,7 @@ public class CampusStrategyEntranceActivity extends BaseActivity {
         }
         EntranceAdapter simpleAdapter = new EntranceAdapter(datas, name -> {
             SameStrategyMVPActivityKt.createStrategyActivity(CampusStrategyEntranceActivity.this, name);
-    });
+        });
         GridLayoutManager manager = new GridLayoutManager(this, 3);
         mRv.setLayoutManager(manager);
         mRv.setAdapter(simpleAdapter);
@@ -75,7 +75,7 @@ public class CampusStrategyEntranceActivity extends BaseActivity {
         return INDEX_STRATEGY;
     }
 
-    public class SimpleData{
+    public class SimpleData {
         private String name;
         private int id;
 

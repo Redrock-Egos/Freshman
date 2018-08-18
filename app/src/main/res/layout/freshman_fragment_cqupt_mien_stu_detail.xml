@@ -23,57 +23,57 @@
         app:shadowRadius="0dp">
 
 
-            <ScrollView
-                android:scrollbars="none"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+        <ScrollView
+            android:scrollbars="none"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-                <LinearLayout
-                    android:layout_marginLeft="14dp"
-                    android:layout_marginRight="14dp"
-                    android:layout_marginTop="14dp"
+            <LinearLayout
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginTop="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/freshman_CyMien_detail_img"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_gravity="center"
 
-                    <com.makeramen.roundedimageview.RoundedImageView
-                        android:id="@+id/freshman_CyMien_detail_img"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-
-                        app:riv_corner_radius="6dp" />
+                    app:riv_corner_radius="6dp" />
 
 
-                    <TextView
-                        android:id="@+id/freshman_CyMien_detail_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
-                        android:textColor="#000000"
-                        android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/freshman_CyMien_detail_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
 
 
-                    <TextView
-                        android:id="@+id/freshman_CyMien_detail_desc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="4dp"
-                        android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/freshman_CyMien_detail_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="4dp"
+                    android:textSize="14sp" />
 
-                    <ImageView
-                        android:id="@+id/freshman_CyMien_detail_seeMore"
-                        android:layout_width="30dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/freshman_icon_report_more" />
-                </LinearLayout>
-            </ScrollView>
+                <ImageView
+                    android:id="@+id/freshman_CyMien_detail_seeMore"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/freshman_icon_report_more" />
+            </LinearLayout>
+        </ScrollView>
     </com.mredrock.cyxbs.freshman.ui.widget.JCardView>
 </com.gigamole.library.ShadowLayout>

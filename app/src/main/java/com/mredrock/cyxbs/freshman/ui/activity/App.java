@@ -5,6 +5,7 @@ import android.content.Context;
 
 public class App extends Application {
     private static Context appContext;
+
     @Override
     public void onCreate() {
         super.onCreate();

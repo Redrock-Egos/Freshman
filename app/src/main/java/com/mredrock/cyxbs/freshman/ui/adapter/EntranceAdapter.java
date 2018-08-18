@@ -18,21 +18,21 @@ public class EntranceAdapter extends RecyclerView.Adapter<EntranceAdapter.Entran
     private List<CampusStrategyEntranceActivity.SimpleData> simpleDataList;
     private ChangePageListener mListener;
 
-    public EntranceAdapter(List<CampusStrategyEntranceActivity.SimpleData> data, ChangePageListener listener){
+    public EntranceAdapter(List<CampusStrategyEntranceActivity.SimpleData> data, ChangePageListener listener) {
         this.simpleDataList = data;
         this.mListener = listener;
     }
 
     @Override
     public EntranceViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(App.getContext()).inflate(R.layout.freshman_recycle_item_entrance,parent,false);
+        View view = LayoutInflater.from(App.getContext()).inflate(R.layout.freshman_recycle_item_entrance, parent, false);
         return new EntranceViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(EntranceViewHolder holder, int position) {
         ViewGroup.LayoutParams p = holder.itemView.getLayoutParams();
-        p.height = DensityUtils.getScreenHeight(App.getContext())/5;
+        p.height = DensityUtils.getScreenHeight(App.getContext()) / 5;
         holder.itemView.setLayoutParams(p);
         holder.loadData(simpleDataList.get(position));
 
@@ -43,7 +43,7 @@ public class EntranceAdapter extends RecyclerView.Adapter<EntranceAdapter.Entran
         return simpleDataList.size();
     }
 
-    class EntranceViewHolder extends RecyclerView.ViewHolder{
+    class EntranceViewHolder extends RecyclerView.ViewHolder {
         private ImageView icon;
 
         EntranceViewHolder(View itemView) {
@@ -52,16 +52,16 @@ public class EntranceAdapter extends RecyclerView.Adapter<EntranceAdapter.Entran
             icon = itemView.findViewById(R.id.iv_grid_entrance);
 
             itemView.setOnClickListener(v ->
-                mListener.changePage(simpleDataList.get(getLayoutPosition()).getName())
+                    mListener.changePage(simpleDataList.get(getLayoutPosition()).getName())
             );
         }
 
-        private void loadData(CampusStrategyEntranceActivity.SimpleData data){
+        private void loadData(CampusStrategyEntranceActivity.SimpleData data) {
             icon.setImageDrawable(App.getContext().getResources().getDrawable(data.getId()));
         }
     }
 
-    public interface ChangePageListener{
+    public interface ChangePageListener {
         void changePage(String name);
     }
 }

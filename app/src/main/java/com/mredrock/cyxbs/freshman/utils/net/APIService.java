@@ -55,11 +55,13 @@ public interface APIService {
     Observable<MilitaryShow> getMilitaryShow();
 
     @GET("data/get/byindex")
-    Observable<MienStu> getMienStu(@Query("index")String index, @Query("pagenum")String pageNum, @Query("pagesize")String pageSize);
+    Observable<MienStu> getMienStu(@Query("index") String index, @Query("pagenum") String pageNum, @Query("pagesize") String pageSize);
+
     /**
      * 数据揭秘相同几个页面的全部数据
-     * @param index 标题，Const类里的一部分
-     * @param pageNum 分页请求，页数。写死，1页
+     *
+     * @param index    标题，Const类里的一部分
+     * @param pageNum  分页请求，页数。写死，1页
      * @param pageSize 分页请求，数据数量。写死，无限大
      * @return StrategyData类
      * @see Const
@@ -70,8 +72,9 @@ public interface APIService {
 
     /**
      * 数据揭秘学生寝室的全部数据
+     *
      * @param name 楼栋名称,Const类里有
-     * 知行苑 宁静苑 兴业苑 明理苑
+     *             知行苑 宁静苑 兴业苑 明理苑
      * @return StrategyData类
      * @see Const
      * @see StrategyData
@@ -80,10 +83,10 @@ public interface APIService {
     Observable<StrategyData> getDormitoryData(@Query("name") String name);
 
     @GET("search/chatgroup/abstractly")
-    Observable<ChatOnline> getChatOnline(@Query("index")String index,@Query("key")String key);
+    Observable<ChatOnline> getChatOnline(@Query("index") String index, @Query("key") String key);
 
     @GET("search/school/1")
-    Observable<SexProportion> getSexProportion(@Query("name")String name);
+    Observable<SexProportion> getSexProportion(@Query("name") String name);
 
     @GET("search/school/2")
     Observable<SubjectProportion> getSubjectProportion(@Query("name") String name);

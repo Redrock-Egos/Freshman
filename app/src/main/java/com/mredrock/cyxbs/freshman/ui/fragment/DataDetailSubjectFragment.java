@@ -34,7 +34,7 @@ public class DataDetailSubjectFragment extends Fragment implements DataDetailSub
     private RectProcessView mRpv;
     private View rootView;
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -51,7 +51,7 @@ public class DataDetailSubjectFragment extends Fragment implements DataDetailSub
         return view;
     }
 
-    private void initMVP(){
+    private void initMVP() {
         DataDetailSubjectPresenter presenter = new DataDetailSubjectPresenter(new DataDetailSubjectModel(name));
         presenter.attachView(this);
         presenter.start();
@@ -60,12 +60,12 @@ public class DataDetailSubjectFragment extends Fragment implements DataDetailSub
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if (rootView ==null)
+        if (rootView == null)
             return;
         if (rectFirst && isVisibleToUser) {
             mRpv.setSubject(subjectName);
             mRpv.setMax(max);
-            mRpv.setAnim(personNum,time);
+            mRpv.setAnim(personNum, time);
             rectFirst = false;
         }
     }
@@ -89,15 +89,15 @@ public class DataDetailSubjectFragment extends Fragment implements DataDetailSub
         for (int i = 0; i < num; i++) {
             subjectName[i] = subjectProportion.getArray().get(i).getSubject_name();
             personNum[i] = subjectProportion.getArray().get(i).getBelow_amount();
-            if (personNum[i] > max){
+            if (personNum[i] > max) {
                 max = personNum[i];
             }
         }
         int temp = 120;
-        while(temp < max){
+        while (temp < max) {
             temp = temp + 30;
         }
-        while (temp - max > 45){
+        while (temp - max > 45) {
             temp = temp - 30;
         }
         time = temp <= 60 ? 0.5f : 2f;

@@ -10,14 +10,14 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
     private List<Fragment> fragmentList;
     private List<String> titleList;
 
-    public  MyFragmentPagerAdapter(FragmentManager fm, List<Fragment> fragmentList, List<String> titleList) {
+    public MyFragmentPagerAdapter(FragmentManager fm, List<Fragment> fragmentList, List<String> titleList) {
         super(fm);
         this.fragmentList = fragmentList;
         this.titleList = titleList;
     }
 
-    public void setData(int pos,Fragment fragment){
-        fragmentList.add(pos,fragment);
+    public void setData(int pos, Fragment fragment) {
+        fragmentList.add(pos, fragment);
         notifyDataSetChanged();
     }
 

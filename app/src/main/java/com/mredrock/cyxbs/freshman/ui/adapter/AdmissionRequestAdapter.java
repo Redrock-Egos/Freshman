@@ -1,7 +1,6 @@
 package com.mredrock.cyxbs.freshman.ui.adapter;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +27,7 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
 
     private String TAG = "AdmissionRequestAdapter";
 
-    public AdmissionRequestAdapter(List<Description.DescribeBean> mDataList, OnDeleteDataListener mListener){
+    public AdmissionRequestAdapter(List<Description.DescribeBean> mDataList, OnDeleteDataListener mListener) {
         this.mDataList = mDataList;
         isEdit = false;
         this.mListener = mListener;
@@ -36,7 +35,7 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
 
     @Override
     public AdmissionRequestViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View mView = LayoutInflater.from(App.getContext()).inflate(R.layout.freshman_recycle_item_admission,parent,false);
+        View mView = LayoutInflater.from(App.getContext()).inflate(R.layout.freshman_recycle_item_admission, parent, false);
         return new AdmissionRequestViewHolder(mView);
     }
 
@@ -50,10 +49,10 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
         return mDataList.size();
     }
 
-    public void changeData(Boolean isEdit){
+    public void changeData(Boolean isEdit) {
         this.isEdit = isEdit;
         deleteNum = 0;
-        if (isEdit){
+        if (isEdit) {
             for (int i = 0; i < mDataList.size(); i++) {
                 mDataList.get(i).setCheck(false);
             }
@@ -61,22 +60,22 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
         notifyDataSetChanged();
     }
 
-    public void add(Description.DescribeBean bean){
+    public void add(Description.DescribeBean bean) {
         mDataList.add(bean);
         notifyItemInserted(mDataList.size());
     }
 
-    public void deleteDatas(){
+    public void deleteDatas() {
 //      删除时候从大到小，不然会删不干净...
         for (int i = mDataList.size() - 1; i >= 0; i--) {
-            if (mDataList.get(i).isDelete()){
+            if (mDataList.get(i).isDelete()) {
                 mDataList.remove(i);
                 notifyItemRemoved(i);
             }
         }
     }
 
-    public Description getDatas(){
+    public Description getDatas() {
         Description temp = new Description();
         temp.setIndex("入学必备");
         temp.setDescribe(mDataList);
@@ -84,7 +83,7 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
     }
 
 
-    public class AdmissionRequestViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class AdmissionRequestViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private ImageView item;
         private ImageView more;
@@ -102,11 +101,11 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
             description = itemView.findViewById(R.id.tv_admission_description);
 
             item.setOnClickListener(this);
-            itemView.setOnClickListener(v->{
-                if (isEdit){
+            itemView.setOnClickListener(v -> {
+                if (isEdit) {
                     if (mDataList.get(getLayoutPosition()).getProperty().equals("必需"))
                         return;
-                    if (mDataList.get(getLayoutPosition()).isDelete()){
+                    if (mDataList.get(getLayoutPosition()).isDelete()) {
                         mDataList.get(getLayoutPosition()).setDelete(false);
                         delete.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_check_delete_normal));
                         deleteNum = deleteNum - 1;
@@ -120,33 +119,33 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
                 } else {
                     if (mDataList.get(getLayoutPosition()).getProperty().equals("用户自定义"))
                         return;
-                    if (!mDataList.get(getLayoutPosition()).isOpen()){
+                    if (!mDataList.get(getLayoutPosition()).isOpen()) {
                         more.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_icon_see_simple));
-                        notifyItemChanged(getLayoutPosition(),0);
+                        notifyItemChanged(getLayoutPosition(), 0);
                         mDataList.get(getLayoutPosition()).setOpen(true);
                     } else {
                         more.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_icon_see_more));
-                        notifyItemChanged(getLayoutPosition(),0);
+                        notifyItemChanged(getLayoutPosition(), 0);
                         mDataList.get(getLayoutPosition()).setOpen(false);
                     }
                 }
             });
         }
 
-        void initData(Description.DescribeBean mData){
+        void initData(Description.DescribeBean mData) {
             title.setText(mData.getName());
-            int colorId = mData.isCheck()? R.color.freshmen_finish_black:R.color.freshmen_title_black;
-            int drawableIdCheck = mData.isCheck()? R.drawable.freshman_check_pressed:R.drawable.freshman_check_normal;
-            int drawableIdDelete = mData.isDelete()? R.drawable.freshman_check_delete_pressed:R.drawable.freshman_check_delete_normal;
+            int colorId = mData.isCheck() ? R.color.freshmen_finish_black : R.color.freshmen_title_black;
+            int drawableIdCheck = mData.isCheck() ? R.drawable.freshman_check_pressed : R.drawable.freshman_check_normal;
+            int drawableIdDelete = mData.isDelete() ? R.drawable.freshman_check_delete_pressed : R.drawable.freshman_check_delete_normal;
             title.setTextColor(App.getContext().getResources().getColor(colorId));
             item.setImageDrawable(App.getContext().getResources().getDrawable(drawableIdCheck));
             delete.setImageDrawable(App.getContext().getResources().getDrawable(drawableIdDelete));
-            if (mData.getProperty().equals("用户自定义")){
+            if (mData.getProperty().equals("用户自定义")) {
                 more.setVisibility(View.GONE);
-            } else if (mData.getProperty().equals("必需") || mData.getProperty().equals("非必需")){
+            } else if (mData.getProperty().equals("必需") || mData.getProperty().equals("非必需")) {
                 more.setVisibility(View.VISIBLE);
             }
-            if (mData.isOpen()){
+            if (mData.isOpen()) {
                 description.setVisibility(View.VISIBLE);
                 description.setText(mData.getContent());
                 more.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_icon_see_simple));
@@ -154,12 +153,12 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
                 description.setVisibility(View.GONE);
                 more.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_icon_see_more));
             }
-            if (!isEdit){
+            if (!isEdit) {
                 delete.setVisibility(View.GONE);
                 item.setVisibility(View.VISIBLE);
             } else {
                 item.setVisibility(View.INVISIBLE);
-                if(mData.getProperty().equals("必需")){
+                if (mData.getProperty().equals("必需")) {
                     delete.setVisibility(View.GONE);
                 } else {
                     delete.setVisibility(View.VISIBLE);
@@ -167,35 +166,35 @@ public class AdmissionRequestAdapter extends RecyclerView.Adapter<AdmissionReque
             }
         }
 
-        private void from2 (int from, int to){
+        private void from2(int from, int to) {
             Description.DescribeBean temp = mDataList.get(from);
             mDataList.remove(from);
-            mDataList.add(to,temp);
+            mDataList.add(to, temp);
             notifyItemRemoved(from);
             notifyItemInserted(to);
         }
 
         @Override
         public void onClick(View v) {
-            switch (v.getId()){
+            switch (v.getId()) {
                 case R.id.iv_admission_check:
                     if (!mDataList.get(getLayoutPosition()).isCheck()) {
                         item.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_check_pressed));
                         title.setTextColor(App.getContext().getResources().getColor(R.color.freshmen_finish_black));
                         mDataList.get(getLayoutPosition()).setCheck(true);
-                        from2(getLayoutPosition(),0);
+                        from2(getLayoutPosition(), 0);
                     } else {
                         item.setImageDrawable(App.getContext().getResources().getDrawable(R.drawable.freshman_check_normal));
                         title.setTextColor(App.getContext().getResources().getColor(R.color.freshmen_title_black));
                         mDataList.get(getLayoutPosition()).setCheck(false);
-                        from2(getLayoutPosition(),getItemCount() - 1);
+                        from2(getLayoutPosition(), getItemCount() - 1);
                     }
                     break;
             }
         }
     }
 
-    public interface OnDeleteDataListener{
+    public interface OnDeleteDataListener {
         void getTotalNum(int count);
     }
 }

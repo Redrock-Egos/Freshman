@@ -14,26 +14,30 @@ import android.view.ViewGroup;
 public class BaseHolder extends RecyclerView.ViewHolder {
     View itemview;
     SparseArray<View> views;
+
     public BaseHolder(View itemView) {
         super(itemView);
         this.itemview = itemView;
         views = new SparseArray<View>();
     }
+
     //暴露给adapter 得到holder
-    public static <T extends BaseHolder> T getHolder(Context context, ViewGroup parent,int layoutId){
-        return (T) new BaseHolder(LayoutInflater.from(context).inflate(layoutId,parent,false));
+    public static <T extends BaseHolder> T getHolder(Context context, ViewGroup parent, int layoutId) {
+        return (T) new BaseHolder(LayoutInflater.from(context).inflate(layoutId, parent, false));
     }
+
     //根据item中控件的id拿到控件
-    public <T extends View> T getView(int viewId){
+    public <T extends View> T getView(int viewId) {
         View childView = views.get(viewId);
-        if(childView ==null){
+        if (childView == null) {
             childView = itemView.findViewById(viewId);
-            views.put(viewId,childView);
+            views.put(viewId, childView);
         }
         return (T) childView;
     }
+
     //根据Item中的控件Id向控件添加事件监听
-    public BaseHolder setOnClickListener(int viewId,View.OnClickListener clickListener){
+    public BaseHolder setOnClickListener(int viewId, View.OnClickListener clickListener) {
         View view = getView(viewId);
         view.setOnClickListener(clickListener);
         return this;

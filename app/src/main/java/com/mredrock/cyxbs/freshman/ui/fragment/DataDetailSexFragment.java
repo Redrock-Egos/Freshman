@@ -1,6 +1,5 @@
 package com.mredrock.cyxbs.freshman.ui.fragment;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -47,7 +46,7 @@ public class DataDetailSexFragment extends Fragment implements DataDetailSexCont
         title.setText(temp);
     }
 
-    private void initMVP(){
+    private void initMVP() {
         DataDetailSexPresenter presenter = new DataDetailSexPresenter(new DataDetailSexModel(name));
         presenter.attachView(this);
         presenter.start();

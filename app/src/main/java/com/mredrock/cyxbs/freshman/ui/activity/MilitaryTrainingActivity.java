@@ -31,13 +31,13 @@ public class MilitaryTrainingActivity extends BaseActivity {
         initView();
     }
 
-    private void findById(){
+    private void findById() {
         tabLayout = findViewById(R.id.freshman_military_tl);
         viewPager = findViewById(R.id.freshman_military_vp);
-        tabLayout.post(() -> TabLayoutUtil.setIndicator(tabLayout,40,40));
+        tabLayout.post(() -> TabLayoutUtil.setIndicator(tabLayout, 40, 40));
     }
 
-    private void initView(){
+    private void initView() {
         List<Fragment> fragments = new ArrayList<>();
         List<String> titles = new ArrayList<>();
         fragments.add(new MilitaryShowFragment());
@@ -51,9 +51,13 @@ public class MilitaryTrainingActivity extends BaseActivity {
     }
 
     @Override
-    public int getLayoutResID() { return R.layout.freshman_activity_military_training; }
+    public int getLayoutResID() {
+        return R.layout.freshman_activity_military_training;
+    }
 
     @NotNull
     @Override
-    public String getToolbarTitle() { return Const.INDEX_MILITARY_TRAINING_TITLE; }
+    public String getToolbarTitle() {
+        return Const.INDEX_MILITARY_TRAINING_TITLE;
+    }
 }

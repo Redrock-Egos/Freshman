@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-abstract class BasePagerAdapter<V : View, D>(var list: List<D> = listOf()): PagerAdapter() {
+abstract class BasePagerAdapter<V : View, D>(var list: List<D> = listOf()) : PagerAdapter() {
 
     fun refresh(list: List<D>) {
         this.list = list
@@ -24,8 +24,8 @@ abstract class BasePagerAdapter<V : View, D>(var list: List<D> = listOf()): Page
     @Suppress("UNCHECKED_CAST")
     override fun instantiateItem(container: ViewGroup, position: Int): V =
             (getLayoutId()?.let { LayoutInflater.from(container.context).inflate(it, container, false) as? V }
-            ?: createView(container.context)
-            ?: throw Exception("Can't create View,Please override getLayoutId() or createView()"))
+                    ?: createView(container.context)
+                    ?: throw Exception("Can't create View,Please override getLayoutId() or createView()"))
                     .apply {
                         initView(list[position])
                         container.addView(this)

@@ -44,27 +44,35 @@ public class ChatOnlineActivity extends BaseActivity {
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(viewPager.getChildCount());
         tabLayout.setupWithViewPager(viewPager);
-        TabLayoutUtil.setIndicator(tabLayout,40,40);
+        TabLayoutUtil.setIndicator(tabLayout, 40, 40);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
-                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 if (imm != null) {
                     imm.hideSoftInputFromWindow(fragment.getEditText().getWindowToken(), 0);
                     imm.hideSoftInputFromWindow(fragment1.getEditText().getWindowToken(), 0);
                 }
             }
+
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
             @Override
-            public void onPageScrollStateChanged(int state) {}
+            public void onPageScrollStateChanged(int state) {
+            }
         });
     }
 
     @Override
-    public int getLayoutResID() { return R.layout.freshman_activity_chat_online; }
+    public int getLayoutResID() {
+        return R.layout.freshman_activity_chat_online;
+    }
 
     @NotNull
     @Override
-    public String getToolbarTitle() { return Const.INDEX_CHAT; }
+    public String getToolbarTitle() {
+        return Const.INDEX_CHAT;
+    }
 }

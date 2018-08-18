@@ -1,6 +1,5 @@
 package com.mredrock.cyxbs.freshman.mvp.presenter;
 
-import com.mredrock.cyxbs.freshman.bean.Description;
 import com.mredrock.cyxbs.freshman.bean.StrategyData;
 import com.mredrock.cyxbs.freshman.mvp.contract.BaseContract;
 import com.mredrock.cyxbs.freshman.mvp.contract.ReportingProcessContract;
@@ -14,11 +13,11 @@ public class ReportingProcessPresenter extends BasePresenter<ReportingProcessCon
 
     private ReportingProcessModel model;
 
-    public ReportingProcessPresenter(ReportingProcessModel model){
+    public ReportingProcessPresenter(ReportingProcessModel model) {
         this.model = model;
     }
 
-    public void start(){
+    public void start() {
         checkIsAttach();//检查是否绑定
         model.loadData(new BaseContract.ISomethingModel.LoadCallBack() {
             @Override

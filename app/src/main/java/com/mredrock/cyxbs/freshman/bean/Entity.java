@@ -7,9 +7,9 @@ import java.util.List;
  */
 public class Entity {
     /**
-      index : 学生食堂
-      amount : 6
-      name : ["千喜鹤","中心食堂","大学城食堂","延生","大西北","红高粱"]
+     * index : 学生食堂
+     * amount : 6
+     * name : ["千喜鹤","中心食堂","大学城食堂","延生","大西北","红高粱"]
      */
 
     private String index;

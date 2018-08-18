@@ -1,6 +1,7 @@
 package com.mredrock.cyxbs.freshman.mvp.presenter
 
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP
 import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.mvp.contract.MainContract.*
 import com.mredrock.cyxbs.freshman.mvp.model.MainModel
@@ -21,6 +22,7 @@ class MainPresenter : BasePresenter<IMainView, IMainModel>(), IMainPresenter {
     private inline fun Boolean.then(then: () -> Unit) {
         if (this) then()
     }
+
     override fun onBuildingClick(id: Int) = (!isAnimationPlaying).then {
         when (id) {
             R.id.freshman_building_request1 -> 1
@@ -62,7 +64,7 @@ class MainPresenter : BasePresenter<IMainView, IMainModel>(), IMainPresenter {
             6 -> CquptMienActivity::class
             7 -> MilitaryTrainingActivity::class
             else -> throw Exception("no activity found")
-        }.java))
+        }.java).apply { flags = FLAG_ACTIVITY_SINGLE_TOP })
     }
 
     override fun createModel(): IMainModel = MainModel()

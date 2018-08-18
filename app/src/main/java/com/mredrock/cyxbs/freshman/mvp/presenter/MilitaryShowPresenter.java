@@ -7,19 +7,16 @@ import com.mredrock.cyxbs.freshman.mvp.contract.MilitaryShowContract;
 import com.mredrock.cyxbs.freshman.ui.activity.App;
 import com.mredrock.cyxbs.freshman.utils.ToastUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MilitaryShowPresenter extends BasePresenter<MilitaryShowContract.IMilitaryShowView> {
     private MilitaryShowContract.IMilitaryShowModel model;
 
-    public static final  String TAG = "MilitaryShowPresenter";
+    public static final String TAG = "MilitaryShowPresenter";
 
     public MilitaryShowPresenter(MilitaryShowContract.IMilitaryShowModel model) {
         this.model = model;
     }
 
-    public void start(){
+    public void start() {
         checkIsAttach();
         model.loadData(new BaseContract.ISomethingModel.LoadCallBack() {
             @Override

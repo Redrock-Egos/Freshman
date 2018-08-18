@@ -10,12 +10,13 @@ import com.mredrock.cyxbs.freshman.ui.widget.ARHintDialog;
 public class AdmissionRequestPresenter extends BasePresenter<AdmissionRequestContract.IAdmissionRequestView> {
     private AdmissionRequestContract.IAdmissionRequestModel mModel;
 
-    public AdmissionRequestPresenter(AdmissionRequestContract.IAdmissionRequestModel mModel ){
+    public AdmissionRequestPresenter(AdmissionRequestContract.IAdmissionRequestModel mModel) {
         this.mModel = mModel;
 
     }
-    public void addItem(String str){
-        if (str.equals("")){
+
+    public void addItem(String str) {
+        if (str.equals("")) {
             getView().returnButton();
         } else {
             Description.DescribeBean temp = new Description.DescribeBean();
@@ -28,12 +29,12 @@ public class AdmissionRequestPresenter extends BasePresenter<AdmissionRequestCon
         }
     }
 
-    public void showDialog(Context context){
+    public void showDialog(Context context) {
         ARHintDialog mDialog = new ARHintDialog(context);
         mDialog.show();
     }
 
-    public void start(){
+    public void start() {
         checkIsAttach();//检查是否绑定
         mModel.loadData(new BaseContract.ISomethingModel.LoadCallBack() {
             @Override

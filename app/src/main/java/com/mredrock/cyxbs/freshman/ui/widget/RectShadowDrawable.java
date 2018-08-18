@@ -17,7 +17,7 @@ import static java.lang.Math.abs;
 
 /**
  * 一个能绘制圆角矩形（圆角能内凹）并自带阴影的Drawable（可设置阴影颜色）
- *
+ * <p>
  * Created By jay68 on 2018/5/4.
  */
 public class RectShadowDrawable extends Drawable {
@@ -103,6 +103,8 @@ public class RectShadowDrawable extends Drawable {
             mShape.arcTo(temp, -90, -90, false);
         }
         mShape.close();
+
+        mView.setLayerType(View.LAYER_TYPE_SOFTWARE, mPaint);
     }
 
     @Override

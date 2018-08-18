@@ -26,7 +26,7 @@ class RevealMVPActivity : BaseMVPActivity<IRevealView, IRevealPresenter>() {
         rv_strategy.layoutManager = LinearLayoutManager(this)
         rv_strategy.adapter = adapter
 
-        adapter.srl=srl_refresh
+        adapter.srl = srl_refresh
 
     }
 

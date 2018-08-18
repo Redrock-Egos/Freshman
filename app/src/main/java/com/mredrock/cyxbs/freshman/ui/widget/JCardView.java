@@ -17,9 +17,9 @@ import com.mredrock.cyxbs.freshman.R;
  * 1. 可设置阴影颜色及大小
  * 2. 可隐藏部分边阴影
  * 3. 可设置内凹圆角
- *
+ * <p>
  * 注意：控件的实际大小=内容大小+阴影大小
- *
+ * <p>
  * Created By jay68 on 2018/05/30.
  */
 public class JCardView extends FrameLayout {
@@ -39,7 +39,7 @@ public class JCardView extends FrameLayout {
         Rect radius = new Rect();
         int r = typedArray.getDimensionPixelSize(R.styleable.JCardView_radius, -1);
         if (r < 0) {
-            final int dp9 = dp2px(getContext(),9);
+            final int dp9 = dp2px(getContext(), 9);
             radius.left = typedArray.getDimensionPixelSize(R.styleable.JCardView_leftRadius, dp9);
             radius.top = typedArray.getDimensionPixelSize(R.styleable.JCardView_topRadius, dp9);
             radius.right = typedArray.getDimensionPixelSize(R.styleable.JCardView_rightRadius, dp9);
@@ -58,7 +58,7 @@ public class JCardView extends FrameLayout {
         hideShadow[3] = typedArray.getBoolean(R.styleable.JCardView_hideBottomShadow, false);
         int backgroundColor = typedArray.getColor(R.styleable.JCardView_backgroundColor, Color.parseColor("#fefefe"));
         int shadowColor = typedArray.getColor(R.styleable.JCardView_shadowColor, Color.parseColor("#0c000000"));
-        int shadowRadius = typedArray.getDimensionPixelSize(R.styleable.JCardView_shadowRadius,dp2px(getContext(),10));
+        int shadowRadius = typedArray.getDimensionPixelSize(R.styleable.JCardView_shadowRadius, dp2px(getContext(), 10));
         typedArray.recycle();
 
         int left = shadowRadius;

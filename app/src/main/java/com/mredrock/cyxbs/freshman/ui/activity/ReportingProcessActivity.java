@@ -27,7 +27,7 @@ public class ReportingProcessActivity extends BaseActivity implements ReportingP
         initMVP();
     }
 
-    private void initMVP(){
+    private void initMVP() {
         ReportingProcessPresenter mPresenter = new ReportingProcessPresenter(new ReportingProcessModel());
         mPresenter.attachView(this);
         mPresenter.start();
@@ -41,7 +41,7 @@ public class ReportingProcessActivity extends BaseActivity implements ReportingP
     @Override
     public void setData(StrategyData data) {
         mAdapter = new ReportingProcessAdapter(data.getDetails(),
-                ((pos) -> expandItem(mAdapter.getList().get(pos))),this);
+                ((pos) -> expandItem(mAdapter.getList().get(pos))), this);
         RecyclerView mRv = findViewById(R.id.rv_report);
         mRv.setLayoutManager(new LinearLayoutManager(App.getContext()));
         mRv.setAdapter(mAdapter);
@@ -51,10 +51,10 @@ public class ReportingProcessActivity extends BaseActivity implements ReportingP
 
     @Override
     public void expandItem(StrategyData.DetailData detailData) {
-        Intent intent = new Intent(ReportingProcessActivity.this,ReportingProcessMoreActivity.class);
-        intent.putExtra("data",detailData);
+        Intent intent = new Intent(ReportingProcessActivity.this, ReportingProcessMoreActivity.class);
+        intent.putExtra("data", detailData);
         startActivity(intent);
-        overridePendingTransition(R.anim.freshman_anim_in,R.anim.freshman_anim_out);
+        overridePendingTransition(R.anim.freshman_anim_in, R.anim.freshman_anim_out);
     }
 
     @Override

@@ -14,6 +14,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.mredrock.cyxbs.freshman.R;
+import com.mredrock.cyxbs.freshman.ui.activity.App;
 
 /**
  * Created by Hosigus on 2018/7/20.
@@ -23,12 +24,13 @@ public class DensityUtils {
     private static int screenWidth = 0;
     private static int screenHeight = 0;
 
-    public static float dp2px(Context context, float dpValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
+    public static float dp2px(float dpValue) {
+        final float scale = App.getContext().getResources().getDisplayMetrics().density;
         return dpValue * scale + 0.5f;
     }
+
     public static float sp2px(Context context, float spValue) {
-        final float  fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontScale + 0.5f);
     }
 
@@ -65,7 +67,7 @@ public class DensityUtils {
         return screenWidth;
     }
 
-    private static int getStatusBarHeight(Context context){
+    private static int getStatusBarHeight(Context context) {
         int result = 0;
         int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
         if (resourceId > 0) {
@@ -76,22 +78,23 @@ public class DensityUtils {
 
     /**
      * 仅api大于等于21才能用
+     *
      * @param toolbar
      * @param activity
      */
-    public static void setTransparent(Toolbar toolbar, Activity activity){
-       if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.KITKAT){
-           setSBTransparent(activity);
-           TypedArray array = activity.obtainStyledAttributes(new int[]{R.attr.actionBarSize});
-           //获取状态栏高度 并加上actionbarSize的高度
-           float height = array.getDimension(0,0) + DensityUtils.getStatusBarHeight(activity);
-           array.recycle();
-           ViewGroup.LayoutParams layoutParams = toolbar.getLayoutParams();
-           layoutParams.height = (int) height;
-           toolbar.setLayoutParams(layoutParams);
-           //文字paddingTop为状态栏高度
-           toolbar.setPadding(0,DensityUtils.getStatusBarHeight(activity),0,0);
-       }
+    public static void setTransparent(Toolbar toolbar, Activity activity) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            setSBTransparent(activity);
+            TypedArray array = activity.obtainStyledAttributes(new int[]{R.attr.actionBarSize});
+            //获取状态栏高度 并加上actionbarSize的高度
+            float height = array.getDimension(0, 0) + DensityUtils.getStatusBarHeight(activity);
+            array.recycle();
+            ViewGroup.LayoutParams layoutParams = toolbar.getLayoutParams();
+            layoutParams.height = (int) height;
+            toolbar.setLayoutParams(layoutParams);
+            //文字paddingTop为状态栏高度
+            toolbar.setPadding(0, DensityUtils.getStatusBarHeight(activity), 0, 0);
+        }
     }
 
     public static void setSBTransparent(Activity activity) {
