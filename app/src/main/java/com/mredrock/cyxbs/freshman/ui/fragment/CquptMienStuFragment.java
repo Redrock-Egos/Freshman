@@ -50,6 +50,14 @@ public class CquptMienStuFragment extends Fragment {
         tv = parent.findViewById(R.id.freshman_CyMien_detail_desc);
         TextView name = parent.findViewById(R.id.freshman_CyMien_detail_name);
         seeMore = parent.findViewById(R.id.freshman_CyMien_detail_seeMore);
+        JCardView jCardView = parent.findViewById(R.id.freshman_CyMien_detail_jv);
+
+        //重新设置硬件加速
+        img.setLayerType(View.LAYER_TYPE_HARDWARE,null);
+        tv.setLayerType(View.LAYER_TYPE_HARDWARE,null);
+        name.setLayerType(View.LAYER_TYPE_HARDWARE,null);
+        seeMore.setLayerType(View.LAYER_TYPE_HARDWARE,null);
+        jCardView.setLayerType(View.LAYER_TYPE_HARDWARE,null);
 
         if(bean.getName().equals("校学生会")||//这几个图片不能使用centerCrop
                 bean.getName().equals("重庆邮电大学青年志愿者协会")||
